@@ -30,13 +30,6 @@ const CallToAction = () => {
                 Start Free Today
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 text-lg px-8 py-4 h-auto"
-              >
-                View Pricing
-              </Button>
             </div>
           
           <div className="grid sm:grid-cols-3 gap-8 text-primary-foreground/80">
