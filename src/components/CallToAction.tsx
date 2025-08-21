@@ -16,18 +16,18 @@ const CallToAction = () => {
           </div>
           
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
-            Join thousands of businesses
-            <span className="block">already using Orbit Invoice</span>
+            Join thousands of tradies
+            <span className="block">already using Orbit</span>
           </h2>
           
           <p className="text-xl text-primary-foreground/90 mb-12 max-w-2xl mx-auto">
-            Stop spending hours on manual invoicing. Start your free trial today 
-            and experience the power of professional invoicing automation.
+            Stop spending hours on manual quotes and invoices. Get Orbit today 
+            and transform your business with professional invoicing and quoting.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Button variant="hero" size="lg" className="group text-lg px-8 py-4 h-auto">
-              Start Your Free Trial
+              Download Orbit Now
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
@@ -35,7 +35,7 @@ const CallToAction = () => {
               size="lg" 
               className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 text-lg px-8 py-4 h-auto"
             >
-              Schedule a Demo
+              View Features
             </Button>
           </div>
           
@@ -44,8 +44,8 @@ const CallToAction = () => {
               <div className="w-12 h-12 bg-primary-foreground/10 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm">
                 <Users className="w-6 h-6" />
               </div>
-              <div className="font-semibold mb-1">50,000+ Users</div>
-              <div className="text-sm text-primary-foreground/70">Trust Orbit Invoice</div>
+              <div className="font-semibold mb-1">10,000+ Tradies</div>
+              <div className="text-sm text-primary-foreground/70">Trust Orbit Daily</div>
             </div>
             
             <div className="flex flex-col items-center">

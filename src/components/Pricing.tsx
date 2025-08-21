@@ -57,80 +57,98 @@ const Pricing = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-            💰 Simple Pricing
+            📱 Get Started Today
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Choose the Perfect
-            <span className="block text-primary">Plan for Your Business</span>
+            Ready to Transform
+            <span className="block text-primary">Your Business?</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Start with our free trial and upgrade as you grow. No hidden fees, 
-            no surprises - just straightforward pricing that scales with your success.
+            Join thousands of Australian tradies and small businesses who have transformed 
+            their invoicing and quoting process with Orbit.
           </p>
           <div className="inline-flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 px-4 py-2 rounded-full">
             <Check className="w-4 h-4 text-success" />
-            14-day free trial • No credit card required
+            Download today • Start creating professional quotes immediately
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {plans.map((plan, index) => (
-            <Card 
-              key={index} 
-              className={`relative hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 ${
-                plan.popular 
-                  ? 'ring-2 ring-primary shadow-glow bg-gradient-card scale-105' 
-                  : 'border-border/50 bg-card hover:bg-gradient-card'
-              }`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium flex items-center gap-1">
-                    <Star className="w-3 h-3" />
-                    Most Popular
-                  </div>
-                </div>
-              )}
+        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto items-center">
+          {/* App Features Showcase */}
+          <div className="space-y-6">
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <div className="flex items-center mb-4">
+                <Check className="w-6 h-6 text-success mr-3" />
+                <h3 className="text-xl font-semibold text-card-foreground">Professional Quotes & Invoices</h3>
+              </div>
+              <p className="text-muted-foreground">Create itemized quotes, convert to invoices, generate PDFs, and send via email.</p>
+            </div>
+            
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <div className="flex items-center mb-4">
+                <Check className="w-6 h-6 text-success mr-3" />
+                <h3 className="text-xl font-semibold text-card-foreground">Complete Client Management</h3>
+              </div>
+              <p className="text-muted-foreground">Store ABN details, contact info, addresses, and track full client history.</p>
+            </div>
+            
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <div className="flex items-center mb-4">
+                <Check className="w-6 h-6 text-success mr-3" />
+                <h3 className="text-xl font-semibold text-card-foreground">Business Analytics Dashboard</h3>
+              </div>
+              <p className="text-muted-foreground">Track revenue, outstanding amounts, win rates, and business performance.</p>
+            </div>
+            
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <div className="flex items-center mb-4">
+                <Check className="w-6 h-6 text-success mr-3" />
+                <h3 className="text-xl font-semibold text-card-foreground">Australian GST Compliance</h3>
+              </div>
+              <p className="text-muted-foreground">Built-in GST calculations, deposit invoicing, and Australian business standards.</p>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center">
+            <div className="bg-gradient-card border-2 border-primary rounded-2xl p-8">
+              <img 
+                src="/lovable-uploads/b3c1c316-c02c-4b98-bf83-3a3485ce3376.png" 
+                alt="Orbit - Simple Quotes & Invoices" 
+                className="w-64 mx-auto mb-6"
+              />
               
-              <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl font-bold text-foreground mb-2">
-                  {plan.name}
-                </CardTitle>
-                <div className="flex items-baseline justify-center gap-1 mb-2">
-                  <span className="text-4xl font-bold text-foreground">{plan.price}</span>
-                  <span className="text-muted-foreground">{plan.period}</span>
-                </div>
-                <p className="text-muted-foreground">{plan.description}</p>
-              </CardHeader>
+              <h3 className="text-2xl font-bold text-card-foreground mb-4">
+                Ready to Get Started?
+              </h3>
               
-              <CardContent className="pt-0">
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center gap-3">
-                      <Check className="w-5 h-5 text-success flex-shrink-0" />
-                      <span className="text-foreground">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <Button 
-                  variant={plan.popular ? "default" : "outline"} 
-                  className="w-full"
-                  size="lg"
-                >
-                  {plan.popular ? "Start Free Trial" : "Get Started"}
+              <p className="text-muted-foreground mb-6">
+                Download Orbit now and transform how you handle quotes and invoices. 
+                Perfect for tradies, contractors, and small businesses across Australia.
+              </p>
+              
+              <div className="space-y-4">
+                <Button variant="hero" size="lg" className="w-full">
+                  Download Orbit App
                 </Button>
-              </CardContent>
-            </Card>
-          ))}
+                <Button variant="outline" size="lg" className="w-full">
+                  Learn More
+                </Button>
+              </div>
+              
+              <div className="mt-6 text-sm text-muted-foreground">
+                ⭐⭐⭐⭐⭐ Rated by thousands of Australian tradies
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="text-center mt-16">
           <p className="text-muted-foreground mb-4">
-            Need a custom solution for your enterprise?
+            Questions about Orbit? Need support getting started?
           </p>
           <Button variant="ghost" className="text-primary hover:text-primary">
-            Contact Sales →
+            Contact Support →
           </Button>
         </div>
       </div>

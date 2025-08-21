@@ -14,44 +14,43 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
             <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary-foreground rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
-              ✨ Professional Invoicing Made Simple
+              📱 Mobile-First Professional Invoicing
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6">
-              Invoice Like a
-              <span className="block bg-gradient-to-r from-primary-glow to-primary-foreground bg-clip-text text-transparent">
-                Professional
-              </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
+              Professional Invoicing
+              <span className="block text-primary-glow">& Quoting for Tradies</span>
             </h1>
             
-            <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto lg:mx-0">
-              Streamline your billing process with Orbit's powerful invoicing platform. 
-              Create, send, and track professional invoices in minutes, not hours.
+            <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl">
+              The mobile-first invoicing and quoting app designed for Australian tradies, 
+              contractors, and small businesses. Create professional quotes, convert to 
+              invoices, and track your business performance.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
               <Button variant="hero" size="lg" className="group">
-                Start Free Trial
+                Download Orbit Now
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button variant="outline" size="lg" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
                 <Play className="mr-2 h-4 w-4" />
-                Watch Demo
+                View Features
               </Button>
             </div>
             
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 text-primary-foreground/80">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-success rounded-full"></div>
-                No setup fees
+                GST Compliant
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-success rounded-full"></div>
-                Cancel anytime
+                Mobile Optimized
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-success rounded-full"></div>
-                Free support
+                Australian Made
               </div>
             </div>
           </div>
@@ -59,9 +58,9 @@ const Hero = () => {
           <div className="relative">
             <div className="relative z-10 transform hover:scale-105 transition-transform duration-500">
               <img 
-                src={heroImage} 
-                alt="Orbit Professional Invoicing Dashboard" 
-                className="w-full max-w-2xl mx-auto rounded-2xl shadow-elegant"
+                src="/lovable-uploads/f0f3e6b3-a74b-4734-a624-0dee11cbc578.png" 
+                alt="Orbit Dashboard showing revenue metrics and quick actions" 
+                className="w-full max-w-md mx-auto rounded-2xl shadow-elegant"
               />
             </div>
             <div className="absolute inset-0 bg-gradient-hero/20 rounded-2xl blur-xl transform translate-y-4"></div>

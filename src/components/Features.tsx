@@ -14,33 +14,33 @@ const Features = () => {
   const features = [
     {
       icon: <FileText className="w-6 h-6" />,
-      title: "Professional Templates",
-      description: "Beautiful, customizable invoice templates that reflect your brand and impress clients."
+      title: "Professional Quotes & Invoices",
+      description: "Create itemized quotes with line items, convert to invoices seamlessly, and generate professional PDFs instantly."
     },
     {
       icon: <Zap className="w-6 h-6" />,
-      title: "Automated Workflows",
-      description: "Set up recurring invoices, payment reminders, and follow-ups to save time."
+      title: "Mobile-First Design",
+      description: "Touch-friendly interface optimized for mobile devices with swipe gestures and clean navigation."
     },
     {
       icon: <CreditCard className="w-6 h-6" />,
-      title: "Multiple Payment Options",
-      description: "Accept payments via credit card, PayPal, bank transfer, and more."
+      title: "GST Compliance",
+      description: "Built-in Australian GST calculations, deposit invoicing, and compliance with local business standards."
     },
     {
       icon: <BarChart3 className="w-6 h-6" />,
-      title: "Advanced Analytics",
-      description: "Track payment status, cash flow, and business metrics with detailed reports."
+      title: "Business Analytics",
+      description: "Track win rates, revenue metrics, outstanding amounts, and quote performance with real-time dashboards."
     },
     {
       icon: <Shield className="w-6 h-6" />,
-      title: "Bank-Level Security",
-      description: "Your data is protected with enterprise-grade encryption and security measures."
+      title: "Client Management",
+      description: "Complete client database with ABN storage, contact details, and full quote/invoice history tracking."
     },
     {
       icon: <Clock className="w-6 h-6" />,
-      title: "Real-Time Tracking",
-      description: "Monitor invoice status, payment history, and client activity in real-time."
+      title: "Real-Time Sync",
+      description: "Access your business data from anywhere with instant synchronization across all devices."
     }
   ];
 
@@ -49,15 +49,15 @@ const Features = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-            ⚡ Powerful Features
+            📱 Built for Mobile
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Everything You Need to
-            <span className="block text-primary">Invoice Successfully</span>
+            Everything Tradies Need
+            <span className="block text-primary">In One App</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From professional templates to advanced automation, Orbit provides all the tools 
-            you need to streamline your invoicing process and get paid faster.
+            From client management to quote creation, invoice generation to business analytics - 
+            Orbit provides all the tools Australian tradies need to run their business professionally.
           </p>
         </div>
 
@@ -84,39 +84,37 @@ const Features = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
-              Trusted by thousands of businesses worldwide
+              Trusted by thousands of Australian tradies
             </h3>
             <p className="text-lg text-muted-foreground mb-8">
-              Join over 50,000+ freelancers, small businesses, and enterprises who have 
-              streamlined their invoicing process with Orbit. Our platform handles millions 
-              of invoices annually, ensuring reliable service you can count on.
+              Join over 10,000+ tradies, contractors, and small businesses across Australia who have 
+              streamlined their quoting and invoicing process with Orbit. Built specifically for 
+              Australian business requirements with GST compliance and local standards.
             </p>
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
-                <div className="text-2xl font-bold text-primary mb-1">50,000+</div>
-                <div className="text-sm text-muted-foreground">Active Users</div>
+                <div className="text-2xl font-bold text-primary mb-1">10,000+</div>
+                <div className="text-sm text-muted-foreground">Active Tradies</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary mb-1">99.9%</div>
-                <div className="text-sm text-muted-foreground">Uptime</div>
+                <div className="text-2xl font-bold text-primary mb-1">75%</div>
+                <div className="text-sm text-muted-foreground">Win Rate</div>
               </div>
-              <div>
-                <div className="text-2xl font-bold text-primary mb-1">$2.5B+</div>
-                <div className="text-sm text-muted-foreground">Processed</div>
-              </div>
+              <div className="text-2xl font-bold text-primary mb-1">$8M+</div>
+              <div className="text-sm text-muted-foreground">Invoiced</div>
             </div>
           </div>
           <div className="relative">
             <img 
-              src={featuresImage} 
-              alt="Professional team managing invoices"
-              className="w-full rounded-2xl shadow-card"
+              src="/lovable-uploads/5bce660d-c4fb-4527-a3e8-57dbad5ea428.png" 
+              alt="Orbit dashboard showing quotes, invoices and business metrics"
+              className="w-full max-w-md mx-auto rounded-2xl shadow-card"
             />
             <div className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-primary rounded-2xl flex items-center justify-center shadow-glow">
               <img 
-                src={automationIcon} 
-                alt="Automation"
-                className="w-12 h-12 rounded-lg"
+                src="/lovable-uploads/fa386d72-363f-4056-bed0-16b44bfae597.png" 
+                alt="Orbit Logo"
+                className="w-12 h-12"
               />
             </div>
           </div>
