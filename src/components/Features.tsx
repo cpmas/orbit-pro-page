@@ -84,24 +84,26 @@ const Features = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
-              Trusted by thousands of Australian tradies
+              Built for Australian Business Standards
             </h3>
             <p className="text-lg text-muted-foreground mb-8">
-              Join over 10,000+ tradies, contractors, and small businesses across Australia who have 
-              streamlined their quoting and invoicing process with Orbit. Built specifically for 
-              Australian business requirements with GST compliance and local standards.
+              Orbit is designed specifically for Australian tradies and small businesses with 
+              GST compliance, local formatting, and professional standards. No bloat, no fluff — 
+              only the tools you need, nothing you don't.
             </p>
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
-                <div className="text-2xl font-bold text-primary mb-1">10,000+</div>
-                <div className="text-sm text-muted-foreground">Active Tradies</div>
+                <div className="text-2xl font-bold text-primary mb-1">GST</div>
+                <div className="text-sm text-muted-foreground">Compliant</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary mb-1">75%</div>
-                <div className="text-sm text-muted-foreground">Win Rate</div>
+                <div className="text-2xl font-bold text-primary mb-1">Mobile</div>
+                <div className="text-sm text-muted-foreground">First Design</div>
               </div>
-              <div className="text-2xl font-bold text-primary mb-1">$8M+</div>
-              <div className="text-sm text-muted-foreground">Invoiced</div>
+              <div>
+                <div className="text-2xl font-bold text-primary mb-1">Offline</div>
+                <div className="text-sm text-muted-foreground">Ready</div>
+              </div>
             </div>
           </div>
           <div className="relative">
