@@ -16,13 +16,13 @@ const CallToAction = () => {
           </div>
           
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
-            Join thousands of tradies
-            <span className="block">already using Orbit</span>
+            Start quoting like a pro
+            <span className="block">in under a minute</span>
           </h2>
           
           <p className="text-xl text-primary-foreground/90 mb-12 max-w-2xl mx-auto">
-            Stop spending hours on manual quotes and invoices. Get Orbit today 
-            and transform your business with professional invoicing and quoting.
+            Works anywhere, even offline. Quick to invoice with deposits & progress payments. 
+            Only pay for the tools you need — fair pricing without the bloated extras.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
@@ -44,24 +44,24 @@ const CallToAction = () => {
               <div className="w-12 h-12 bg-primary-foreground/10 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm">
                 <Users className="w-6 h-6" />
               </div>
-              <div className="font-semibold mb-1">10,000+ Tradies</div>
-              <div className="text-sm text-primary-foreground/70">Trust Orbit Daily</div>
+              <div className="font-semibold mb-1">Professional Look</div>
+              <div className="text-sm text-primary-foreground/70">Branded quotes that impress</div>
             </div>
             
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 bg-primary-foreground/10 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm">
                 <Zap className="w-6 h-6" />
               </div>
-              <div className="font-semibold mb-1">99.9% Uptime</div>
-              <div className="text-sm text-primary-foreground/70">Reliable Service</div>
+              <div className="font-semibold mb-1">Works Offline</div>
+              <div className="text-sm text-primary-foreground/70">No reception, no problem</div>
             </div>
             
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 bg-primary-foreground/10 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm">
                 <Shield className="w-6 h-6" />
               </div>
-              <div className="font-semibold mb-1">Bank-Grade Security</div>
-              <div className="text-sm text-primary-foreground/70">Your Data Protected</div>
+              <div className="font-semibold mb-1">Australian Made</div>
+              <div className="text-sm text-primary-foreground/70">Built for Aussie tradies</div>
             </div>
           </div>
         </div>

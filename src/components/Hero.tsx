@@ -21,9 +21,8 @@ const Hero = () => {
             </h1>
             
             <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl">
-              The mobile-first invoicing and quoting app designed for Australian tradies, 
-              contractors, and small businesses. Create professional quotes, convert to 
-              invoices, and track your business performance.
+              Send a quote in under a minute — no setup, no clutter, just job → quote → send. 
+              Built for tradies, not accountants. Simple, mobile-first, and professional every time.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
