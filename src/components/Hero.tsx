@@ -13,9 +13,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary-foreground rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
-              📱 Mobile-First Professional Invoicing
-            </div>
+           
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
               Professional Invoicing
