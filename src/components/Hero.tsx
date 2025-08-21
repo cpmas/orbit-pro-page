@@ -4,7 +4,7 @@ import { ArrowRight, Play } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen bg-gradient-hero flex items-center overflow-hidden">
+    <section className="relative min-h-[calc(100vh-4rem)] bg-gradient-hero flex items-center overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-hero opacity-95"></div>
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary-glow/20 rounded-full blur-3xl"></div>
