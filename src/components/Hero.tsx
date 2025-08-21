@@ -10,9 +10,9 @@ const Hero = () => {
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary-glow/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
       
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 xl:gap-20 items-center">
-          <div className="text-center lg:text-left space-y-8">
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-center max-w-7xl mx-auto">
+          <div className="text-center lg:text-left space-y-8 lg:pr-4">
            
             
             <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold text-primary-foreground mb-8 leading-[1.1] tracking-tight">
@@ -20,7 +20,7 @@ const Hero = () => {
               <span className="block text-primary-glow drop-shadow-lg font-extrabold">& Quoting for Tradies</span>
             </h1>
             
-            <p className="text-lg sm:text-xl lg:text-2xl text-primary-foreground/95 mb-10 max-w-3xl leading-relaxed font-medium">
+            <p className="text-lg sm:text-xl lg:text-2xl text-primary-foreground/95 mb-10 max-w-2xl lg:max-w-none leading-relaxed font-medium">
               Send a quote in under a minute — no setup, no clutter, just job → quote → send. 
               <span className="block mt-2 text-primary-foreground/85 text-base sm:text-lg lg:text-xl font-normal">
                 Built for tradies, not accountants. Simple, mobile-first, and professional every time.
@@ -50,12 +50,12 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="relative">
+          <div className="relative lg:pl-4">
             <div className="relative z-10 transform hover:scale-105 transition-all duration-700 ease-spring">
               <img 
                 src="/lovable-uploads/f0f3e6b3-a74b-4734-a624-0dee11cbc578.png" 
                 alt="Orbit Dashboard showing professional invoice and quote management interface with revenue metrics and quick actions for tradies" 
-                className="w-full max-w-lg mx-auto rounded-3xl shadow-elegant hover:shadow-glow transition-all duration-500"
+                className="w-full max-w-[29.5rem] mx-auto rounded-3xl shadow-elegant hover:shadow-glow transition-all duration-500"
               />
             </div>
             <div className="absolute inset-0 bg-gradient-hero/30 rounded-3xl blur-2xl transform translate-y-6 scale-95"></div>
