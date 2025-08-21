@@ -55,7 +55,7 @@ const Hero = () => {
               <img 
                 src="/lovable-uploads/f0f3e6b3-a74b-4734-a624-0dee11cbc578.png" 
                 alt="Orbit Dashboard showing professional invoice and quote management interface with revenue metrics and quick actions for tradies" 
-                className="w-[95%] max-w-lg mx-auto rounded-3xl shadow-elegant hover:shadow-glow transition-all duration-500"
+                className="w-full max-w-lg mx-auto rounded-3xl shadow-elegant hover:shadow-glow transition-all duration-500"
               />
             </div>
             <div className="absolute inset-0 bg-gradient-hero/30 rounded-3xl blur-2xl transform translate-y-6 scale-95"></div>
