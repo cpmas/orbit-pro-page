@@ -86,23 +86,59 @@ const Features = () => {
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
               Trusted by Australian tradies
             </h3>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-muted-foreground mb-6">
               Built specifically for Australian business requirements with GST compliance, 
               local standards, and professional templates. No bloat, no fluff — only the 
               tools you need, nothing you don't.
             </p>
-            <div className="grid grid-cols-3 gap-6 text-center">
-              <div>
+            
+            <div className="space-y-4 mb-8">
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-muted-foreground">
+                  <strong className="text-foreground">Australian Made & Owned</strong> — 
+                  Developed by Aussie tradies who understand the unique challenges of running a trade business locally.
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-muted-foreground">
+                  <strong className="text-foreground">Works Offline</strong> — 
+                  Create quotes on-site without worrying about poor reception or data limits.
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-muted-foreground">
+                  <strong className="text-foreground">Fair Pricing</strong> — 
+                  Only pay for the tools you actually use, without the bloated extras.
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-muted-foreground">
+                  <strong className="text-foreground">Ready in Under a Minute</strong> — 
+                  No setup, no clutter. Job → Quote → Send. That simple.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6">
+              <div className="text-center p-4 bg-muted/30 rounded-lg">
                 <div className="text-2xl font-bold text-primary mb-1">GST</div>
                 <div className="text-sm text-muted-foreground">Compliant</div>
               </div>
-              <div>
+              <div className="text-center p-4 bg-muted/30 rounded-lg">
                 <div className="text-2xl font-bold text-primary mb-1">Mobile</div>
                 <div className="text-sm text-muted-foreground">Optimized</div>
               </div>
-              <div>
+              <div className="text-center p-4 bg-muted/30 rounded-lg">
                 <div className="text-2xl font-bold text-primary mb-1">Professional</div>
                 <div className="text-sm text-muted-foreground">Templates</div>
+              </div>
+              <div className="text-center p-4 bg-muted/30 rounded-lg">
+                <div className="text-2xl font-bold text-primary mb-1">Offline</div>
+                <div className="text-sm text-muted-foreground">Ready</div>
               </div>
             </div>
           </div>
