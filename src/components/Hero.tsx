@@ -30,10 +30,6 @@ const Hero = () => {
                 Start Free Now
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="lg" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
-                <Play className="mr-2 h-4 w-4" />
-                View Pricing
-              </Button>
             </div>
             
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 text-primary-foreground/80">
