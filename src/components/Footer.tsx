@@ -37,9 +37,6 @@ const Footer = () => {
               and get paid faster with our powerful platform.
             </p>
             <div className="flex gap-3">
-              <Button variant="outline" size="sm">
-                Download for WordPress
-              </Button>
             </div>
           </div>
 
