@@ -131,9 +131,6 @@ const Pricing = () => {
                 <Button variant="hero" size="lg" className="w-full">
                   Download Orbit App
                 </Button>
-                <Button variant="outline" size="lg" className="w-full">
-                  Learn More
-                </Button>
               </div>
               
               <div className="mt-6 text-sm text-muted-foreground">
