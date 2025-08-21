@@ -84,26 +84,24 @@ const Features = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
-              Trusted by Australian tradies
+              Trusted by thousands of Australian tradies
             </h3>
             <p className="text-lg text-muted-foreground mb-8">
-              Built specifically for Australian business requirements with GST compliance, 
-              local standards, and professional templates. No bloat, no fluff — only the 
-              tools you need, nothing you don't.
+              Join over 10,000+ tradies, contractors, and small businesses across Australia who have 
+              streamlined their quoting and invoicing process with Orbit. Built specifically for 
+              Australian business requirements with GST compliance and local standards.
             </p>
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
-                <div className="text-2xl font-bold text-primary mb-1">GST</div>
-                <div className="text-sm text-muted-foreground">Compliant</div>
+                <div className="text-2xl font-bold text-primary mb-1">10,000+</div>
+                <div className="text-sm text-muted-foreground">Active Tradies</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary mb-1">Mobile</div>
-                <div className="text-sm text-muted-foreground">Optimized</div>
+                <div className="text-2xl font-bold text-primary mb-1">75%</div>
+                <div className="text-sm text-muted-foreground">Win Rate</div>
               </div>
-              <div>
-                <div className="text-2xl font-bold text-primary mb-1">Professional</div>
-                <div className="text-sm text-muted-foreground">Templates</div>
-              </div>
+              <div className="text-2xl font-bold text-primary mb-1">$8M+</div>
+              <div className="text-sm text-muted-foreground">Invoiced</div>
             </div>
           </div>
           <div className="relative">
