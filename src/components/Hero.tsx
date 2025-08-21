@@ -27,12 +27,12 @@ const Hero = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
               <Button variant="hero" size="lg" className="group">
-                Download Orbit Now
+                Start Free Now
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button variant="outline" size="lg" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
                 <Play className="mr-2 h-4 w-4" />
-                View Features
+                View Pricing
               </Button>
             </div>
             

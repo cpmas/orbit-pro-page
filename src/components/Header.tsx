@@ -13,7 +13,7 @@ const Header = () => {
           <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
             Features
           </a>
-          <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+          <a href="/pricing" className="text-muted-foreground hover:text-foreground transition-colors">
             Pricing
           </a>
           <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
@@ -26,7 +26,7 @@ const Header = () => {
             Sign In
           </Button>
           <Button variant="hero">
-            Start Free Trial
+            Get Started Free
           </Button>
         </div>
       </div>
