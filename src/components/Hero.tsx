@@ -34,20 +34,6 @@ const Hero = () => {
               </Button>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-8 text-primary-foreground/90 text-sm sm:text-base font-medium">
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-success rounded-full shadow-sm animate-pulse"></div>
-                <span className="tracking-wide">GST Compliant</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-success rounded-full shadow-sm animate-pulse"></div>
-                <span className="tracking-wide">Mobile Optimized</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-success rounded-full shadow-sm animate-pulse"></div>
-                <span className="tracking-wide">Australian Made</span>
-              </div>
-            </div>
           </div>
           
           <div className="relative lg:pl-4">
