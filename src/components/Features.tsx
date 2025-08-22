@@ -82,7 +82,24 @@ const Features = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div>
+          {/* Image Section - Mobile/Tablet First, Desktop Second */}
+          <div className="relative order-1 lg:order-2">
+            <img 
+              src="/lovable-uploads/5bce660d-c4fb-4527-a3e8-57dbad5ea428.png" 
+              alt="Orbit dashboard showing quotes, invoices and business metrics"
+              className="w-full max-w-md mx-auto rounded-2xl shadow-card"
+            />
+            <div className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-primary rounded-2xl flex items-center justify-center shadow-glow">
+              <img 
+                src="/lovable-uploads/fa386d72-363f-4056-bed0-16b44bfae597.png" 
+                alt="Orbit Logo"
+                className="w-12 h-12"
+              />
+            </div>
+          </div>
+          
+          {/* Text Section - Mobile/Tablet Second, Desktop First */}
+          <div className="order-2 lg:order-1">
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
               Trusted by Australian tradies
             </h3>
@@ -140,20 +157,6 @@ const Features = () => {
                 <div className="text-2xl font-bold text-primary mb-1">Offline</div>
                 <div className="text-sm text-muted-foreground">Ready</div>
               </div>
-            </div>
-          </div>
-          <div className="relative">
-            <img 
-              src="/lovable-uploads/5bce660d-c4fb-4527-a3e8-57dbad5ea428.png" 
-              alt="Orbit dashboard showing quotes, invoices and business metrics"
-              className="w-full max-w-md mx-auto rounded-2xl shadow-card"
-            />
-            <div className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-primary rounded-2xl flex items-center justify-center shadow-glow">
-              <img 
-                src="/lovable-uploads/fa386d72-363f-4056-bed0-16b44bfae597.png" 
-                alt="Orbit Logo"
-                className="w-12 h-12"
-              />
             </div>
           </div>
         </div>
