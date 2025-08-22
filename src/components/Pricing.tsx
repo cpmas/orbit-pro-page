@@ -53,9 +53,12 @@ const Pricing = () => {
   ];
 
   return (
-    <section id="pricing" className="py-16 md:py-20 bg-background">
+    <section id="pricing" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
+          <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
+            📱 Get Started Today
+          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Ready to Transform
             <span className="block text-primary">Your Business?</span>
@@ -64,10 +67,6 @@ const Pricing = () => {
             Join thousands of Australian tradies and small businesses who have transformed 
             their invoicing and quoting process with Orbit.
           </p>
-          <div className="inline-flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 px-4 py-2 rounded-full">
-            <Check className="w-4 h-4 text-success" />
-            Download today • Start creating professional quotes immediately
-          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto items-center">
