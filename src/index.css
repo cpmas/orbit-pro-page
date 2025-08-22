@@ -20,7 +20,7 @@ All colors MUST be HSL.
     /* Professional invoicing app colors */
     --primary: 210 100% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 180 100% 75%;
+    --primary-glow: 210 100% 85%;
     
     --secondary: 220 14% 96%;
     --secondary-foreground: 220 9% 46%;
@@ -86,7 +86,7 @@ All colors MUST be HSL.
 
     --primary: 210 100% 55%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 180 100% 80%;
+    --primary-glow: 210 100% 90%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
