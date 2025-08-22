@@ -53,9 +53,12 @@ const Pricing = () => {
   ];
 
   return (
-    <section id="pricing" className="py-12 md:py-24 bg-background">
+    <section id="pricing" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
+          <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
+            📱 Get Started Today
+          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Ready to Transform
             <span className="block text-primary">Your Business?</span>
@@ -64,45 +67,41 @@ const Pricing = () => {
             Join thousands of Australian tradies and small businesses who have transformed 
             their invoicing and quoting process with Orbit.
           </p>
-          <div className="inline-flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 px-4 py-2 rounded-full">
-            <Check className="w-4 h-4 text-success" />
-            Download today • Start creating professional quotes immediately
-          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto items-center">
           {/* App Features Showcase */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-3 sm:gap-4">
-            <div className="bg-card border border-border rounded-2xl p-4">
-              <div className="flex items-center mb-3">
-                <Check className="w-5 h-5 text-success mr-2" />
-                <h3 className="text-lg font-semibold text-card-foreground">Professional Quotes & Invoices</h3>
+          <div className="space-y-6">
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <div className="flex items-center mb-4">
+                <Check className="w-6 h-6 text-success mr-3" />
+                <h3 className="text-xl font-semibold text-card-foreground">Professional Quotes & Invoices</h3>
               </div>
-              <p className="text-sm text-muted-foreground">Create itemized quotes, convert to invoices, generate PDFs, and send via email.</p>
+              <p className="text-muted-foreground">Create itemized quotes, convert to invoices, generate PDFs, and send via email.</p>
             </div>
             
-            <div className="bg-card border border-border rounded-2xl p-4">
-              <div className="flex items-center mb-3">
-                <Check className="w-5 h-5 text-success mr-2" />
-                <h3 className="text-lg font-semibold text-card-foreground">Complete Client Management</h3>
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <div className="flex items-center mb-4">
+                <Check className="w-6 h-6 text-success mr-3" />
+                <h3 className="text-xl font-semibold text-card-foreground">Complete Client Management</h3>
               </div>
-              <p className="text-sm text-muted-foreground">Store ABN details, contact info, addresses, and track full client history.</p>
+              <p className="text-muted-foreground">Store ABN details, contact info, addresses, and track full client history.</p>
             </div>
             
-            <div className="bg-card border border-border rounded-2xl p-4">
-              <div className="flex items-center mb-3">
-                <Check className="w-5 h-5 text-success mr-2" />
-                <h3 className="text-lg font-semibold text-card-foreground">Business Analytics Dashboard</h3>
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <div className="flex items-center mb-4">
+                <Check className="w-6 h-6 text-success mr-3" />
+                <h3 className="text-xl font-semibold text-card-foreground">Business Analytics Dashboard</h3>
               </div>
-              <p className="text-sm text-muted-foreground">Track revenue, outstanding amounts, win rates, and business performance.</p>
+              <p className="text-muted-foreground">Track revenue, outstanding amounts, win rates, and business performance.</p>
             </div>
             
-            <div className="bg-card border border-border rounded-2xl p-4">
-              <div className="flex items-center mb-3">
-                <Check className="w-5 h-5 text-success mr-2" />
-                <h3 className="text-lg font-semibold text-card-foreground">Australian GST Compliance</h3>
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <div className="flex items-center mb-4">
+                <Check className="w-6 h-6 text-success mr-3" />
+                <h3 className="text-xl font-semibold text-card-foreground">Australian GST Compliance</h3>
               </div>
-              <p className="text-sm text-muted-foreground">Built-in GST calculations, deposit invoicing, and Australian business standards.</p>
+              <p className="text-muted-foreground">Built-in GST calculations, deposit invoicing, and Australian business standards.</p>
             </div>
           </div>
 
