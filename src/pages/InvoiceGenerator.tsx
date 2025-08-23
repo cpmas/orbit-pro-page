@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -13,6 +13,7 @@ import { Plus, Trash2, Download, Calculator, Upload, Mail, X } from "lucide-reac
 import InvoicePreview from "@/components/InvoicePreview";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import html2pdf from "html2pdf.js";
 
 const invoiceSchema = z.object({
   // Business details
@@ -56,6 +57,8 @@ type InvoiceFormData = z.infer<typeof invoiceSchema>;
 const InvoiceGenerator = () => {
   const [showPreview, setShowPreview] = useState(false);
   const [logoFile, setLogoFile] = useState<string | null>(null);
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   const form = useForm<InvoiceFormData>({
     resolver: zodResolver(invoiceSchema),
@@ -103,12 +106,47 @@ const InvoiceGenerator = () => {
     }
   };
 
+  const generatePdfPreview = async () => {
+    setIsGeneratingPdf(true);
+    try {
+      const element = document.getElementById('invoice-for-pdf');
+      if (!element) return;
+
+      const opt = {
+        margin: 0.5,
+        filename: `invoice-${form.getValues().invoiceNumber}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
+
+      const pdf = await html2pdf().set(opt).from(element).outputPdf('blob');
+      const url = URL.createObjectURL(pdf);
+      setPdfUrl(url);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  };
+
   const onSubmit = (data: InvoiceFormData) => {
     setShowPreview(true);
   };
 
-  const handlePrint = () => {
-    window.print();
+  const handleDownload = async () => {
+    const element = document.getElementById('invoice-for-pdf');
+    if (!element) return;
+
+    const opt = {
+      margin: 0.5,
+      filename: `invoice-${form.getValues().invoiceNumber}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+
+    await html2pdf().set(opt).from(element).save();
   };
 
   const handleEmailInvoice = () => {
@@ -128,13 +166,33 @@ ${data.businessName}`;
     window.location.href = mailtoLink;
   };
 
+  useEffect(() => {
+    if (showPreview && !pdfUrl && !isGeneratingPdf) {
+      generatePdfPreview();
+    }
+  }, [showPreview]);
+
+  useEffect(() => {
+    return () => {
+      if (pdfUrl) {
+        URL.revokeObjectURL(pdfUrl);
+      }
+    };
+  }, [pdfUrl]);
+
   if (showPreview) {
     return (
       <div className="min-h-screen bg-background">
         <Header />
         <div className="container mx-auto px-4 py-8">
-          <div className="mb-6 flex justify-between items-center print:hidden">
-            <Button variant="outline" onClick={() => setShowPreview(false)}>
+          <div className="mb-6 flex justify-between items-center">
+            <Button variant="outline" onClick={() => {
+              setShowPreview(false);
+              if (pdfUrl) {
+                URL.revokeObjectURL(pdfUrl);
+                setPdfUrl(null);
+              }
+            }}>
               ← Back to Edit
             </Button>
             <div className="flex gap-2">
@@ -144,19 +202,47 @@ ${data.businessName}`;
                   Send Email
                 </Button>
               )}
-              <Button onClick={handlePrint} className="flex items-center gap-2">
+              <Button onClick={handleDownload} className="flex items-center gap-2">
                 <Download className="w-4 h-4" />
                 Download PDF
               </Button>
             </div>
           </div>
-          <div className="transform scale-[0.8] origin-top">
-            <InvoicePreview 
-              data={{...form.getValues(), logo: logoFile}} 
-              subtotal={subtotal} 
-              gst={gst} 
-              total={total} 
-            />
+          
+          {/* PDF Preview */}
+          <div className="flex justify-center">
+            <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden">
+              {isGeneratingPdf ? (
+                <div className="flex items-center justify-center h-96">
+                  <div className="text-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+                    <p className="text-muted-foreground">Generating PDF preview...</p>
+                  </div>
+                </div>
+              ) : pdfUrl ? (
+                <iframe
+                  src={pdfUrl}
+                  className="w-full h-[80vh] border-0"
+                  title="Invoice PDF Preview"
+                />
+              ) : (
+                <div className="flex items-center justify-center h-96">
+                  <p className="text-muted-foreground">Failed to generate PDF preview</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Hidden element for PDF generation */}
+          <div className="hidden">
+            <div id="invoice-for-pdf">
+              <InvoicePreview 
+                data={{...form.getValues(), logo: logoFile}} 
+                subtotal={subtotal} 
+                gst={gst} 
+                total={total} 
+              />
+            </div>
           </div>
         </div>
         <Footer />
