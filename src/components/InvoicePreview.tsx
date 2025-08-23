@@ -132,7 +132,7 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
         <div className="border-b border-gray-300 mb-4"></div>
 
         {/* Items Table */}
-        <div className="mb-8 min-h-[300px]">
+        <div className="mb-8 min-h-[400px]">
           <table className="w-full border-collapse">
             <thead>
               <tr>
