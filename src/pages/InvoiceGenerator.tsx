@@ -139,28 +139,53 @@ const InvoiceGenerator = () => {
   };
 
   const handleDownloadPdf = async () => {
-    if (!invoiceImage || !invoiceRef.current) return;
+    if (!invoiceImage) return;
     
     try {
       // Import jsPDF dynamically
       const { jsPDF } = await import('jspdf');
       
-      // Create PDF
-      const pdf = new jsPDF({
-        orientation: 'portrait',
-        unit: 'mm',
-        format: 'a4'
-      });
+      // Create new image element to get actual dimensions
+      const img = new Image();
+      img.onload = () => {
+        // Create PDF
+        const pdf = new jsPDF({
+          orientation: 'portrait',
+          unit: 'mm',
+          format: 'a4'
+        });
+        
+        // Calculate dimensions to fit A4
+        const pdfWidth = 210; // A4 width in mm
+        const pdfHeight = 297; // A4 height in mm
+        
+        // Calculate image dimensions maintaining aspect ratio
+        const imgAspectRatio = img.width / img.height;
+        const pdfAspectRatio = pdfWidth / pdfHeight;
+        
+        let imgWidth, imgHeight;
+        if (imgAspectRatio > pdfAspectRatio) {
+          // Image is wider, fit to width
+          imgWidth = pdfWidth;
+          imgHeight = pdfWidth / imgAspectRatio;
+        } else {
+          // Image is taller, fit to height
+          imgHeight = pdfHeight;
+          imgWidth = pdfHeight * imgAspectRatio;
+        }
+        
+        // Center the image
+        const x = (pdfWidth - imgWidth) / 2;
+        const y = (pdfHeight - imgHeight) / 2;
+        
+        // Add image to PDF
+        pdf.addImage(invoiceImage, 'PNG', x, y, imgWidth, imgHeight);
+        
+        // Download PDF
+        pdf.save(`invoice-${form.getValues().invoiceNumber}.pdf`);
+      };
       
-      // Calculate dimensions to fit A4
-      const imgWidth = 210; // A4 width in mm
-      const imgHeight = (invoiceRef.current.scrollHeight * imgWidth) / invoiceRef.current.scrollWidth;
-      
-      // Add image to PDF
-      pdf.addImage(invoiceImage, 'PNG', 0, 0, imgWidth, imgHeight);
-      
-      // Download PDF
-      pdf.save(`invoice-${form.getValues().invoiceNumber}.pdf`);
+      img.src = invoiceImage;
     } catch (error) {
       console.error('Error creating PDF:', error);
     }
@@ -199,12 +224,12 @@ ${data.businessName}`;
           
           {/* Invoice Image Viewer */}
           <div className="bg-white rounded-lg shadow-xl p-4 mb-8">
-            <div className="overflow-auto max-h-[800px]">
+            <div className="flex justify-center">
               <img 
                 src={invoiceImage} 
                 alt="Invoice Preview" 
-                className="w-full h-auto max-w-none"
-                style={{ minWidth: '794px' }} // A4 width at 96 DPI
+                className="max-w-full h-auto shadow-lg rounded"
+                style={{ maxHeight: '80vh' }}
               />
             </div>
           </div>
