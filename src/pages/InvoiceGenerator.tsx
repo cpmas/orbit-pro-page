@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { Plus, Trash2, Download, Calculator, Upload, Mail, X } from "lucide-react";
-import InvoicePreview from "@/components/InvoicePreview";
+import { PDFPreview } from "@/components/PDFPreview";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -107,62 +107,13 @@ const InvoiceGenerator = () => {
     setShowPreview(true);
   };
 
-  const handlePrint = () => {
-    window.print();
+  const handleDownload = () => {
+    setShowPreview(false);
   };
 
-  const handleEmailInvoice = () => {
-    const data = form.getValues();
-    const clientEmail = data.clientEmail;
-    const subject = `Invoice ${data.invoiceNumber} from ${data.businessName}`;
-    const body = `Hi ${data.clientName},
-
-Please find attached invoice ${data.invoiceNumber} for the total amount of $${total.toFixed(2)}.
-
-${data.paymentTerms ? `Payment Terms: ${data.paymentTerms}` : ''}
-
-Best regards,
-${data.businessName}`;
-    
-    const mailtoLink = `mailto:${clientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
+  const handleSendEmail = () => {
+    setShowPreview(false);
   };
-
-  if (showPreview) {
-    return (
-      <div className="min-h-screen bg-background">
-        <Header />
-        <div className="container mx-auto px-4 py-8">
-          <div className="mb-6 flex justify-between items-center print:hidden">
-            <Button variant="outline" onClick={() => setShowPreview(false)}>
-              ← Back to Edit
-            </Button>
-            <div className="flex gap-2">
-              {form.getValues().clientEmail && (
-                <Button variant="outline" onClick={handleEmailInvoice} className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  Send Email
-                </Button>
-              )}
-              <Button onClick={handlePrint} className="flex items-center gap-2">
-                <Download className="w-4 h-4" />
-                Download PDF
-              </Button>
-            </div>
-          </div>
-          <div className="transform scale-[0.8] origin-top">
-            <InvoicePreview 
-              data={{...form.getValues(), logo: logoFile}} 
-              subtotal={subtotal} 
-              gst={gst} 
-              total={total} 
-            />
-          </div>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -632,6 +583,18 @@ ${data.businessName}`;
               </form>
             </Form>
           </div>
+
+          {/* PDF Preview Dialog */}
+          <PDFPreview
+            isOpen={showPreview}
+            onClose={() => setShowPreview(false)}
+            data={{...form.getValues(), logo: logoFile}}
+            subtotal={subtotal}
+            gst={gst}
+            total={total}
+            onDownload={handleDownload}
+            onSendEmail={handleSendEmail}
+          />
 
           {/* CTA Section */}
           <div className="mt-16 text-center">
