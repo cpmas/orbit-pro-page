@@ -35,8 +35,8 @@ const invoiceSchema = z.object({
   
   // Line items
   items: z.array(z.object({
-    heading: z.string().optional(),
-    description: z.string().min(1, "Description is required"),
+    heading: z.string().min(1, "Item heading is required"),
+    description: z.string().optional(),
     quantity: z.number().min(0.01, "Quantity must be greater than 0"),
     rate: z.number().min(0.01, "Rate must be greater than 0"),
   })).min(1, "At least one item is required"),
@@ -74,7 +74,7 @@ const InvoiceGenerator = () => {
       invoiceNumber: `INV-${Date.now().toString().slice(-6)}`,
       invoiceDate: new Date().toISOString().split('T')[0],
       dueDate: "",
-      items: [{ heading: "", description: "", quantity: 1, rate: 0 }],
+      items: [{ heading: "", description: "", quantity: 1, rate: null as any }],
       notes: "",
       paymentTerms: "Payment due within 30 days",
       includeGst: true,
@@ -185,27 +185,55 @@ ${data.businessName}`;
       <div className="min-h-screen bg-background">
         <Header />
         <div className="container mx-auto px-4 py-8">
-          <div className="mb-6 flex justify-between items-center">
-            <Button variant="outline" onClick={() => {
-              setShowPreview(false);
-              if (pdfUrl) {
-                URL.revokeObjectURL(pdfUrl);
-                setPdfUrl(null);
-              }
-            }}>
-              ← Back to Edit
-            </Button>
-            <div className="flex gap-2">
-              {form.getValues().clientEmail && (
-                <Button variant="outline" onClick={handleEmailInvoice} className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  Send Email
-                </Button>
-              )}
-              <Button onClick={handleDownload} className="flex items-center gap-2">
-                <Download className="w-4 h-4" />
-                Download PDF
+          <div className="mb-6">
+            {/* Mobile: Stack buttons vertically */}
+            <div className="block md:hidden space-y-4">
+              <Button variant="outline" onClick={() => {
+                setShowPreview(false);
+                if (pdfUrl) {
+                  URL.revokeObjectURL(pdfUrl);
+                  setPdfUrl(null);
+                }
+              }}>
+                ← Back to Edit
               </Button>
+              <div className="flex gap-2">
+                {form.getValues().clientEmail && (
+                  <Button variant="outline" onClick={handleEmailInvoice} className="flex items-center gap-2">
+                    <Mail className="w-4 h-4" />
+                    Send Email
+                  </Button>
+                )}
+                <Button onClick={handleDownload} className="flex items-center gap-2">
+                  <Download className="w-4 h-4" />
+                  Download PDF
+                </Button>
+              </div>
+            </div>
+            
+            {/* Desktop: Keep original layout */}
+            <div className="hidden md:flex justify-between items-center">
+              <Button variant="outline" onClick={() => {
+                setShowPreview(false);
+                if (pdfUrl) {
+                  URL.revokeObjectURL(pdfUrl);
+                  setPdfUrl(null);
+                }
+              }}>
+                ← Back to Edit
+              </Button>
+              <div className="flex gap-2">
+                {form.getValues().clientEmail && (
+                  <Button variant="outline" onClick={handleEmailInvoice} className="flex items-center gap-2">
+                    <Mail className="w-4 h-4" />
+                    Send Email
+                  </Button>
+                )}
+                <Button onClick={handleDownload} className="flex items-center gap-2">
+                  <Download className="w-4 h-4" />
+                  Download PDF
+                </Button>
+              </div>
             </div>
           </div>
           
@@ -489,7 +517,7 @@ ${data.businessName}`;
                         type="button"
                         variant="outline"
                         size="sm"
-                        onClick={() => append({ heading: "", description: "", quantity: 1, rate: 0 })}
+                        onClick={() => append({ heading: "", description: "", quantity: 1, rate: null as any })}
                       >
                         <Plus className="w-4 h-4 mr-2" />
                         Add Item
@@ -520,7 +548,7 @@ ${data.businessName}`;
                             name={`items.${index}.heading`}
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Item</FormLabel>
+                                <FormLabel>Item *</FormLabel>
                                 <FormControl>
                                   <Input placeholder="Service heading" {...field} />
                                 </FormControl>
@@ -536,13 +564,13 @@ ${data.businessName}`;
                                control={form.control}
                                name={`items.${index}.description`}
                                render={({ field }) => (
-                               <FormItem>
-                                 <FormLabel>Description *</FormLabel>
-                                 <FormControl>
-                                   <Textarea placeholder="Description of work" {...field} />
-                                 </FormControl>
-                                 <FormMessage />
-                               </FormItem>
+                                <FormItem>
+                                  <FormLabel>Description</FormLabel>
+                                  <FormControl>
+                                    <Textarea placeholder="Description of work" {...field} />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
                                )}
                              />
                           </div>
