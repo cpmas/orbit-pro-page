@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+
 
 interface InvoiceData {
   businessName?: string;
@@ -51,11 +51,10 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
   };
 
   return (
-    <Card className="max-w-4xl mx-auto bg-white shadow-card">
-      <CardContent 
-        className="p-12 print:p-8 print:mx-8" 
-        style={{ fontFamily: 'Arial, sans-serif', fontSize: '16px', lineHeight: '1.4' }}
-      >
+    <div 
+      className="w-full bg-white p-8" 
+      style={{ fontFamily: 'Arial, sans-serif', fontSize: '16px', lineHeight: '1.4' }}
+    >
         {/* Header */}
         <div className="flex justify-between items-start mb-12 border-b border-gray-300 pb-6">
           <div>
@@ -95,12 +94,12 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
         </div>
 
         {/* Business and Client Info */}
-        <div className="grid grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-2 gap-8 mb-8">
           {/* Invoice from */}
           <div>
-            <h3 className="font-semibold mb-4 text-gray-700 uppercase text-sm tracking-wide">From</h3>
-            <div className="space-y-2 text-sm">
-              <div className="font-bold text-lg">{data.businessName || 'Your Business Name'}</div>
+            <h3 className="font-semibold mb-2 text-gray-700 uppercase text-xs tracking-wide">From</h3>
+            <div className="space-y-1 text-xs">
+              <div className="font-bold text-sm">{data.businessName || 'Your Business Name'}</div>
               {data.businessAddress && (
                 <div className="text-gray-700 whitespace-pre-line">{data.businessAddress}</div>
               )}
@@ -118,9 +117,9 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
 
           {/* Invoice to */}
           <div>
-            <h3 className="font-semibold mb-4 text-gray-700 uppercase text-sm tracking-wide">To</h3>
-            <div className="space-y-2 text-sm">
-              <div className="font-bold text-lg">{data.clientName || "Client Name"}</div>
+            <h3 className="font-semibold mb-2 text-gray-700 uppercase text-xs tracking-wide">To</h3>
+            <div className="space-y-1 text-xs">
+              <div className="font-bold text-sm">{data.clientName || "Client Name"}</div>
               {data.clientAddress && (
                 <div className="text-gray-700 whitespace-pre-line">{data.clientAddress}</div>
               )}
@@ -130,7 +129,7 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
         </div>
 
         {/* Separator after Business/Client Details */}
-        <div className="border-b border-gray-300 mb-16"></div>
+        <div className="border-b border-gray-300 mb-8"></div>
 
         {/* Items Table */}
         <div className="mb-16">
@@ -225,8 +224,7 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
             <div className="text-sm whitespace-pre-wrap text-gray-700 leading-relaxed">{data.notes}</div>
           </div>
         )}
-      </CardContent>
-    </Card>
+    </div>
   );
 };
 
