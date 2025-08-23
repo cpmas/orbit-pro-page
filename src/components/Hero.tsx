@@ -19,7 +19,7 @@ const Hero = () => {
               <div className="relative z-10">
                 <img 
                   src="/lovable-uploads/f0f3e6b3-a74b-4734-a624-0dee11cbc578.png" 
-                  alt="Orbit Dashboard showing professional invoice and quote management interface with revenue metrics and quick actions for tradies" 
+                  alt="Orbit Dashboard showing professional invoice and quote management interface with revenue metrics and quick actions"
                   className="w-full max-w-sm mx-auto rounded-2xl shadow-elegant"
                 />
               </div>
@@ -30,13 +30,13 @@ const Hero = () => {
             <div className="text-center space-y-6 px-2">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary-foreground leading-[1.1] tracking-tight">
                 <span className="block drop-shadow-lg">Professional Invoicing</span>
-                <span className="block text-primary-glow drop-shadow-lg font-extrabold">& Quoting for Tradies</span>
+                <span className="block text-primary-glow drop-shadow-lg font-extrabold">& Workflow Management</span>
               </h1>
               
               <p className="text-base sm:text-lg md:text-xl text-primary-foreground/95 max-w-2xl mx-auto leading-relaxed font-medium">
                 Send a quote in under a minute — no setup, no clutter, just job → quote → send. 
                 <span className="block mt-2 text-primary-foreground/85 text-sm sm:text-base md:text-lg font-normal">
-                  Built for tradies, not accountants. Simple, mobile-first, and professional every time.
+                  Simple, mobile-first, and professional every time.
                 </span>
               </p>
               
@@ -54,13 +54,13 @@ const Hero = () => {
             <div className="text-left space-y-8">
               <h1 className="text-6xl xl:text-8xl font-bold text-primary-foreground leading-[1.1] tracking-tight">
                 <span className="block drop-shadow-lg">Professional Invoicing</span>
-                <span className="block text-primary-glow drop-shadow-lg font-extrabold">& Quoting for Tradies</span>
+                <span className="block text-primary-glow drop-shadow-lg font-extrabold">& Workflow Management</span>
               </h1>
               
               <p className="text-xl xl:text-2xl text-primary-foreground/95 leading-relaxed font-medium">
                 Send a quote in under a minute — no setup, no clutter, just job → quote → send. 
                 <span className="block mt-2 text-primary-foreground/85 text-lg xl:text-xl font-normal">
-                  Built for tradies, not accountants. Simple, mobile-first, and professional every time.
+                  Simple, mobile-first, and professional every time.
                 </span>
               </p>
               
@@ -76,7 +76,7 @@ const Hero = () => {
               <div className="relative z-10 transform hover:scale-105 transition-all duration-700 ease-spring">
                 <img 
                   src="/lovable-uploads/f0f3e6b3-a74b-4734-a624-0dee11cbc578.png" 
-                  alt="Orbit Dashboard showing professional invoice and quote management interface with revenue metrics and quick actions for tradies" 
+                  alt="Orbit Dashboard showing professional invoice and quote management interface with revenue metrics and quick actions" 
                   className="w-full max-w-[29.5rem] mx-auto rounded-3xl shadow-elegant hover:shadow-glow transition-all duration-500"
                 />
               </div>

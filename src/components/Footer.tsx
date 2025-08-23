@@ -5,20 +5,15 @@ const Footer = () => {
     product: [
       { name: "Features", href: "#features" },
       { name: "Pricing", href: "#pricing" },
-      { name: "Templates", href: "#" },
-      { name: "Integrations", href: "#" }
+      { name: "Templates", href: "#" }
     ],
     company: [
       { name: "About Us", href: "#" },
-      { name: "Careers", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Press", href: "#" }
+      { name: "Blog", href: "#" }
     ],
     support: [
       { name: "Help Center", href: "#" },
-      { name: "Contact", href: "#" },
-      { name: "API Docs", href: "#" },
-      { name: "Status", href: "#" }
+      { name: "Contact", href: "#" }
     ]
   };
 
@@ -30,7 +25,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-8 h-8 bg-gradient-primary rounded-lg"></div>
-              <span className="text-xl font-bold text-foreground">Orbit Invoice</span>
+              <span className="text-xl font-bold text-foreground">Orbit Workflow</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md">
               Professional invoicing made simple. Streamline your billing process 
@@ -92,7 +87,7 @@ const Footer = () => {
 
         <div className="border-t border-border mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-muted-foreground text-sm">
-            © 2024 Orbit Invoice. All rights reserved.
+            © 2024 Orbit Workflow. All rights reserved.
           </div>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">
