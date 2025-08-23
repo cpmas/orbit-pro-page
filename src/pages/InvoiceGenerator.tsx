@@ -1,0 +1,489 @@
+import { useState } from "react";
+import { useForm, useFieldArray } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Separator } from "@/components/ui/separator";
+import { Plus, Trash2, Download, Calculator } from "lucide-react";
+import InvoicePreview from "@/components/InvoicePreview";
+
+const invoiceSchema = z.object({
+  // Business details
+  businessName: z.string().min(1, "Business name is required"),
+  businessAddress: z.string().min(1, "Business address is required"),
+  businessPhone: z.string().min(1, "Phone number is required"),
+  businessEmail: z.string().email("Valid email is required"),
+  abn: z.string().optional(),
+  
+  // Client details
+  clientName: z.string().min(1, "Client name is required"),
+  clientAddress: z.string().min(1, "Client address is required"),
+  clientEmail: z.string().email("Valid email is required").optional().or(z.literal("")),
+  
+  // Invoice details
+  invoiceNumber: z.string().min(1, "Invoice number is required"),
+  invoiceDate: z.string().min(1, "Invoice date is required"),
+  dueDate: z.string().min(1, "Due date is required"),
+  
+  // Line items
+  items: z.array(z.object({
+    description: z.string().min(1, "Description is required"),
+    quantity: z.number().min(0.01, "Quantity must be greater than 0"),
+    rate: z.number().min(0.01, "Rate must be greater than 0"),
+  })).min(1, "At least one item is required"),
+  
+  // Additional fields
+  notes: z.string().optional(),
+  paymentTerms: z.string().optional(),
+});
+
+type InvoiceFormData = z.infer<typeof invoiceSchema>;
+
+const InvoiceGenerator = () => {
+  const [showPreview, setShowPreview] = useState(false);
+
+  const form = useForm<InvoiceFormData>({
+    resolver: zodResolver(invoiceSchema),
+    defaultValues: {
+      businessName: "",
+      businessAddress: "",
+      businessPhone: "",
+      businessEmail: "",
+      abn: "",
+      clientName: "",
+      clientAddress: "",
+      clientEmail: "",
+      invoiceNumber: `INV-${Date.now().toString().slice(-6)}`,
+      invoiceDate: new Date().toISOString().split('T')[0],
+      dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+      items: [{ description: "", quantity: 1, rate: 0 }],
+      notes: "",
+      paymentTerms: "Payment due within 30 days",
+    },
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: "items",
+  });
+
+  const watchedItems = form.watch("items");
+  const subtotal = watchedItems.reduce((sum, item) => sum + (item.quantity * item.rate), 0);
+  const gst = subtotal * 0.1; // 10% GST for Australia
+  const total = subtotal + gst;
+
+  const onSubmit = (data: InvoiceFormData) => {
+    // Save to localStorage for persistence
+    localStorage.setItem('invoiceData', JSON.stringify(data));
+    setShowPreview(true);
+  };
+
+  const handlePrint = () => {
+    window.print();
+  };
+
+  if (showPreview) {
+    return (
+      <div className="min-h-screen bg-background">
+        <div className="container mx-auto px-4 py-8">
+          <div className="mb-6 flex justify-between items-center print:hidden">
+            <Button variant="outline" onClick={() => setShowPreview(false)}>
+              ← Back to Edit
+            </Button>
+            <Button onClick={handlePrint} className="flex items-center gap-2">
+              <Download className="w-4 h-4" />
+              Download PDF
+            </Button>
+          </div>
+          <InvoicePreview data={form.getValues()} subtotal={subtotal} gst={gst} total={total} />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8 text-center">
+          <h1 className="text-4xl font-bold text-foreground mb-4">Free Invoice Generator</h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Create professional invoices instantly. No account required, completely free for Australian tradies.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Form Section */}
+          <div className="space-y-6">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                {/* Business Details */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      Your Business Details
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <FormField
+                      control={form.control}
+                      name="businessName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Business Name</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your Business Name" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="businessAddress"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Address</FormLabel>
+                          <FormControl>
+                            <Textarea placeholder="Your business address" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <div className="grid grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="businessPhone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Phone</FormLabel>
+                            <FormControl>
+                              <Input placeholder="0400 000 000" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="businessEmail"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email</FormLabel>
+                            <FormControl>
+                              <Input placeholder="your@email.com" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <FormField
+                      control={form.control}
+                      name="abn"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>ABN (Optional)</FormLabel>
+                          <FormControl>
+                            <Input placeholder="12 345 678 901" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </CardContent>
+                </Card>
+
+                {/* Client Details */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Client Details</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <FormField
+                      control={form.control}
+                      name="clientName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Client Name</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Client Name" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="clientAddress"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Client Address</FormLabel>
+                          <FormControl>
+                            <Textarea placeholder="Client address" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="clientEmail"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Client Email (Optional)</FormLabel>
+                          <FormControl>
+                            <Input placeholder="client@email.com" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </CardContent>
+                </Card>
+
+                {/* Invoice Details */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Invoice Details</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="invoiceNumber"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Invoice Number</FormLabel>
+                            <FormControl>
+                              <Input {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="invoiceDate"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Invoice Date</FormLabel>
+                            <FormControl>
+                              <Input type="date" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="dueDate"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Due Date</FormLabel>
+                            <FormControl>
+                              <Input type="date" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Line Items */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center justify-between">
+                      Line Items
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => append({ description: "", quantity: 1, rate: 0 })}
+                      >
+                        <Plus className="w-4 h-4 mr-2" />
+                        Add Item
+                      </Button>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {fields.map((field, index) => (
+                      <div key={field.id} className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+                        <div className="md:col-span-6">
+                          <FormField
+                            control={form.control}
+                            name={`items.${index}.description`}
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Description</FormLabel>
+                                <FormControl>
+                                  <Textarea placeholder="Description of work" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                        <div className="md:col-span-2">
+                          <FormField
+                            control={form.control}
+                            name={`items.${index}.quantity`}
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Qty</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    type="number"
+                                    step="0.01"
+                                    {...field}
+                                    onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                        <div className="md:col-span-2">
+                          <FormField
+                            control={form.control}
+                            name={`items.${index}.rate`}
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Rate ($)</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    type="number"
+                                    step="0.01"
+                                    {...field}
+                                    onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                        <div className="md:col-span-1">
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() => remove(index)}
+                            disabled={fields.length === 1}
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </div>
+                        <div className="md:col-span-1 text-right font-medium">
+                          ${((watchedItems[index]?.quantity || 0) * (watchedItems[index]?.rate || 0)).toFixed(2)}
+                        </div>
+                      </div>
+                    ))}
+                    
+                    <Separator />
+                    
+                    {/* Totals */}
+                    <div className="space-y-2 ml-auto max-w-sm">
+                      <div className="flex justify-between">
+                        <span>Subtotal:</span>
+                        <span>${subtotal.toFixed(2)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>GST (10%):</span>
+                        <span>${gst.toFixed(2)}</span>
+                      </div>
+                      <Separator />
+                      <div className="flex justify-between font-bold text-lg">
+                        <span>Total:</span>
+                        <span>${total.toFixed(2)}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Additional Information */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Additional Information</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <FormField
+                      control={form.control}
+                      name="paymentTerms"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Payment Terms</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Payment due within 30 days" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="notes"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Notes</FormLabel>
+                          <FormControl>
+                            <Textarea placeholder="Additional notes..." {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </CardContent>
+                </Card>
+
+                <Button type="submit" className="w-full" size="lg">
+                  <Calculator className="w-4 h-4 mr-2" />
+                  Generate Invoice
+                </Button>
+              </form>
+            </Form>
+          </div>
+
+          {/* Live Preview Placeholder */}
+          <div className="lg:sticky lg:top-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Live Preview</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-center text-muted-foreground py-8">
+                  <Calculator className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                  <p>Fill out the form to see your invoice preview</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 text-center">
+          <Card className="bg-gradient-card shadow-card">
+            <CardContent className="py-8">
+              <h2 className="text-2xl font-bold mb-4">Need More Features?</h2>
+              <p className="text-muted-foreground mb-6">
+                Save client details, create templates, track payments, and more with Orbit Pro
+              </p>
+              <Button variant="default" size="lg">
+                Upgrade to Orbit Pro
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default InvoiceGenerator;
