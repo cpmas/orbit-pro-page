@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
-import { Plus, Trash2, Download, Calculator, Upload } from "lucide-react";
+import { Plus, Trash2, Download, Calculator, Upload, Mail, X } from "lucide-react";
 import InvoicePreview from "@/components/InvoicePreview";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -111,6 +111,23 @@ const InvoiceGenerator = () => {
     window.print();
   };
 
+  const handleEmailInvoice = () => {
+    const data = form.getValues();
+    const clientEmail = data.clientEmail;
+    const subject = `Invoice ${data.invoiceNumber} from ${data.businessName}`;
+    const body = `Hi ${data.clientName},
+
+Please find attached invoice ${data.invoiceNumber} for the total amount of $${total.toFixed(2)}.
+
+${data.paymentTerms ? `Payment Terms: ${data.paymentTerms}` : ''}
+
+Best regards,
+${data.businessName}`;
+    
+    const mailtoLink = `mailto:${clientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  };
+
   if (showPreview) {
     return (
       <div className="min-h-screen bg-background">
@@ -120,17 +137,27 @@ const InvoiceGenerator = () => {
             <Button variant="outline" onClick={() => setShowPreview(false)}>
               ← Back to Edit
             </Button>
-            <Button onClick={handlePrint} className="flex items-center gap-2">
-              <Download className="w-4 h-4" />
-              Download PDF
-            </Button>
+            <div className="flex gap-2">
+              {form.getValues().clientEmail && (
+                <Button variant="outline" onClick={handleEmailInvoice} className="flex items-center gap-2">
+                  <Mail className="w-4 h-4" />
+                  Send Email
+                </Button>
+              )}
+              <Button onClick={handlePrint} className="flex items-center gap-2">
+                <Download className="w-4 h-4" />
+                Download PDF
+              </Button>
+            </div>
           </div>
-          <InvoicePreview 
-            data={{...form.getValues(), logo: logoFile}} 
-            subtotal={subtotal} 
-            gst={gst} 
-            total={total} 
-          />
+          <div className="transform scale-[0.8] origin-top">
+            <InvoicePreview 
+              data={{...form.getValues(), logo: logoFile}} 
+              subtotal={subtotal} 
+              gst={gst} 
+              total={total} 
+            />
+          </div>
         </div>
         <Footer />
       </div>
@@ -386,47 +413,47 @@ const InvoiceGenerator = () => {
                     {fields.map((field, index) => (
                       <div key={field.id} className="space-y-4 p-4 border rounded-lg">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <FormField
-                            control={form.control}
-                            name={`items.${index}.heading`}
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Item Heading (Optional)</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="Service heading" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <div className="flex justify-end items-end">
-                            <Button
-                              type="button"
-                              variant="outline"
-                              size="sm"
-                              onClick={() => remove(index)}
-                              disabled={fields.length === 1}
-                            >
-                              <Trash2 className="w-4 h-4" />
-                              Remove
-                            </Button>
-                          </div>
+                           <FormField
+                             control={form.control}
+                             name={`items.${index}.heading`}
+                             render={({ field }) => (
+                               <FormItem>
+                                 <FormLabel>Item</FormLabel>
+                                 <FormControl>
+                                   <Input placeholder="Service heading" {...field} />
+                                 </FormControl>
+                                 <FormMessage />
+                               </FormItem>
+                             )}
+                           />
+                           <div className="flex justify-end items-center">
+                             <Button
+                               type="button"
+                               variant="ghost"
+                               size="sm"
+                               onClick={() => remove(index)}
+                               disabled={fields.length === 1}
+                               className="text-muted-foreground hover:text-destructive h-8 w-8 p-0"
+                             >
+                               <X className="w-4 h-4" />
+                             </Button>
+                           </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
                           <div className="md:col-span-6">
-                            <FormField
-                              control={form.control}
-                              name={`items.${index}.description`}
-                              render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel>Description</FormLabel>
-                                  <FormControl>
-                                    <Textarea placeholder="Description of work" {...field} />
-                                  </FormControl>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
+                             <FormField
+                               control={form.control}
+                               name={`items.${index}.description`}
+                               render={({ field }) => (
+                                 <FormItem>
+                                   <FormLabel>Description (Optional)</FormLabel>
+                                   <FormControl>
+                                     <Textarea placeholder="Description of work" {...field} />
+                                   </FormControl>
+                                   <FormMessage />
+                                 </FormItem>
+                               )}
+                             />
                           </div>
                         <div className="md:col-span-2">
                           <FormField

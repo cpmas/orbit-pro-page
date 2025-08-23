@@ -154,4 +154,20 @@ All colors MUST be HSL.
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-primary/40;
   }
+  
+  /* Print styles for PDF generation */
+  @media print {
+    .scale-\[0\.8\] {
+      transform: scale(1) !important;
+    }
+    
+    @page {
+      margin: 0.5in;
+    }
+    
+    body {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
 }
