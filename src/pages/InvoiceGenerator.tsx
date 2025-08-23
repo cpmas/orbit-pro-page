@@ -56,11 +56,9 @@ type InvoiceFormData = z.infer<typeof invoiceSchema>;
 const InvoiceGenerator = () => {
   const [showPreview, setShowPreview] = useState(false);
   const [logoFile, setLogoFile] = useState<string | null>(null);
-  const [invoiceImage, setInvoiceImage] = useState<string | null>(null);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
   const invoiceRef = useRef<HTMLDivElement>(null);
-  const pdfRef = useRef<HTMLDivElement>(null);
 
   const form = useForm<InvoiceFormData>({
     resolver: zodResolver(invoiceSchema),
@@ -108,45 +106,16 @@ const InvoiceGenerator = () => {
     }
   };
 
-  const onSubmit = async (data: InvoiceFormData) => {
-    setIsGeneratingPdf(true);
-    
-    if (!invoiceRef.current) {
-      setIsGeneratingPdf(false);
-      return;
-    }
-
-    try {
-      // Import html2canvas dynamically
-      const html2canvas = (await import('html2canvas')).default;
-      
-      // Generate high-quality canvas of the invoice
-      const canvas = await html2canvas(invoiceRef.current, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: '#ffffff',
-        width: invoiceRef.current.scrollWidth,
-        height: invoiceRef.current.scrollHeight,
-      });
-      
-      // Convert canvas to image
-      const imageUrl = canvas.toDataURL('image/png', 1.0);
-      setInvoiceImage(imageUrl);
-      setShowPreview(true);
-    } catch (error) {
-      console.error('Error generating invoice image:', error);
-    } finally {
-      setIsGeneratingPdf(false);
-    }
+  const onSubmit = (data: InvoiceFormData) => {
+    setShowPreview(true);
   };
 
   const handleDownloadPdf = async () => {
-    if (!pdfRef.current) return;
+    if (!invoiceRef.current) return;
     
     setIsDownloadingPdf(true);
     
     try {
-      // Import html2pdf dynamically
       const html2pdf = (await import('html2pdf.js')).default;
       
       const opt = {
@@ -156,9 +125,7 @@ const InvoiceGenerator = () => {
         html2canvas: { 
           scale: 2, 
           useCORS: true,
-          backgroundColor: '#ffffff',
-          width: pdfRef.current.scrollWidth,
-          height: pdfRef.current.scrollHeight,
+          backgroundColor: '#ffffff'
         },
         jsPDF: { 
           unit: 'in', 
@@ -167,7 +134,7 @@ const InvoiceGenerator = () => {
         }
       };
       
-      await html2pdf().set(opt).from(pdfRef.current).save();
+      await html2pdf().set(opt).from(invoiceRef.current).save();
     } catch (error) {
       console.error('Error creating PDF:', error);
     } finally {
@@ -192,34 +159,31 @@ ${data.businessName}`;
     window.location.href = mailtoLink;
   };
 
-  if (showPreview && invoiceImage) {
+  if (showPreview) {
     return (
       <div className="min-h-screen bg-gray-100">
         <Header />
         <div className="container mx-auto px-4 py-8">
           <div className="mb-6 print:hidden">
-            <Button variant="outline" onClick={() => {
-              setShowPreview(false);
-              setInvoiceImage(null);
-            }} className="mb-4">
+            <Button variant="outline" onClick={() => setShowPreview(false)} className="mb-4">
               ← Back to Edit
             </Button>
           </div>
           
-          {/* Invoice Image Viewer */}
-          <div className="bg-white rounded-lg shadow-xl p-4 mb-8">
-            <div className="flex justify-center">
-              <img 
-                src={invoiceImage} 
-                alt="Invoice Preview" 
-                className="max-w-full h-auto shadow-lg rounded"
-                style={{ maxHeight: '80vh' }}
+          {/* Direct Invoice Preview */}
+          <div className="max-w-4xl mx-auto">
+            <div ref={invoiceRef}>
+              <InvoicePreview 
+                data={{...form.getValues(), logo: logoFile}} 
+                subtotal={subtotal} 
+                gst={gst} 
+                total={total} 
               />
             </div>
           </div>
           
-          {/* Action Buttons - below PDF */}
-          <div className="flex flex-col gap-3 max-w-sm mx-auto print:hidden">
+          {/* Action Buttons */}
+          <div className="mt-8 flex flex-col gap-3 max-w-sm mx-auto print:hidden">
             <Button 
               onClick={handleDownloadPdf} 
               className="flex items-center justify-center gap-2" 
@@ -710,27 +674,10 @@ ${data.businessName}`;
                   disabled={isGeneratingPdf}
                 >
                   <Calculator className="w-4 h-4 mr-2" />
-                  {isGeneratingPdf ? 'Generating PDF...' : 'Generate Invoice'}
+                  Generate Invoice
                 </Button>
               </form>
             </Form>
-          </div>
-
-          {/* Hidden Invoice Preview for Image Generation */}
-          <div ref={invoiceRef} className="fixed -left-[200%] top-0 bg-white" style={{ width: '794px' }}>
-            <div className="p-12 bg-white" style={{ fontFamily: 'Arial, sans-serif', fontSize: '16px', lineHeight: '1.4' }}>
-              {/* ... keep existing code ... */}
-            </div>
-          </div>
-
-          {/* Hidden Invoice Preview for PDF Generation */}
-          <div ref={pdfRef} className="fixed -left-[400%] top-0 bg-white" style={{ width: '210mm', minHeight: '297mm' }}>
-            <InvoicePreview 
-              data={{...form.getValues(), logo: logoFile}} 
-              subtotal={subtotal} 
-              gst={gst} 
-              total={total} 
-            />
           </div>
 
           {/* CTA Section */}
