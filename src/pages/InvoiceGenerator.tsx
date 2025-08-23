@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -56,6 +56,9 @@ type InvoiceFormData = z.infer<typeof invoiceSchema>;
 const InvoiceGenerator = () => {
   const [showPreview, setShowPreview] = useState(false);
   const [logoFile, setLogoFile] = useState<string | null>(null);
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const invoiceRef = useRef<HTMLDivElement>(null);
 
   const form = useForm<InvoiceFormData>({
     resolver: zodResolver(invoiceSchema),
@@ -103,12 +106,64 @@ const InvoiceGenerator = () => {
     }
   };
 
-  const onSubmit = (data: InvoiceFormData) => {
-    setShowPreview(true);
+  const onSubmit = async (data: InvoiceFormData) => {
+    setIsGeneratingPdf(true);
+    
+    // Create a temporary div with the invoice content
+    const tempDiv = document.createElement('div');
+    tempDiv.style.position = 'absolute';
+    tempDiv.style.left = '-9999px';
+    tempDiv.style.top = '0';
+    tempDiv.style.width = '210mm'; // A4 width
+    tempDiv.style.backgroundColor = 'white';
+    document.body.appendChild(tempDiv);
+    
+    // Import html2pdf dynamically
+    const html2pdf = (await import('html2pdf.js')).default;
+    
+    // Create invoice content
+    tempDiv.innerHTML = `
+      <div style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.4; padding: 48px; background: white; color: black;">
+        ${invoiceRef.current?.innerHTML || ''}
+      </div>
+    `;
+    
+    const opt = {
+      margin: 0.5,
+      filename: `invoice-${data.invoiceNumber}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { 
+        scale: 2, 
+        useCORS: true,
+        backgroundColor: '#ffffff'
+      },
+      jsPDF: { 
+        unit: 'in', 
+        format: 'a4', 
+        orientation: 'portrait' 
+      }
+    };
+    
+    try {
+      const pdfBlob = await html2pdf().set(opt).from(tempDiv).outputPdf('blob');
+      const url = URL.createObjectURL(pdfBlob);
+      setPdfUrl(url);
+      setShowPreview(true);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    } finally {
+      document.body.removeChild(tempDiv);
+      setIsGeneratingPdf(false);
+    }
   };
 
-  const handlePrint = () => {
-    window.print();
+  const handleDownloadPdf = () => {
+    if (pdfUrl) {
+      const link = document.createElement('a');
+      link.href = pdfUrl;
+      link.download = `invoice-${form.getValues().invoiceNumber}.pdf`;
+      link.click();
+    }
   };
 
   const handleEmailInvoice = () => {
@@ -128,40 +183,35 @@ ${data.businessName}`;
     window.location.href = mailtoLink;
   };
 
-  if (showPreview) {
+  if (showPreview && pdfUrl) {
     return (
       <div className="min-h-screen bg-background">
         <Header />
         <div className="container mx-auto px-4 py-8">
           <div className="mb-6 print:hidden">
-            <Button variant="outline" onClick={() => setShowPreview(false)} className="mb-4">
+            <Button variant="outline" onClick={() => {
+              setShowPreview(false);
+              setPdfUrl(null);
+              if (pdfUrl) {
+                URL.revokeObjectURL(pdfUrl);
+              }
+            }} className="mb-4">
               ← Back to Edit
             </Button>
           </div>
           
-          {/* PDF Preview - responsive scaling */}
-          <div className="hidden md:block transform scale-[0.8] origin-top">
-            <InvoicePreview 
-              data={{...form.getValues(), logo: logoFile}} 
-              subtotal={subtotal} 
-              gst={gst} 
-              total={total} 
-            />
-          </div>
-          
-          {/* Mobile PDF Preview - full scale */}
-          <div className="md:hidden">
-            <InvoicePreview 
-              data={{...form.getValues(), logo: logoFile}} 
-              subtotal={subtotal} 
-              gst={gst} 
-              total={total} 
+          {/* PDF Viewer */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <iframe
+              src={pdfUrl}
+              className="w-full h-[800px] border-0"
+              title="Invoice PDF Preview"
             />
           </div>
           
           {/* Action Buttons - below PDF */}
           <div className="mt-8 flex flex-col gap-3 max-w-sm mx-auto print:hidden">
-            <Button onClick={handlePrint} className="flex items-center justify-center gap-2" size="lg">
+            <Button onClick={handleDownloadPdf} className="flex items-center justify-center gap-2" size="lg">
               <Download className="w-4 h-4" />
               Download PDF
             </Button>
@@ -639,12 +689,27 @@ ${data.businessName}`;
                   </CardContent>
                 </Card>
 
-                <Button type="submit" className="w-full" size="lg">
+                <Button 
+                  type="submit" 
+                  className="w-full" 
+                  size="lg" 
+                  disabled={isGeneratingPdf}
+                >
                   <Calculator className="w-4 h-4 mr-2" />
-                  Generate Invoice
+                  {isGeneratingPdf ? 'Generating PDF...' : 'Generate Invoice'}
                 </Button>
               </form>
             </Form>
+          </div>
+
+          {/* Hidden Invoice Preview for PDF Generation */}
+          <div ref={invoiceRef} className="absolute -left-[9999px] opacity-0 pointer-events-none">
+            <InvoicePreview 
+              data={{...form.getValues(), logo: logoFile}} 
+              subtotal={subtotal} 
+              gst={gst} 
+              total={total} 
+            />
           </div>
 
           {/* CTA Section */}
