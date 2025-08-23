@@ -348,9 +348,9 @@ const InvoiceGenerator = () => {
                     />
                     
                     {/* Logo Upload */}
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 space-y-2 sm:space-y-0">
-                      <label className="text-sm font-medium sm:w-24 sm:flex-shrink-0">Business Logo</label>
-                      <div className="flex items-center gap-4 flex-1">
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Business Logo</label>
+                      <div className="flex items-center gap-4">
                         <Button
                           type="button"
                           variant="outline"
