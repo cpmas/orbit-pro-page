@@ -222,7 +222,7 @@ ${data.businessName}`;
               ) : pdfUrl ? (
                 <iframe
                   src={pdfUrl}
-                  className="w-full h-[80vh] border-0"
+                  className="w-full h-[60vh] md:h-[80vh] border-0"
                   title="Invoice PDF Preview"
                 />
               ) : (
@@ -300,7 +300,7 @@ ${data.businessName}`;
                         </FormItem>
                       )}
                     />
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
                       <FormField
                         control={form.control}
                         name="businessPhone"
@@ -314,11 +314,12 @@ ${data.businessName}`;
                           </FormItem>
                         )}
                       />
+                      <div className="md:hidden"></div>
                       <FormField
                         control={form.control}
                         name="businessEmail"
                         render={({ field }) => (
-                          <FormItem>
+                          <FormItem className="col-span-2 md:col-span-1">
                             <FormLabel>Email (Optional)</FormLabel>
                             <FormControl>
                               <Input placeholder="your@email.com" {...field} />
@@ -497,34 +498,38 @@ ${data.businessName}`;
                   </CardHeader>
                   <CardContent className="space-y-4">
                     {fields.map((field, index) => (
-                      <div key={field.id} className="space-y-4 p-4 border rounded-lg">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                           <FormField
-                             control={form.control}
-                             name={`items.${index}.heading`}
-                             render={({ field }) => (
-                               <FormItem>
-                                 <FormLabel>Item</FormLabel>
-                                 <FormControl>
-                                   <Input placeholder="Service heading" {...field} />
-                                 </FormControl>
-                                 <FormMessage />
-                               </FormItem>
-                             )}
-                           />
-                           <div className="flex justify-end items-center">
-                             <Button
-                               type="button"
-                               variant="ghost"
-                               size="sm"
-                               onClick={() => remove(index)}
-                               disabled={fields.length === 1}
-                               className="text-muted-foreground hover:text-destructive h-8 w-8 p-0"
-                             >
-                               <X className="w-4 h-4" />
-                             </Button>
-                           </div>
+                      <div key={field.id} className="relative space-y-4 p-4 border rounded-lg">
+                        {/* Delete button positioned at top right */}
+                        <div className="absolute top-2 right-2">
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => remove(index)}
+                            disabled={fields.length === 1}
+                            className="text-muted-foreground hover:text-destructive h-8 w-8 p-0"
+                          >
+                            <X className="w-4 h-4" />
+                          </Button>
                         </div>
+                        
+                        {/* Item heading */}
+                        <div className="pr-10">
+                          <FormField
+                            control={form.control}
+                            name={`items.${index}.heading`}
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Item</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Service heading" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                        
                         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
                           <div className="md:col-span-6">
                              <FormField
@@ -541,49 +546,93 @@ ${data.businessName}`;
                                )}
                              />
                           </div>
-                        <div className="md:col-span-2">
-                          <FormField
-                            control={form.control}
-                            name={`items.${index}.quantity`}
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Qty</FormLabel>
-                                <FormControl>
-                                  <Input
-                                    type="number"
-                                    step="0.01"
-                                    {...field}
-                                    onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="md:col-span-2">
-                          <FormField
-                            control={form.control}
-                            name={`items.${index}.rate`}
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Rate ($)</FormLabel>
-                                <FormControl>
-                                  <Input
-                                    type="number"
-                                    step="0.01"
-                                    {...field}
-                                    onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="md:col-span-1 text-right font-medium self-center">
-                          ${((watchedItems[index]?.quantity || 0) * (watchedItems[index]?.rate || 0)).toFixed(2)}
-                        </div>
+                          
+                          {/* Mobile: Qty and Rate side by side */}
+                          <div className="md:hidden grid grid-cols-3 gap-2 col-span-1">
+                            <FormField
+                              control={form.control}
+                              name={`items.${index}.quantity`}
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Qty</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      type="number"
+                                      step="0.01"
+                                      {...field}
+                                      onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control}
+                              name={`items.${index}.rate`}
+                              render={({ field }) => (
+                                <FormItem className="col-span-2">
+                                  <FormLabel>Rate ($)</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      type="number"
+                                      step="0.01"
+                                      {...field}
+                                      onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                          </div>
+                          
+                          {/* Desktop: Original layout */}
+                          <div className="hidden md:block md:col-span-2">
+                            <FormField
+                              control={form.control}
+                              name={`items.${index}.quantity`}
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Qty</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      type="number"
+                                      step="0.01"
+                                      {...field}
+                                      onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                          </div>
+                          <div className="hidden md:block md:col-span-2">
+                            <FormField
+                              control={form.control}
+                              name={`items.${index}.rate`}
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Rate ($)</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      type="number"
+                                      step="0.01"
+                                      {...field}
+                                      onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                          </div>
+                          
+                          {/* Total amount */}
+                          <div className="md:col-span-1 text-right font-medium self-center">
+                            ${((watchedItems[index]?.quantity || 0) * (watchedItems[index]?.rate || 0)).toFixed(2)}
+                          </div>
                         </div>
                       </div>
                     ))}
