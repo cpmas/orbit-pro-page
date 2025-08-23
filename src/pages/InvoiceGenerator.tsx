@@ -56,7 +56,7 @@ type InvoiceFormData = z.infer<typeof invoiceSchema>;
 const InvoiceGenerator = () => {
   const [showPreview, setShowPreview] = useState(false);
   const [logoFile, setLogoFile] = useState<string | null>(null);
-  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [invoiceImage, setInvoiceImage] = useState<string | null>(null);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const invoiceRef = useRef<HTMLDivElement>(null);
 
@@ -109,60 +109,60 @@ const InvoiceGenerator = () => {
   const onSubmit = async (data: InvoiceFormData) => {
     setIsGeneratingPdf(true);
     
-    // Create a temporary div with the invoice content
-    const tempDiv = document.createElement('div');
-    tempDiv.style.position = 'absolute';
-    tempDiv.style.left = '-9999px';
-    tempDiv.style.top = '0';
-    tempDiv.style.width = '210mm'; // A4 width
-    tempDiv.style.backgroundColor = 'white';
-    document.body.appendChild(tempDiv);
-    
-    // Import html2pdf dynamically
-    const html2pdf = (await import('html2pdf.js')).default;
-    
-    // Create invoice content
-    tempDiv.innerHTML = `
-      <div style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.4; padding: 48px; background: white; color: black;">
-        ${invoiceRef.current?.innerHTML || ''}
-      </div>
-    `;
-    
-    const opt = {
-      margin: 0.5,
-      filename: `invoice-${data.invoiceNumber}.pdf`,
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { 
-        scale: 2, 
-        useCORS: true,
-        backgroundColor: '#ffffff'
-      },
-      jsPDF: { 
-        unit: 'in', 
-        format: 'a4', 
-        orientation: 'portrait' 
-      }
-    };
-    
+    if (!invoiceRef.current) {
+      setIsGeneratingPdf(false);
+      return;
+    }
+
     try {
-      const pdfBlob = await html2pdf().set(opt).from(tempDiv).outputPdf('blob');
-      const url = URL.createObjectURL(pdfBlob);
-      setPdfUrl(url);
+      // Import html2canvas dynamically
+      const html2canvas = (await import('html2canvas')).default;
+      
+      // Generate high-quality canvas of the invoice
+      const canvas = await html2canvas(invoiceRef.current, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff',
+        width: invoiceRef.current.scrollWidth,
+        height: invoiceRef.current.scrollHeight,
+      });
+      
+      // Convert canvas to image
+      const imageUrl = canvas.toDataURL('image/png', 1.0);
+      setInvoiceImage(imageUrl);
       setShowPreview(true);
     } catch (error) {
-      console.error('Error generating PDF:', error);
+      console.error('Error generating invoice image:', error);
     } finally {
-      document.body.removeChild(tempDiv);
       setIsGeneratingPdf(false);
     }
   };
 
-  const handleDownloadPdf = () => {
-    if (pdfUrl) {
-      const link = document.createElement('a');
-      link.href = pdfUrl;
-      link.download = `invoice-${form.getValues().invoiceNumber}.pdf`;
-      link.click();
+  const handleDownloadPdf = async () => {
+    if (!invoiceImage || !invoiceRef.current) return;
+    
+    try {
+      // Import jsPDF dynamically
+      const { jsPDF } = await import('jspdf');
+      
+      // Create PDF
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+      });
+      
+      // Calculate dimensions to fit A4
+      const imgWidth = 210; // A4 width in mm
+      const imgHeight = (invoiceRef.current.scrollHeight * imgWidth) / invoiceRef.current.scrollWidth;
+      
+      // Add image to PDF
+      pdf.addImage(invoiceImage, 'PNG', 0, 0, imgWidth, imgHeight);
+      
+      // Download PDF
+      pdf.save(`invoice-${form.getValues().invoiceNumber}.pdf`);
+    } catch (error) {
+      console.error('Error creating PDF:', error);
     }
   };
 
@@ -183,34 +183,34 @@ ${data.businessName}`;
     window.location.href = mailtoLink;
   };
 
-  if (showPreview && pdfUrl) {
+  if (showPreview && invoiceImage) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gray-100">
         <Header />
         <div className="container mx-auto px-4 py-8">
           <div className="mb-6 print:hidden">
             <Button variant="outline" onClick={() => {
               setShowPreview(false);
-              setPdfUrl(null);
-              if (pdfUrl) {
-                URL.revokeObjectURL(pdfUrl);
-              }
+              setInvoiceImage(null);
             }} className="mb-4">
               ← Back to Edit
             </Button>
           </div>
           
-          {/* PDF Viewer */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <iframe
-              src={pdfUrl}
-              className="w-full h-[800px] border-0"
-              title="Invoice PDF Preview"
-            />
+          {/* Invoice Image Viewer */}
+          <div className="bg-white rounded-lg shadow-xl p-4 mb-8">
+            <div className="overflow-auto max-h-[800px]">
+              <img 
+                src={invoiceImage} 
+                alt="Invoice Preview" 
+                className="w-full h-auto max-w-none"
+                style={{ minWidth: '794px' }} // A4 width at 96 DPI
+              />
+            </div>
           </div>
           
           {/* Action Buttons - below PDF */}
-          <div className="mt-8 flex flex-col gap-3 max-w-sm mx-auto print:hidden">
+          <div className="flex flex-col gap-3 max-w-sm mx-auto print:hidden">
             <Button onClick={handleDownloadPdf} className="flex items-center justify-center gap-2" size="lg">
               <Download className="w-4 h-4" />
               Download PDF
@@ -702,8 +702,8 @@ ${data.businessName}`;
             </Form>
           </div>
 
-          {/* Hidden Invoice Preview for PDF Generation */}
-          <div ref={invoiceRef} className="absolute -left-[9999px] opacity-0 pointer-events-none">
+          {/* Hidden Invoice Preview for Image Generation */}
+          <div ref={invoiceRef} className="fixed -left-[200%] top-0 bg-white" style={{ width: '794px' }}>
             <InvoicePreview 
               data={{...form.getValues(), logo: logoFile}} 
               subtotal={subtotal} 
