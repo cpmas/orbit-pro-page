@@ -188,8 +188,8 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
         {/* Separator before Payment Details */}
         <div className="border-b border-gray-300 mb-8"></div>
 
-        {/* Payment Section - Keep together */}
-        <div className="page-break-inside-avoid break-inside-avoid">
+        {/* Payment Section - Keep together but allow on first page if room */}
+        <div className="break-inside-avoid">
           {/* Payment Details and Terms Side by Side */}
           <div className="grid grid-cols-2 gap-6 mb-8">
             {/* Payment Details */}
