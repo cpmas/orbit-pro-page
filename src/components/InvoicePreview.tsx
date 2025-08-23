@@ -160,70 +160,73 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
           </table>
         </div>
 
-        {/* Totals Section */}
-        <div className="flex justify-end mb-8 page-break-inside-avoid">
-          <div className="w-64">
-            <div className="mb-2">
-              <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Invoice Summary</h3>
-            </div>
-            <div className="space-y-1 text-sm">
-              <div className="flex justify-between py-1">
-                <span className="text-gray-600">Subtotal:</span>
-                <span className="font-medium">{formatCurrency(subtotal)}</span>
+        {/* Bottom Section - Keep together */}
+        <div className="page-break-inside-avoid break-inside-avoid">
+          {/* Totals Section */}
+          <div className="flex justify-end mb-8">
+            <div className="w-64">
+              <div className="mb-2">
+                <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Invoice Summary</h3>
               </div>
-              {data.includeGst && gst > 0 && (
+              <div className="space-y-1 text-sm">
                 <div className="flex justify-between py-1">
-                  <span className="text-gray-600">GST (10%):</span>
-                  <span className="font-medium">{formatCurrency(gst)}</span>
+                  <span className="text-gray-600">Subtotal:</span>
+                  <span className="font-medium">{formatCurrency(subtotal)}</span>
                 </div>
-              )}
-              <div className="flex justify-between text-base font-bold pt-2 mt-2 border-t border-gray-300">
-                <span>TOTAL:</span>
-                <span>{formatCurrency(total)}</span>
+                {data.includeGst && gst > 0 && (
+                  <div className="flex justify-between py-1">
+                    <span className="text-gray-600">GST (10%):</span>
+                    <span className="font-medium">{formatCurrency(gst)}</span>
+                  </div>
+                )}
+                <div className="flex justify-between text-base font-bold pt-2 mt-2 border-t border-gray-300">
+                  <span>TOTAL:</span>
+                  <span>{formatCurrency(total)}</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Separator before Payment Details */}
-        <div className="border-b border-gray-300 mb-8"></div>
+          {/* Separator before Payment Details */}
+          <div className="border-b border-gray-300 mb-8"></div>
 
-        {/* Payment Details and Terms Side by Side */}
-        <div className="grid grid-cols-2 gap-6 mb-8 page-break-inside-avoid">
-          {/* Payment Details */}
-          {(data.bankAccountName || data.bankBsb || data.bankAccountNumber) && (
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <div className="mb-3">
-                <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Payment Details</h3>
+          {/* Payment Details and Terms Side by Side */}
+          <div className="grid grid-cols-2 gap-6 mb-8">
+            {/* Payment Details */}
+            {(data.bankAccountName || data.bankBsb || data.bankAccountNumber) && (
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <div className="mb-3">
+                  <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Payment Details</h3>
+                </div>
+                <div className="text-sm space-y-1">
+                  {data.bankAccountName && <div><span className="font-medium">Account:</span> {data.bankAccountName}</div>}
+                  {data.bankBsb && <div><span className="font-medium">BSB:</span> {data.bankBsb}</div>}
+                  {data.bankAccountNumber && <div><span className="font-medium">Account:</span> {data.bankAccountNumber}</div>}
+                </div>
               </div>
-              <div className="text-sm space-y-1">
-                {data.bankAccountName && <div><span className="font-medium">Account:</span> {data.bankAccountName}</div>}
-                {data.bankBsb && <div><span className="font-medium">BSB:</span> {data.bankBsb}</div>}
-                {data.bankAccountNumber && <div><span className="font-medium">Account:</span> {data.bankAccountNumber}</div>}
-              </div>
-            </div>
-          )}
+            )}
 
-          {/* Payment Terms */}
-          {data.paymentTerms && (
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <div className="mb-3">
-                <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Payment Terms</h3>
+            {/* Payment Terms */}
+            {data.paymentTerms && (
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <div className="mb-3">
+                  <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Payment Terms</h3>
+                </div>
+                <div className="text-sm whitespace-pre-wrap text-gray-700 leading-relaxed">{data.paymentTerms}</div>
               </div>
-              <div className="text-sm whitespace-pre-wrap text-gray-700 leading-relaxed">{data.paymentTerms}</div>
-            </div>
-          )}
-        </div>
-
-        {/* Additional Notes */}
-        {data.notes && (
-          <div className="mb-4 page-break-inside-avoid">
-            <div className="mb-2">
-              <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Additional Notes</h3>
-            </div>
-            <div className="text-sm whitespace-pre-wrap text-gray-700 leading-relaxed">{data.notes}</div>
+            )}
           </div>
-        )}
+
+          {/* Additional Notes */}
+          {data.notes && (
+            <div className="mb-4">
+              <div className="mb-2">
+                <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Additional Notes</h3>
+              </div>
+              <div className="text-sm whitespace-pre-wrap text-gray-700 leading-relaxed">{data.notes}</div>
+            </div>
+          )}
+        </div>
     </div>
   );
 };
