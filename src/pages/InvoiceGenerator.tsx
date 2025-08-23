@@ -299,30 +299,33 @@ const InvoiceGenerator = () => {
                         </FormItem>
                       )}
                     />
-                    <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <FormField
                         control={form.control}
                         name="businessPhone"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Phone</FormLabel>
-                            <FormControl>
-                              <Input placeholder="0400 000 000" {...field} />
-                            </FormControl>
+                            <div className="flex items-center gap-4 md:block">
+                              <FormLabel className="md:mb-2 min-w-[80px] text-sm">Phone</FormLabel>
+                              <FormControl className="flex-1 md:w-full">
+                                <Input placeholder="0400 000 000" {...field} />
+                              </FormControl>
+                            </div>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
-                      <div className="md:hidden"></div>
                       <FormField
                         control={form.control}
                         name="businessEmail"
                         render={({ field }) => (
-                          <FormItem className="col-span-2 md:col-span-1">
-                            <FormLabel>Email</FormLabel>
-                            <FormControl>
-                              <Input placeholder="your@email.com" {...field} />
-                            </FormControl>
+                          <FormItem>
+                            <div className="flex items-center gap-4 md:block">
+                              <FormLabel className="md:mb-2 min-w-[80px] text-sm">Email</FormLabel>
+                              <FormControl className="flex-1 md:w-full">
+                                <Input placeholder="your@email.com" {...field} />
+                              </FormControl>
+                            </div>
                             <FormMessage />
                           </FormItem>
                         )}
@@ -333,10 +336,12 @@ const InvoiceGenerator = () => {
                       name="abn"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>ABN</FormLabel>
-                          <FormControl>
-                            <Input placeholder="12 345 678 901" {...field} />
-                          </FormControl>
+                          <div className="flex items-center gap-4 md:block">
+                            <FormLabel className="md:mb-2 min-w-[80px] text-sm">ABN</FormLabel>
+                            <FormControl className="flex-1 md:w-full">
+                              <Input placeholder="12 345 678 901" {...field} />
+                            </FormControl>
+                          </div>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -454,10 +459,12 @@ const InvoiceGenerator = () => {
                         name="invoiceDate"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Invoice Date *</FormLabel>
-                            <FormControl>
-                              <Input type="date" {...field} />
-                            </FormControl>
+                            <div className="flex items-center gap-4 md:block">
+                              <FormLabel className="md:mb-2 min-w-[100px] text-sm">Invoice Date *</FormLabel>
+                              <FormControl className="flex-1 md:w-full">
+                                <Input type="date" {...field} />
+                              </FormControl>
+                            </div>
                             <FormMessage />
                           </FormItem>
                         )}
@@ -467,10 +474,12 @@ const InvoiceGenerator = () => {
                         name="dueDate"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Due Date</FormLabel>
-                            <FormControl>
-                              <Input type="date" {...field} />
-                            </FormControl>
+                            <div className="flex items-center gap-4 md:block">
+                              <FormLabel className="md:mb-2 min-w-[100px] text-sm">Due Date</FormLabel>
+                              <FormControl className="flex-1 md:w-full">
+                                <Input type="date" {...field} />
+                              </FormControl>
+                            </div>
                             <FormMessage />
                           </FormItem>
                         )}
