@@ -58,7 +58,9 @@ const InvoiceGenerator = () => {
   const [logoFile, setLogoFile] = useState<string | null>(null);
   const [invoiceImage, setInvoiceImage] = useState<string | null>(null);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
   const invoiceRef = useRef<HTMLDivElement>(null);
+  const pdfRef = useRef<HTMLDivElement>(null);
 
   const form = useForm<InvoiceFormData>({
     resolver: zodResolver(invoiceSchema),
@@ -139,55 +141,37 @@ const InvoiceGenerator = () => {
   };
 
   const handleDownloadPdf = async () => {
-    if (!invoiceImage) return;
+    if (!pdfRef.current) return;
+    
+    setIsDownloadingPdf(true);
     
     try {
-      // Import jsPDF dynamically
-      const { jsPDF } = await import('jspdf');
+      // Import html2pdf dynamically
+      const html2pdf = (await import('html2pdf.js')).default;
       
-      // Create new image element to get actual dimensions
-      const img = new Image();
-      img.onload = () => {
-        // Create PDF
-        const pdf = new jsPDF({
-          orientation: 'portrait',
-          unit: 'mm',
-          format: 'a4'
-        });
-        
-        // Calculate dimensions to fit A4
-        const pdfWidth = 210; // A4 width in mm
-        const pdfHeight = 297; // A4 height in mm
-        
-        // Calculate image dimensions maintaining aspect ratio
-        const imgAspectRatio = img.width / img.height;
-        const pdfAspectRatio = pdfWidth / pdfHeight;
-        
-        let imgWidth, imgHeight;
-        if (imgAspectRatio > pdfAspectRatio) {
-          // Image is wider, fit to width
-          imgWidth = pdfWidth;
-          imgHeight = pdfWidth / imgAspectRatio;
-        } else {
-          // Image is taller, fit to height
-          imgHeight = pdfHeight;
-          imgWidth = pdfHeight * imgAspectRatio;
+      const opt = {
+        margin: 0.5,
+        filename: `invoice-${form.getValues().invoiceNumber}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2, 
+          useCORS: true,
+          backgroundColor: '#ffffff',
+          width: pdfRef.current.scrollWidth,
+          height: pdfRef.current.scrollHeight,
+        },
+        jsPDF: { 
+          unit: 'in', 
+          format: 'a4', 
+          orientation: 'portrait' 
         }
-        
-        // Center the image
-        const x = (pdfWidth - imgWidth) / 2;
-        const y = (pdfHeight - imgHeight) / 2;
-        
-        // Add image to PDF with no margins
-        pdf.addImage(invoiceImage, 'PNG', 0, 0, pdfWidth, imgHeight);
-        
-        // Download PDF
-        pdf.save(`invoice-${form.getValues().invoiceNumber}.pdf`);
       };
       
-      img.src = invoiceImage;
+      await html2pdf().set(opt).from(pdfRef.current).save();
     } catch (error) {
       console.error('Error creating PDF:', error);
+    } finally {
+      setIsDownloadingPdf(false);
     }
   };
 
@@ -236,9 +220,14 @@ ${data.businessName}`;
           
           {/* Action Buttons - below PDF */}
           <div className="flex flex-col gap-3 max-w-sm mx-auto print:hidden">
-            <Button onClick={handleDownloadPdf} className="flex items-center justify-center gap-2" size="lg">
+            <Button 
+              onClick={handleDownloadPdf} 
+              className="flex items-center justify-center gap-2" 
+              size="lg"
+              disabled={isDownloadingPdf}
+            >
               <Download className="w-4 h-4" />
-              Download PDF
+              {isDownloadingPdf ? 'Generating PDF...' : 'Download PDF'}
             </Button>
             {form.getValues().clientEmail && (
               <Button variant="outline" onClick={handleEmailInvoice} className="flex items-center justify-center gap-2" size="lg">
@@ -730,168 +719,18 @@ ${data.businessName}`;
           {/* Hidden Invoice Preview for Image Generation */}
           <div ref={invoiceRef} className="fixed -left-[200%] top-0 bg-white" style={{ width: '794px' }}>
             <div className="p-12 bg-white" style={{ fontFamily: 'Arial, sans-serif', fontSize: '16px', lineHeight: '1.4' }}>
-              {/* Header */}
-              <div className="flex justify-between items-start mb-12 border-b border-gray-300 pb-6">
-                <div>
-                  <h1 className="text-5xl font-light text-gray-800 mb-6 tracking-wide">INVOICE</h1>
-                  <div className="space-y-2 text-base">
-                    <div className="flex">
-                      <span className="font-medium w-24 text-gray-600">Invoice #:</span>
-                      <span className="font-semibold">{form.getValues().invoiceNumber || "INV-001"}</span>
-                    </div>
-                    <div className="flex">
-                      <span className="font-medium w-24 text-gray-600">Date:</span>
-                      <span>{form.getValues().invoiceDate ? new Date(form.getValues().invoiceDate).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' }) : "Today"}</span>
-                    </div>
-                    {form.getValues().dueDate && (
-                      <div className="flex">
-                        <span className="font-medium w-24 text-gray-600">Due Date:</span>
-                        <span>{new Date(form.getValues().dueDate).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className="text-right">
-                  <div className="w-64 h-40 flex items-center justify-end mb-4">
-                    {logoFile ? (
-                      <img 
-                        src={logoFile} 
-                        alt="Company Logo" 
-                        className="max-w-full max-h-full object-contain"
-                      />
-                    ) : (
-                      <div className="text-2xl font-semibold text-gray-800 text-center">
-                        {form.getValues().businessName || 'COMPANY NAME'}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Business and Client Info */}
-              <div className="grid grid-cols-2 gap-12 mb-16">
-                <div>
-                  <h3 className="font-semibold mb-4 text-gray-700 uppercase text-sm tracking-wide">From</h3>
-                  <div className="space-y-2 text-sm">
-                    <div className="font-bold text-lg">{form.getValues().businessName || 'Your Business Name'}</div>
-                    {form.getValues().businessAddress && (
-                      <div className="text-gray-700 whitespace-pre-line">{form.getValues().businessAddress}</div>
-                    )}
-                    {form.getValues().abn && (
-                      <div><span className="font-medium text-gray-600">ABN:</span> {form.getValues().abn}</div>
-                    )}
-                    {form.getValues().businessEmail && (
-                      <div><span className="font-medium text-gray-600">Email:</span> {form.getValues().businessEmail}</div>
-                    )}
-                    {form.getValues().businessPhone && (
-                      <div><span className="font-medium text-gray-600">Phone:</span> {form.getValues().businessPhone}</div>
-                    )}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-4 text-gray-700 uppercase text-sm tracking-wide">To</h3>
-                  <div className="space-y-2 text-sm">
-                    <div className="font-bold text-lg">{form.getValues().clientName || "Client Name"}</div>
-                    {form.getValues().clientAddress && (
-                      <div className="text-gray-700 whitespace-pre-line">{form.getValues().clientAddress}</div>
-                    )}
-                    {form.getValues().clientEmail && <div className="text-gray-700">{form.getValues().clientEmail}</div>}
-                  </div>
-                </div>
-              </div>
-
-              <div className="border-b border-gray-300 mb-16"></div>
-
-              {/* Items Table */}
-              <div className="mb-16">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr>
-                      <th className="py-3 text-left font-semibold text-gray-700 uppercase text-sm tracking-wide">INVOICE ITEMS</th>
-                      <th className="py-3 text-center font-semibold text-gray-700 uppercase text-sm tracking-wide w-20">QTY</th>
-                      <th className="py-3 text-right font-semibold text-gray-700 uppercase text-sm tracking-wide w-32">RATE</th>
-                      <th className="py-3 text-right font-semibold text-gray-700 uppercase text-sm tracking-wide w-36">AMOUNT</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {(form.getValues().items || []).map((item, index) => (
-                      <tr key={index}>
-                        <td className="py-3 pr-4">
-                          {item.heading && (
-                            <div className="font-bold text-sm mb-1 text-gray-800">{item.heading}</div>
-                          )}
-                          <div className="font-medium text-sm whitespace-pre-line">{item.description || "Description"}</div>
-                        </td>
-                        <td className="py-3 text-center text-sm">{item.quantity || 0}</td>
-                        <td className="py-3 text-right text-sm break-words">{new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' }).format(item.rate || 0)}</td>
-                        <td className="py-3 text-right font-semibold text-sm">{new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' }).format((item.quantity || 0) * (item.rate || 0))}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              {/* Totals Section */}
-              <div className="flex justify-end mb-16">
-                <div className="w-64">
-                  <div className="mb-4">
-                    <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Invoice Summary</h3>
-                  </div>
-                  <div className="space-y-3 text-sm">
-                    <div className="flex justify-between py-2">
-                      <span className="text-gray-600">Subtotal:</span>
-                      <span className="font-medium">{new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' }).format(subtotal)}</span>
-                    </div>
-                    {form.getValues().includeGst && gst > 0 && (
-                      <div className="flex justify-between py-2">
-                        <span className="text-gray-600">GST (10%):</span>
-                        <span className="font-medium">{new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' }).format(gst)}</span>
-                      </div>
-                    )}
-                    <div className="flex justify-between text-base font-bold pt-3 mt-3 border-t border-gray-300">
-                      <span>TOTAL:</span>
-                      <span>{new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' }).format(total)}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border-b border-gray-300 mb-16"></div>
-
-              {/* Payment Details and Terms */}
-              <div className="grid grid-cols-2 gap-8 mb-16">
-                {(form.getValues().bankAccountName || form.getValues().bankBsb || form.getValues().bankAccountNumber) && (
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <div className="mb-3">
-                      <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Payment Details</h3>
-                    </div>
-                    <div className="text-sm space-y-1">
-                      {form.getValues().bankAccountName && <div><span className="font-medium">Account:</span> {form.getValues().bankAccountName}</div>}
-                      {form.getValues().bankBsb && <div><span className="font-medium">BSB:</span> {form.getValues().bankBsb}</div>}
-                      {form.getValues().bankAccountNumber && <div><span className="font-medium">Account:</span> {form.getValues().bankAccountNumber}</div>}
-                    </div>
-                  </div>
-                )}
-                {form.getValues().paymentTerms && (
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <div className="mb-3">
-                      <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Payment Terms</h3>
-                    </div>
-                    <div className="text-sm whitespace-pre-wrap text-gray-700 leading-relaxed">{form.getValues().paymentTerms}</div>
-                  </div>
-                )}
-              </div>
-
-              {/* Additional Notes */}
-              {form.getValues().notes && (
-                <div className="mb-8">
-                  <div className="mb-4">
-                    <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Additional Notes</h3>
-                  </div>
-                  <div className="text-sm whitespace-pre-wrap text-gray-700 leading-relaxed">{form.getValues().notes}</div>
-                </div>
-              )}
+              {/* ... keep existing code ... */}
             </div>
+          </div>
+
+          {/* Hidden Invoice Preview for PDF Generation */}
+          <div ref={pdfRef} className="fixed -left-[400%] top-0 bg-white" style={{ width: '210mm', minHeight: '297mm' }}>
+            <InvoicePreview 
+              data={{...form.getValues(), logo: logoFile}} 
+              subtotal={subtotal} 
+              gst={gst} 
+              total={total} 
+            />
           </div>
 
           {/* CTA Section */}
