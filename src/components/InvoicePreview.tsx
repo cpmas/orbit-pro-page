@@ -52,11 +52,11 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
 
   return (
     <div 
-      className="w-full bg-white p-8" 
+      className="w-full bg-white px-8 pb-8" 
       style={{ fontFamily: 'Arial, sans-serif', fontSize: '16px', lineHeight: '1.4' }}
     >
         {/* Header */}
-        <div className="flex justify-between items-start mb-12 border-b border-gray-300 pb-6">
+        <div className="flex justify-between items-start mb-6 border-b border-gray-300 pb-3">
           <div>
             <h1 className="text-5xl font-light text-gray-800 mb-6 tracking-wide">INVOICE</h1>
             <div className="space-y-2 text-base">
@@ -161,12 +161,12 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
         </div>
 
         {/* Totals Section */}
-        <div className="flex justify-end mb-16">
+        <div className="flex justify-end mb-16 page-break-inside-avoid">
           <div className="w-64">
             <div className="mb-4">
               <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Invoice Summary</h3>
             </div>
-            <div className="space-y-3 text-sm">
+            <div className="space-y-1.5 text-sm">
               <div className="flex justify-between py-2">
                 <span className="text-gray-600">Subtotal:</span>
                 <span className="font-medium">{formatCurrency(subtotal)}</span>
@@ -217,7 +217,7 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
 
         {/* Additional Notes */}
         {data.notes && (
-          <div className="mb-8">
+          <div className="mb-8 page-break-inside-avoid">
             <div className="mb-4">
               <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Additional Notes</h3>
             </div>
