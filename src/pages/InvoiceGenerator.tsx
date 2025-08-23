@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
-import { Plus, Trash2, Download, Calculator, Upload, Mail, X } from "lucide-react";
+import { Plus, Trash2, Download, Calculator, Upload, X } from "lucide-react";
 import InvoicePreview from "@/components/InvoicePreview";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -149,23 +149,6 @@ const InvoiceGenerator = () => {
     await html2pdf().set(opt).from(element).save();
   };
 
-  const handleEmailInvoice = () => {
-    const data = form.getValues();
-    const clientEmail = data.clientEmail;
-    const subject = `Invoice ${data.invoiceNumber} from ${data.businessName}`;
-    const body = `Hi ${data.clientName},
-
-Please find attached invoice ${data.invoiceNumber} for the total amount of $${total.toFixed(2)}.
-
-${data.paymentTerms ? `Payment Terms: ${data.paymentTerms}` : ''}
-
-Best regards,
-${data.businessName}`;
-    
-    const mailtoLink = `mailto:${clientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
-  };
-
   useEffect(() => {
     if (showPreview && !pdfUrl && !isGeneratingPdf) {
       generatePdfPreview();
@@ -198,12 +181,6 @@ ${data.businessName}`;
                 ← Back to Edit
               </Button>
               <div className="flex gap-2">
-                {form.getValues().clientEmail && (
-                  <Button variant="outline" onClick={handleEmailInvoice} className="flex-1 flex items-center justify-center gap-2">
-                    <Mail className="w-4 h-4" />
-                    Send Email
-                  </Button>
-                )}
                 <Button onClick={handleDownload} className="flex-1 flex items-center justify-center gap-2">
                   <Download className="w-4 h-4" />
                   Download PDF
@@ -223,12 +200,6 @@ ${data.businessName}`;
                 ← Back to Edit
               </Button>
               <div className="flex gap-2">
-                {form.getValues().clientEmail && (
-                  <Button variant="outline" onClick={handleEmailInvoice} className="flex items-center gap-2">
-                    <Mail className="w-4 h-4" />
-                    Send Email
-                  </Button>
-                )}
                 <Button onClick={handleDownload} className="flex items-center gap-2">
                   <Download className="w-4 h-4" />
                   Download PDF
