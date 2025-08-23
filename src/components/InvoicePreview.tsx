@@ -160,9 +160,7 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
           </table>
         </div>
 
-        {/* Bottom Section - Keep together */}
-        <div className="page-break-inside-avoid break-inside-avoid">
-          {/* Totals Section */}
+      {/* Totals Section */}
           <div className="flex justify-end mb-8">
             <div className="w-64">
               <div className="mb-2">
@@ -186,6 +184,10 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
               </div>
             </div>
           </div>
+
+        {/* Bottom Section - Keep together */}
+        <div className="page-break-inside-avoid break-inside-avoid">
+      
 
           {/* Separator before Payment Details */}
           <div className="border-b border-gray-300 mb-8"></div>
