@@ -133,30 +133,44 @@ ${data.businessName}`;
       <div className="min-h-screen bg-background">
         <Header />
         <div className="container mx-auto px-4 py-8">
-          <div className="mb-6 flex justify-between items-center print:hidden">
-            <Button variant="outline" onClick={() => setShowPreview(false)}>
+          <div className="mb-6 print:hidden">
+            <Button variant="outline" onClick={() => setShowPreview(false)} className="mb-4">
               ← Back to Edit
             </Button>
-            <div className="flex gap-2">
-              {form.getValues().clientEmail && (
-                <Button variant="outline" onClick={handleEmailInvoice} className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  Send Email
-                </Button>
-              )}
-              <Button onClick={handlePrint} className="flex items-center gap-2">
-                <Download className="w-4 h-4" />
-                Download PDF
-              </Button>
-            </div>
           </div>
-          <div className="transform scale-[0.8] origin-top">
+          
+          {/* PDF Preview - responsive scaling */}
+          <div className="hidden md:block transform scale-[0.8] origin-top">
             <InvoicePreview 
               data={{...form.getValues(), logo: logoFile}} 
               subtotal={subtotal} 
               gst={gst} 
               total={total} 
             />
+          </div>
+          
+          {/* Mobile PDF Preview - full scale */}
+          <div className="md:hidden">
+            <InvoicePreview 
+              data={{...form.getValues(), logo: logoFile}} 
+              subtotal={subtotal} 
+              gst={gst} 
+              total={total} 
+            />
+          </div>
+          
+          {/* Action Buttons - below PDF */}
+          <div className="mt-8 flex flex-col gap-3 max-w-sm mx-auto print:hidden">
+            <Button onClick={handlePrint} className="flex items-center justify-center gap-2" size="lg">
+              <Download className="w-4 h-4" />
+              Download PDF
+            </Button>
+            {form.getValues().clientEmail && (
+              <Button variant="outline" onClick={handleEmailInvoice} className="flex items-center justify-center gap-2" size="lg">
+                <Mail className="w-4 h-4" />
+                Send Email
+              </Button>
+            )}
           </div>
         </div>
         <Footer />
