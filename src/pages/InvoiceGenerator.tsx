@@ -222,7 +222,7 @@ ${data.businessName}`;
               ) : pdfUrl ? (
                 <iframe
                   src={pdfUrl}
-                  className="w-full h-[70vh] md:h-[80vh] border-0 md:scale-100 scale-75 origin-top-left"
+                  className="w-full h-[60vh] md:h-[80vh] border-0"
                   title="Invoice PDF Preview"
                 />
               ) : (
