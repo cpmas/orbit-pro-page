@@ -161,7 +161,7 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
         </div>
 
         {/* Totals Section */}
-        <div className="flex justify-end mb-8 page-break-inside-avoid">
+        <div className="flex justify-end mb-8">
           <div className="w-64">
             <div className="mb-2">
               <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Invoice Summary</h3>
@@ -189,7 +189,7 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
         <div className="border-b border-gray-300 mb-8"></div>
 
         {/* Payment Details and Terms Side by Side */}
-        <div className="grid grid-cols-2 gap-6 mb-8 page-break-inside-avoid">
+        <div className="grid grid-cols-2 gap-6 mb-8">
           {/* Payment Details */}
           {(data.bankAccountName || data.bankBsb || data.bankAccountNumber) && (
             <div className="bg-gray-50 p-4 rounded-lg">
@@ -217,7 +217,7 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
 
         {/* Additional Notes */}
         {data.notes && (
-          <div className="mb-4 page-break-inside-avoid">
+          <div className="mb-4">
             <div className="mb-2">
               <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Additional Notes</h3>
             </div>
