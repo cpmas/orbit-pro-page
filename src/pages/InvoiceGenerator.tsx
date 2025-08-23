@@ -11,6 +11,8 @@ import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { Plus, Trash2, Download, Calculator, Upload } from "lucide-react";
 import InvoicePreview from "@/components/InvoicePreview";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const invoiceSchema = z.object({
   // Business details
@@ -111,6 +113,7 @@ const InvoiceGenerator = () => {
   if (showPreview) {
     return (
       <div className="min-h-screen bg-background">
+        <Header />
         <div className="container mx-auto px-4 py-8">
           <div className="mb-6 flex justify-between items-center print:hidden">
             <Button variant="outline" onClick={() => setShowPreview(false)}>
@@ -128,12 +131,14 @@ const InvoiceGenerator = () => {
             total={total} 
           />
         </div>
+        <Footer />
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-background">
+      <Header />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8 text-center">
           <h1 className="text-4xl font-bold text-foreground mb-4">Free Invoice Generator</h1>
@@ -598,6 +603,7 @@ const InvoiceGenerator = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

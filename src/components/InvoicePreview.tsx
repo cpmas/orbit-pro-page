@@ -128,6 +128,9 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
           </div>
         </div>
 
+        {/* Separator after Business/Client Details */}
+        <div className="border-b border-gray-300 mb-16"></div>
+
         {/* Items Table */}
         <div className="mb-16">
           <table className="w-full border-collapse">
@@ -179,11 +182,14 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
           </div>
         </div>
 
+        {/* Separator before Payment Details */}
+        <div className="border-b border-gray-300 mb-16"></div>
+
         {/* Payment Details and Terms Side by Side */}
-        <div className="grid grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-2 gap-8 mb-16">
           {/* Payment Details */}
           {(data.bankAccountName || data.bankBsb || data.bankAccountNumber) && (
-            <div>
+            <div className="bg-gray-50 p-6 rounded-lg">
               <div className="mb-4">
                 <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Payment Details</h3>
               </div>
@@ -197,7 +203,7 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
 
           {/* Payment Terms */}
           {data.paymentTerms && (
-            <div>
+            <div className="bg-gray-50 p-6 rounded-lg">
               <div className="mb-4">
                 <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Payment Terms</h3>
               </div>
