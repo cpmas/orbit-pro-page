@@ -13,6 +13,7 @@ interface InvoiceData {
   invoiceDate?: string;
   dueDate?: string;
   items?: Array<{
+    heading?: string;
     description?: string;
     quantity?: number;
     rate?: number;
@@ -146,6 +147,9 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
               {(data.items || []).map((item, index) => (
                 <tr key={index}>
                   <td className="py-3 pr-4">
+                    {item.heading && (
+                      <div className="font-bold text-sm mb-1 text-gray-800">{item.heading}</div>
+                    )}
                     <div className="font-medium text-sm whitespace-pre-line">{item.description || "Description"}</div>
                   </td>
                   <td className="py-3 text-center text-sm">{item.quantity || 0}</td>
@@ -186,14 +190,14 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
         <div className="border-b border-gray-300 mb-16"></div>
 
         {/* Payment Details and Terms Side by Side */}
-        <div className="grid grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-2 gap-8 mb-16 page-break-inside-avoid">
           {/* Payment Details */}
           {(data.bankAccountName || data.bankBsb || data.bankAccountNumber) && (
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="mb-4">
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <div className="mb-3">
                 <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Payment Details</h3>
               </div>
-              <div className="text-sm space-y-2">
+              <div className="text-sm space-y-1">
                 {data.bankAccountName && <div><span className="font-medium">Account:</span> {data.bankAccountName}</div>}
                 {data.bankBsb && <div><span className="font-medium">BSB:</span> {data.bankBsb}</div>}
                 {data.bankAccountNumber && <div><span className="font-medium">Account:</span> {data.bankAccountNumber}</div>}
@@ -203,8 +207,8 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
 
           {/* Payment Terms */}
           {data.paymentTerms && (
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="mb-4">
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <div className="mb-3">
                 <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Payment Terms</h3>
               </div>
               <div className="text-sm whitespace-pre-wrap text-gray-700 leading-relaxed">{data.paymentTerms}</div>

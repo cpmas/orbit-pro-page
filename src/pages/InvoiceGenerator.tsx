@@ -34,6 +34,7 @@ const invoiceSchema = z.object({
   
   // Line items
   items: z.array(z.object({
+    heading: z.string().optional(),
     description: z.string().min(1, "Description is required"),
     quantity: z.number().min(0.01, "Quantity must be greater than 0"),
     rate: z.number().min(0.01, "Rate must be greater than 0"),
@@ -70,7 +71,7 @@ const InvoiceGenerator = () => {
       invoiceNumber: `INV-${Date.now().toString().slice(-6)}`,
       invoiceDate: new Date().toISOString().split('T')[0],
       dueDate: "",
-      items: [{ description: "", quantity: 1, rate: 0 }],
+      items: [{ heading: "", description: "", quantity: 1, rate: 0 }],
       notes: "",
       paymentTerms: "Payment due within 30 days",
       includeGst: true,
@@ -374,7 +375,7 @@ const InvoiceGenerator = () => {
                         type="button"
                         variant="outline"
                         size="sm"
-                        onClick={() => append({ description: "", quantity: 1, rate: 0 })}
+                        onClick={() => append({ heading: "", description: "", quantity: 1, rate: 0 })}
                       >
                         <Plus className="w-4 h-4 mr-2" />
                         Add Item
@@ -383,22 +384,50 @@ const InvoiceGenerator = () => {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     {fields.map((field, index) => (
-                      <div key={field.id} className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
-                        <div className="md:col-span-6">
+                      <div key={field.id} className="space-y-4 p-4 border rounded-lg">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <FormField
                             control={form.control}
-                            name={`items.${index}.description`}
+                            name={`items.${index}.heading`}
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Description</FormLabel>
+                                <FormLabel>Item Heading (Optional)</FormLabel>
                                 <FormControl>
-                                  <Textarea placeholder="Description of work" {...field} />
+                                  <Input placeholder="Service heading" {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
                             )}
                           />
+                          <div className="flex justify-end items-end">
+                            <Button
+                              type="button"
+                              variant="outline"
+                              size="sm"
+                              onClick={() => remove(index)}
+                              disabled={fields.length === 1}
+                            >
+                              <Trash2 className="w-4 h-4" />
+                              Remove
+                            </Button>
+                          </div>
                         </div>
+                        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+                          <div className="md:col-span-6">
+                            <FormField
+                              control={form.control}
+                              name={`items.${index}.description`}
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Description</FormLabel>
+                                  <FormControl>
+                                    <Textarea placeholder="Description of work" {...field} />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                          </div>
                         <div className="md:col-span-2">
                           <FormField
                             control={form.control}
@@ -439,19 +468,9 @@ const InvoiceGenerator = () => {
                             )}
                           />
                         </div>
-                        <div className="md:col-span-1">
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={() => remove(index)}
-                            disabled={fields.length === 1}
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </Button>
-                        </div>
-                        <div className="md:col-span-1 text-right font-medium">
+                        <div className="md:col-span-1 text-right font-medium self-center">
                           ${((watchedItems[index]?.quantity || 0) * (watchedItems[index]?.rate || 0)).toFixed(2)}
+                        </div>
                         </div>
                       </div>
                     ))}
