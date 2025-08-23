@@ -222,9 +222,8 @@ ${data.businessName}`;
               ) : pdfUrl ? (
                 <iframe
                   src={pdfUrl}
-                  className="w-full h-[40vh] md:h-[80vh] border-0"
+                  className="w-full h-[70vh] md:h-[80vh] border-0 md:scale-100 scale-90 origin-top-left"
                   title="Invoice PDF Preview"
-                  style={{ transform: 'scale(0.8)', transformOrigin: 'top left', width: '125%', height: '125%' }}
                 />
               ) : (
                 <div className="flex items-center justify-center h-96">
