@@ -347,42 +347,42 @@ const InvoiceGenerator = () => {
                       )}
                     />
                     
-                    {/* Logo Upload */}
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Business Logo</label>
-                      <div className="flex items-center gap-4">
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="sm"
-                          onClick={() => document.getElementById('logo-upload')?.click()}
-                          className="flex items-center gap-2"
-                        >
-                          <Upload className="w-4 h-4" />
-                          Upload Logo
-                        </Button>
-                        <input
-                          id="logo-upload"
-                          type="file"
-                          accept="image/*"
-                          onChange={handleLogoUpload}
-                          className="hidden"
-                        />
-                        {logoFile && (
-                          <div className="flex items-center gap-2">
-                            <img src={logoFile} alt="Logo preview" className="w-8 h-8 object-contain" />
-                            <Button
-                              type="button"
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => setLogoFile(null)}
-                            >
-                              Remove
-                            </Button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
+                     {/* Logo Upload */}
+                     <div className="flex items-center gap-4">
+                       <label className="text-sm font-medium min-w-[100px]">Business Logo</label>
+                       <div className="flex items-center gap-2 flex-1">
+                         <Button
+                           type="button"
+                           variant="outline"
+                           size="sm"
+                           onClick={() => document.getElementById('logo-upload')?.click()}
+                           className="flex items-center gap-2"
+                         >
+                           <Upload className="w-4 h-4" />
+                           Upload Logo
+                         </Button>
+                         <input
+                           id="logo-upload"
+                           type="file"
+                           accept="image/*"
+                           onChange={handleLogoUpload}
+                           className="hidden"
+                         />
+                         {logoFile && (
+                           <>
+                             <img src={logoFile} alt="Logo preview" className="w-8 h-8 object-contain" />
+                             <Button
+                               type="button"
+                               variant="ghost"
+                               size="sm"
+                               onClick={() => setLogoFile(null)}
+                             >
+                               Remove
+                             </Button>
+                           </>
+                         )}
+                       </div>
+                     </div>
                   </CardContent>
                 </Card>
 
