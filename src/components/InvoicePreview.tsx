@@ -56,9 +56,9 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
       style={{ fontFamily: 'Arial, sans-serif', fontSize: '16px', lineHeight: '1.4' }}
     >
         {/* Header */}
-        <div className="flex justify-between items-start mb-6 border-b border-gray-300 pb-3">
+        <div className="flex justify-between items-start mb-4 border-b border-gray-300 pb-2">
           <div>
-            <h1 className="text-5xl font-light text-gray-800 mb-6 tracking-wide">INVOICE</h1>
+            <h1 className="text-4xl font-light text-gray-800 mb-4 tracking-wide">INVOICE</h1>
             <div className="space-y-2 text-base">
               <div className="flex">
                 <span className="font-medium w-24 text-gray-600">Invoice #:</span>
@@ -94,10 +94,10 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
         </div>
 
         {/* Business and Client Info */}
-        <div className="grid grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-2 gap-6 mb-4">
           {/* Invoice from */}
           <div>
-            <h3 className="font-semibold mb-2 text-gray-700 uppercase text-xs tracking-wide">From</h3>
+            <h3 className="font-semibold mb-1 text-gray-700 uppercase text-xs tracking-wide">From</h3>
             <div className="space-y-1 text-xs">
               <div className="font-bold text-sm">{data.businessName || 'Your Business Name'}</div>
               {data.businessAddress && (
@@ -117,7 +117,7 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
 
           {/* Invoice to */}
           <div>
-            <h3 className="font-semibold mb-2 text-gray-700 uppercase text-xs tracking-wide">To</h3>
+            <h3 className="font-semibold mb-1 text-gray-700 uppercase text-xs tracking-wide">To</h3>
             <div className="space-y-1 text-xs">
               <div className="font-bold text-sm">{data.clientName || "Client Name"}</div>
               {data.clientAddress && (
@@ -129,31 +129,31 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
         </div>
 
         {/* Separator after Business/Client Details */}
-        <div className="border-b border-gray-300 mb-8"></div>
+        <div className="border-b border-gray-300 mb-4"></div>
 
         {/* Items Table */}
-        <div className="mb-16">
+        <div className="mb-8">
           <table className="w-full border-collapse">
             <thead>
               <tr>
-                <th className="py-3 text-left font-semibold text-gray-700 uppercase text-sm tracking-wide">INVOICE ITEMS</th>
-                <th className="py-3 text-center font-semibold text-gray-700 uppercase text-sm tracking-wide w-20">QTY</th>
-                <th className="py-3 text-right font-semibold text-gray-700 uppercase text-sm tracking-wide w-32">RATE</th>
-                <th className="py-3 text-right font-semibold text-gray-700 uppercase text-sm tracking-wide w-36">AMOUNT</th>
+                <th className="py-2 text-left font-semibold text-gray-700 uppercase text-sm tracking-wide">INVOICE ITEMS</th>
+                <th className="py-2 text-center font-semibold text-gray-700 uppercase text-sm tracking-wide w-20">QTY</th>
+                <th className="py-2 text-right font-semibold text-gray-700 uppercase text-sm tracking-wide w-32">RATE</th>
+                <th className="py-2 text-right font-semibold text-gray-700 uppercase text-sm tracking-wide w-36">AMOUNT</th>
               </tr>
             </thead>
             <tbody>
               {(data.items || []).map((item, index) => (
                 <tr key={index}>
-                  <td className="py-3 pr-4">
+                  <td className="py-1.5 pr-4">
                     {item.heading && (
-                      <div className="font-bold text-sm mb-1 text-gray-800">{item.heading}</div>
+                      <div className="font-bold text-sm mb-0.5 text-gray-800">{item.heading}</div>
                     )}
                     <div className="font-medium text-sm whitespace-pre-line">{item.description || "Description"}</div>
                   </td>
-                  <td className="py-3 text-center text-sm">{item.quantity || 0}</td>
-                  <td className="py-3 text-right text-sm break-words">{formatCurrency(item.rate || 0)}</td>
-                  <td className="py-3 text-right font-semibold text-sm">{formatCurrency((item.quantity || 0) * (item.rate || 0))}</td>
+                  <td className="py-1.5 text-center text-sm">{item.quantity || 0}</td>
+                  <td className="py-1.5 text-right text-sm break-words">{formatCurrency(item.rate || 0)}</td>
+                  <td className="py-1.5 text-right font-semibold text-sm">{formatCurrency((item.quantity || 0) * (item.rate || 0))}</td>
                 </tr>
               ))}
             </tbody>
@@ -161,23 +161,23 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
         </div>
 
         {/* Totals Section */}
-        <div className="flex justify-end mb-16 page-break-inside-avoid">
+        <div className="flex justify-end mb-8 page-break-inside-avoid">
           <div className="w-64">
-            <div className="mb-4">
+            <div className="mb-2">
               <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Invoice Summary</h3>
             </div>
-            <div className="space-y-1.5 text-sm">
-              <div className="flex justify-between py-2">
+            <div className="space-y-1 text-sm">
+              <div className="flex justify-between py-1">
                 <span className="text-gray-600">Subtotal:</span>
                 <span className="font-medium">{formatCurrency(subtotal)}</span>
               </div>
               {data.includeGst && gst > 0 && (
-                <div className="flex justify-between py-2">
+                <div className="flex justify-between py-1">
                   <span className="text-gray-600">GST (10%):</span>
                   <span className="font-medium">{formatCurrency(gst)}</span>
                 </div>
               )}
-              <div className="flex justify-between text-base font-bold pt-3 mt-3 border-t border-gray-300">
+              <div className="flex justify-between text-base font-bold pt-2 mt-2 border-t border-gray-300">
                 <span>TOTAL:</span>
                 <span>{formatCurrency(total)}</span>
               </div>
@@ -186,10 +186,10 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
         </div>
 
         {/* Separator before Payment Details */}
-        <div className="border-b border-gray-300 mb-16"></div>
+        <div className="border-b border-gray-300 mb-8"></div>
 
         {/* Payment Details and Terms Side by Side */}
-        <div className="grid grid-cols-2 gap-8 mb-16 page-break-inside-avoid">
+        <div className="grid grid-cols-2 gap-6 mb-8 page-break-inside-avoid">
           {/* Payment Details */}
           {(data.bankAccountName || data.bankBsb || data.bankAccountNumber) && (
             <div className="bg-gray-50 p-4 rounded-lg">
@@ -217,8 +217,8 @@ const InvoicePreview = ({ data, subtotal, gst, total }: InvoicePreviewProps) => 
 
         {/* Additional Notes */}
         {data.notes && (
-          <div className="mb-8 page-break-inside-avoid">
-            <div className="mb-4">
+          <div className="mb-4 page-break-inside-avoid">
+            <div className="mb-2">
               <h3 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">Additional Notes</h3>
             </div>
             <div className="text-sm whitespace-pre-wrap text-gray-700 leading-relaxed">{data.notes}</div>
