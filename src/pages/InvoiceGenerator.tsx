@@ -222,8 +222,9 @@ ${data.businessName}`;
               ) : pdfUrl ? (
                 <iframe
                   src={pdfUrl}
-                  className="w-full h-[60vh] md:h-[80vh] border-0"
+                  className="w-full h-[40vh] md:h-[80vh] border-0"
                   title="Invoice PDF Preview"
+                  style={{ transform: 'scale(0.8)', transformOrigin: 'top left', width: '125%', height: '125%' }}
                 />
               ) : (
                 <div className="flex items-center justify-center h-96">
@@ -279,7 +280,7 @@ ${data.businessName}`;
                       name="businessName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Business Name</FormLabel>
+                          <FormLabel>Business Name *</FormLabel>
                           <FormControl>
                             <Input placeholder="Your Business Name" {...field} />
                           </FormControl>
@@ -292,7 +293,7 @@ ${data.businessName}`;
                       name="businessAddress"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Address (Optional)</FormLabel>
+                          <FormLabel>Address</FormLabel>
                           <FormControl>
                             <Textarea placeholder="Your business address" {...field} />
                           </FormControl>
@@ -306,7 +307,7 @@ ${data.businessName}`;
                         name="businessPhone"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Phone (Optional)</FormLabel>
+                            <FormLabel>Phone</FormLabel>
                             <FormControl>
                               <Input placeholder="0400 000 000" {...field} />
                             </FormControl>
@@ -320,7 +321,7 @@ ${data.businessName}`;
                         name="businessEmail"
                         render={({ field }) => (
                           <FormItem className="col-span-2 md:col-span-1">
-                            <FormLabel>Email (Optional)</FormLabel>
+                            <FormLabel>Email</FormLabel>
                             <FormControl>
                               <Input placeholder="your@email.com" {...field} />
                             </FormControl>
@@ -334,7 +335,7 @@ ${data.businessName}`;
                       name="abn"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>ABN (Optional)</FormLabel>
+                          <FormLabel>ABN</FormLabel>
                           <FormControl>
                             <Input placeholder="12 345 678 901" {...field} />
                           </FormControl>
@@ -345,7 +346,7 @@ ${data.businessName}`;
                     
                     {/* Logo Upload */}
                     <div>
-                      <label className="block text-sm font-medium mb-2">Business Logo (Optional)</label>
+                      <label className="block text-sm font-medium mb-2">Business Logo</label>
                       <div className="flex items-center gap-4">
                         <Button
                           type="button"
@@ -393,7 +394,7 @@ ${data.businessName}`;
                       name="clientName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Client Name</FormLabel>
+                          <FormLabel>Client Name *</FormLabel>
                           <FormControl>
                             <Input placeholder="Client Name" {...field} />
                           </FormControl>
@@ -406,7 +407,7 @@ ${data.businessName}`;
                       name="clientAddress"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Client Address (Optional)</FormLabel>
+                          <FormLabel>Client Address</FormLabel>
                           <FormControl>
                             <Textarea placeholder="Client address" {...field} />
                           </FormControl>
@@ -419,7 +420,7 @@ ${data.businessName}`;
                       name="clientEmail"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Client Email (Optional)</FormLabel>
+                          <FormLabel>Client Email</FormLabel>
                           <FormControl>
                             <Input placeholder="client@email.com" {...field} />
                           </FormControl>
@@ -442,7 +443,7 @@ ${data.businessName}`;
                         name="invoiceNumber"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Invoice Number</FormLabel>
+                            <FormLabel>Invoice Number *</FormLabel>
                             <FormControl>
                               <Input {...field} />
                             </FormControl>
@@ -455,7 +456,7 @@ ${data.businessName}`;
                         name="invoiceDate"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Invoice Date</FormLabel>
+                            <FormLabel>Invoice Date *</FormLabel>
                             <FormControl>
                               <Input type="date" {...field} />
                             </FormControl>
@@ -468,7 +469,7 @@ ${data.businessName}`;
                         name="dueDate"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Due Date (Optional)</FormLabel>
+                            <FormLabel>Due Date</FormLabel>
                             <FormControl>
                               <Input type="date" {...field} />
                             </FormControl>
@@ -536,13 +537,13 @@ ${data.businessName}`;
                                control={form.control}
                                name={`items.${index}.description`}
                                render={({ field }) => (
-                                 <FormItem>
-                                   <FormLabel>Description (Optional)</FormLabel>
-                                   <FormControl>
-                                     <Textarea placeholder="Description of work" {...field} />
-                                   </FormControl>
-                                   <FormMessage />
-                                 </FormItem>
+                               <FormItem>
+                                 <FormLabel>Description *</FormLabel>
+                                 <FormControl>
+                                   <Textarea placeholder="Description of work" {...field} />
+                                 </FormControl>
+                                 <FormMessage />
+                               </FormItem>
                                )}
                              />
                           </div>
@@ -554,7 +555,7 @@ ${data.businessName}`;
                               name={`items.${index}.quantity`}
                               render={({ field }) => (
                                 <FormItem>
-                                  <FormLabel>Qty</FormLabel>
+                                  <FormLabel>Qty *</FormLabel>
                                   <FormControl>
                                     <Input
                                       type="number"
@@ -572,7 +573,7 @@ ${data.businessName}`;
                               name={`items.${index}.rate`}
                               render={({ field }) => (
                                 <FormItem className="col-span-2">
-                                  <FormLabel>Rate ($)</FormLabel>
+                                  <FormLabel>Rate ($) *</FormLabel>
                                   <FormControl>
                                     <Input
                                       type="number"
@@ -594,7 +595,7 @@ ${data.businessName}`;
                               name={`items.${index}.quantity`}
                               render={({ field }) => (
                                 <FormItem>
-                                  <FormLabel>Qty</FormLabel>
+                                  <FormLabel>Qty *</FormLabel>
                                   <FormControl>
                                     <Input
                                       type="number"
@@ -614,7 +615,7 @@ ${data.businessName}`;
                               name={`items.${index}.rate`}
                               render={({ field }) => (
                                 <FormItem>
-                                  <FormLabel>Rate ($)</FormLabel>
+                                  <FormLabel>Rate ($) *</FormLabel>
                                   <FormControl>
                                     <Input
                                       type="number"
@@ -695,7 +696,7 @@ ${data.businessName}`;
                       name="bankAccountName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Bank Account Name (Optional)</FormLabel>
+                          <FormLabel>Bank Account Name</FormLabel>
                           <FormControl>
                             <Input placeholder="Business Account" {...field} />
                           </FormControl>
@@ -709,7 +710,7 @@ ${data.businessName}`;
                         name="bankBsb"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>BSB (Optional)</FormLabel>
+                            <FormLabel>BSB</FormLabel>
                             <FormControl>
                               <Input placeholder="123-456" {...field} />
                             </FormControl>
@@ -722,7 +723,7 @@ ${data.businessName}`;
                         name="bankAccountNumber"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Account Number (Optional)</FormLabel>
+                            <FormLabel>Account Number</FormLabel>
                             <FormControl>
                               <Input placeholder="123456789" {...field} />
                             </FormControl>
