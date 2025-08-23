@@ -199,12 +199,12 @@ ${data.businessName}`;
               </Button>
               <div className="flex gap-2">
                 {form.getValues().clientEmail && (
-                  <Button variant="outline" onClick={handleEmailInvoice} className="flex items-center gap-2">
+                  <Button variant="outline" onClick={handleEmailInvoice} className="flex-1 flex items-center justify-center gap-2">
                     <Mail className="w-4 h-4" />
                     Send Email
                   </Button>
                 )}
-                <Button onClick={handleDownload} className="flex items-center gap-2">
+                <Button onClick={handleDownload} className="flex-1 flex items-center justify-center gap-2">
                   <Download className="w-4 h-4" />
                   Download PDF
                 </Button>
