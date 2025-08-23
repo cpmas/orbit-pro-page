@@ -8,7 +8,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
-import { Plus, Trash2, Download, Calculator } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Plus, Trash2, Download, Calculator, Upload } from "lucide-react";
 import InvoicePreview from "@/components/InvoicePreview";
 
 const invoiceSchema = z.object({
@@ -39,12 +40,19 @@ const invoiceSchema = z.object({
   // Additional fields
   notes: z.string().optional(),
   paymentTerms: z.string().optional(),
+  includeGst: z.boolean().default(true),
+  
+  // Bank details
+  bankAccountName: z.string().optional(),
+  bankBsb: z.string().optional(),
+  bankAccountNumber: z.string().optional(),
 });
 
 type InvoiceFormData = z.infer<typeof invoiceSchema>;
 
 const InvoiceGenerator = () => {
   const [showPreview, setShowPreview] = useState(false);
+  const [logoFile, setLogoFile] = useState<string | null>(null);
 
   const form = useForm<InvoiceFormData>({
     resolver: zodResolver(invoiceSchema),
@@ -63,6 +71,10 @@ const InvoiceGenerator = () => {
       items: [{ description: "", quantity: 1, rate: 0 }],
       notes: "",
       paymentTerms: "Payment due within 30 days",
+      includeGst: true,
+      bankAccountName: "",
+      bankBsb: "",
+      bankAccountNumber: "",
     },
   });
 
@@ -72,13 +84,23 @@ const InvoiceGenerator = () => {
   });
 
   const watchedItems = form.watch("items");
+  const includeGst = form.watch("includeGst");
   const subtotal = watchedItems.reduce((sum, item) => sum + (item.quantity * item.rate), 0);
-  const gst = subtotal * 0.1; // 10% GST for Australia
+  const gst = includeGst ? subtotal * 0.1 : 0; // 10% GST for Australia
   const total = subtotal + gst;
 
+  const handleLogoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setLogoFile(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const onSubmit = (data: InvoiceFormData) => {
-    // Save to localStorage for persistence
-    localStorage.setItem('invoiceData', JSON.stringify(data));
     setShowPreview(true);
   };
 
@@ -99,7 +121,12 @@ const InvoiceGenerator = () => {
               Download PDF
             </Button>
           </div>
-          <InvoicePreview data={form.getValues()} subtotal={subtotal} gst={gst} total={total} />
+          <InvoicePreview 
+            data={{...form.getValues(), logo: logoFile}} 
+            subtotal={subtotal} 
+            gst={gst} 
+            total={total} 
+          />
         </div>
       </div>
     );
@@ -195,6 +222,43 @@ const InvoiceGenerator = () => {
                         </FormItem>
                       )}
                     />
+                    
+                    {/* Logo Upload */}
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Business Logo (Optional)</label>
+                      <div className="flex items-center gap-4">
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => document.getElementById('logo-upload')?.click()}
+                          className="flex items-center gap-2"
+                        >
+                          <Upload className="w-4 h-4" />
+                          Upload Logo
+                        </Button>
+                        <input
+                          id="logo-upload"
+                          type="file"
+                          accept="image/*"
+                          onChange={handleLogoUpload}
+                          className="hidden"
+                        />
+                        {logoFile && (
+                          <div className="flex items-center gap-2">
+                            <img src={logoFile} alt="Logo preview" className="w-8 h-8 object-contain" />
+                            <Button
+                              type="button"
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => setLogoFile(null)}
+                            >
+                              Remove
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
 
@@ -389,16 +453,42 @@ const InvoiceGenerator = () => {
                     
                     <Separator />
                     
+                    {/* GST Toggle */}
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <FormLabel>Include GST (10%)</FormLabel>
+                        <p className="text-sm text-muted-foreground">Toggle GST calculation for this invoice</p>
+                      </div>
+                      <FormField
+                        control={form.control}
+                        name="includeGst"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Switch
+                                checked={field.value}
+                                onCheckedChange={field.onChange}
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    
+                    <Separator />
+                    
                     {/* Totals */}
                     <div className="space-y-2 ml-auto max-w-sm">
                       <div className="flex justify-between">
                         <span>Subtotal:</span>
                         <span>${subtotal.toFixed(2)}</span>
                       </div>
-                      <div className="flex justify-between">
-                        <span>GST (10%):</span>
-                        <span>${gst.toFixed(2)}</span>
-                      </div>
+                      {includeGst && (
+                        <div className="flex justify-between">
+                          <span>GST (10%):</span>
+                          <span>${gst.toFixed(2)}</span>
+                        </div>
+                      )}
                       <Separator />
                       <div className="flex justify-between font-bold text-lg">
                         <span>Total:</span>
@@ -408,12 +498,53 @@ const InvoiceGenerator = () => {
                   </CardContent>
                 </Card>
 
-                {/* Additional Information */}
+                {/* Payment Information */}
                 <Card>
                   <CardHeader>
-                    <CardTitle>Additional Information</CardTitle>
+                    <CardTitle>Payment Information</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
+                    <FormField
+                      control={form.control}
+                      name="bankAccountName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Bank Account Name (Optional)</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Business Account" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <div className="grid grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="bankBsb"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>BSB (Optional)</FormLabel>
+                            <FormControl>
+                              <Input placeholder="123-456" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="bankAccountNumber"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Account Number (Optional)</FormLabel>
+                            <FormControl>
+                              <Input placeholder="123456789" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
                     <FormField
                       control={form.control}
                       name="paymentTerms"
