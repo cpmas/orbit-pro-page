@@ -15,20 +15,20 @@ import InvoicePreview from "@/components/InvoicePreview";
 const invoiceSchema = z.object({
   // Business details
   businessName: z.string().min(1, "Business name is required"),
-  businessAddress: z.string().min(1, "Business address is required"),
-  businessPhone: z.string().min(1, "Phone number is required"),
-  businessEmail: z.string().email("Valid email is required"),
+  businessAddress: z.string().optional(),
+  businessPhone: z.string().optional(),
+  businessEmail: z.string().email().optional().or(z.literal("")),
   abn: z.string().optional(),
   
   // Client details
   clientName: z.string().min(1, "Client name is required"),
-  clientAddress: z.string().min(1, "Client address is required"),
+  clientAddress: z.string().optional(),
   clientEmail: z.string().email("Valid email is required").optional().or(z.literal("")),
   
   // Invoice details
   invoiceNumber: z.string().min(1, "Invoice number is required"),
   invoiceDate: z.string().min(1, "Invoice date is required"),
-  dueDate: z.string().min(1, "Due date is required"),
+  dueDate: z.string().optional(),
   
   // Line items
   items: z.array(z.object({
@@ -67,7 +67,7 @@ const InvoiceGenerator = () => {
       clientEmail: "",
       invoiceNumber: `INV-${Date.now().toString().slice(-6)}`,
       invoiceDate: new Date().toISOString().split('T')[0],
-      dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+      dueDate: "",
       items: [{ description: "", quantity: 1, rate: 0 }],
       notes: "",
       paymentTerms: "Payment due within 30 days",
@@ -142,7 +142,7 @@ const InvoiceGenerator = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="max-w-4xl mx-auto">
           {/* Form Section */}
           <div className="space-y-6">
             <Form {...form}>
@@ -173,7 +173,7 @@ const InvoiceGenerator = () => {
                       name="businessAddress"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Address</FormLabel>
+                          <FormLabel>Address (Optional)</FormLabel>
                           <FormControl>
                             <Textarea placeholder="Your business address" {...field} />
                           </FormControl>
@@ -187,7 +187,7 @@ const InvoiceGenerator = () => {
                         name="businessPhone"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Phone</FormLabel>
+                            <FormLabel>Phone (Optional)</FormLabel>
                             <FormControl>
                               <Input placeholder="0400 000 000" {...field} />
                             </FormControl>
@@ -200,7 +200,7 @@ const InvoiceGenerator = () => {
                         name="businessEmail"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Email</FormLabel>
+                            <FormLabel>Email (Optional)</FormLabel>
                             <FormControl>
                               <Input placeholder="your@email.com" {...field} />
                             </FormControl>
@@ -286,7 +286,7 @@ const InvoiceGenerator = () => {
                       name="clientAddress"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Client Address</FormLabel>
+                          <FormLabel>Client Address (Optional)</FormLabel>
                           <FormControl>
                             <Textarea placeholder="Client address" {...field} />
                           </FormControl>
@@ -348,7 +348,7 @@ const InvoiceGenerator = () => {
                         name="dueDate"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Due Date</FormLabel>
+                            <FormLabel>Due Date (Optional)</FormLabel>
                             <FormControl>
                               <Input type="date" {...field} />
                             </FormControl>
@@ -582,35 +582,20 @@ const InvoiceGenerator = () => {
             </Form>
           </div>
 
-          {/* Live Preview Placeholder */}
-          <div className="lg:sticky lg:top-8">
-            <Card>
-              <CardHeader>
-                <CardTitle>Live Preview</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center text-muted-foreground py-8">
-                  <Calculator className="w-12 h-12 mx-auto mb-4 opacity-50" />
-                  <p>Fill out the form to see your invoice preview</p>
-                </div>
+          {/* CTA Section */}
+          <div className="mt-16 text-center">
+            <Card className="bg-gradient-card shadow-card">
+              <CardContent className="py-8">
+                <h2 className="text-2xl font-bold mb-4">Need More Features?</h2>
+                <p className="text-muted-foreground mb-6">
+                  Save client details, create templates, track payments, and more with Orbit Pro
+                </p>
+                <Button variant="default" size="lg">
+                  Upgrade to Orbit Pro
+                </Button>
               </CardContent>
             </Card>
           </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="mt-16 text-center">
-          <Card className="bg-gradient-card shadow-card">
-            <CardContent className="py-8">
-              <h2 className="text-2xl font-bold mb-4">Need More Features?</h2>
-              <p className="text-muted-foreground mb-6">
-                Save client details, create templates, track payments, and more with Orbit Pro
-              </p>
-              <Button variant="default" size="lg">
-                Upgrade to Orbit Pro
-              </Button>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </div>
