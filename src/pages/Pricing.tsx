@@ -73,7 +73,7 @@ const Pricing = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mt-5">
+                    <div className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mt-2">
                       Save 26% with annual billing
                     </div>
                     <div className="text-xs text-muted-foreground mt-2">
