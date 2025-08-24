@@ -145,7 +145,7 @@ const Contact = () => {
                 <CardContent className="space-y-4">
                   
                   <div className="flex items-center space-x-3">
-                    <Phone className="h-5 w-5 text-primary" />
+                    <clock className="h-5 w-5 text-primary" />
                     <div>
                       <p className="font-medium">Support Hours</p>
                       <p className="text-muted-foreground">Mon-Fri, 9am-5pm PST</p>
