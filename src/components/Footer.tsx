@@ -12,8 +12,8 @@ const Footer = () => {
       { name: "Blog", href: "/coming-soon" }
     ],
     support: [
-      { name: "Help Center", href: "/coming-soon" },
-      { name: "Contact", href: "/coming-soon" }
+      { name: "Help Center", href: "/help" },
+      { name: "Contact", href: "/contact" }
     ]
   };
 
