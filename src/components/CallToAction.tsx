@@ -21,7 +21,7 @@ const CallToAction = () => {
           </h2>
           
             <p className="text-xl text-primary-foreground/90 mb-12 max-w-2xl mx-auto">
-              We're currently free for all Australian tradies! No setup fees, no monthly costs. 
+              We're currently free for all Australian small businesses! No setup fees, no monthly costs. 
               Get professional quotes and invoices without the price tag.
             </p>
           
@@ -54,7 +54,7 @@ const CallToAction = () => {
                 <Shield className="w-6 h-6" />
               </div>
               <div className="font-semibold mb-1">Australian Made</div>
-              <div className="text-sm text-primary-foreground/70">Built for Aussie tradies</div>
+              <div className="text-sm text-primary-foreground/70">Built for Australian businesses</div>
             </div>
           </div>
         </div>

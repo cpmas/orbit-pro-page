@@ -64,7 +64,7 @@ const Pricing = () => {
             <span className="block text-primary">Your Business?</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Join thousands of Australian tradies and small businesses who have transformed 
+            Join thousands of Australian small businesses who have transformed 
             their invoicing and quoting process with Orbit.
           </p>
         </div>
@@ -120,7 +120,7 @@ const Pricing = () => {
               
               <p className="text-muted-foreground mb-6">
                 Download Orbit now and transform how you handle quotes and invoices. 
-                Perfect for tradies, contractors, and small businesses across Australia.
+                Perfect for contractors, consultants, and small businesses across Australia.
               </p>
               
               <div className="space-y-4">
@@ -130,7 +130,7 @@ const Pricing = () => {
               </div>
               
               <div className="mt-6 text-sm text-muted-foreground">
-                ⭐⭐⭐⭐⭐ Rated by thousands of Australian tradies
+                ⭐⭐⭐⭐⭐ Rated by thousands of Australian businesses
               </div>
             </div>
           </div>

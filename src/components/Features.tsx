@@ -52,12 +52,12 @@ const Features = () => {
             Built for Mobile
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Everything Tradies Need
+            Everything Your Business Needs
             <span className="block text-primary">In One App</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             From client management to quote creation, invoice generation to business analytics - 
-            Orbit provides all the tools Australian tradies need to run their business professionally.
+            Orbit provides all the tools small businesses need to run professionally.
           </p>
         </div>
 
@@ -101,7 +101,7 @@ const Features = () => {
           {/* Text Section - Mobile/Tablet Second, Desktop First */}
           <div className="order-2 lg:order-1">
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
-              Trusted by Australian tradies
+              Trusted by Australian businesses
             </h3>
             <p className="text-lg text-muted-foreground mb-6">
               Built specifically for Australian business requirements with GST compliance, 
@@ -114,7 +114,7 @@ const Features = () => {
                 <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-muted-foreground">
                   <strong className="text-foreground">Australian Made & Owned</strong> — 
-                  Developed by Aussie tradies who understand the unique challenges of running a trade business locally.
+                  Developed by Australian business owners who understand the unique challenges of running a small business locally.
                 </p>
               </div>
               <div className="flex items-start gap-3">
