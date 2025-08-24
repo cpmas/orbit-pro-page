@@ -115,9 +115,6 @@ const Help = () => {
             <Card className="shadow-card">
               <CardHeader>
                 <CardTitle>Submit a Help Request</CardTitle>
-                <CardDescription>
-                  Can't find what you're looking for? Send us your question and we'll help you out.
-                </CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -187,7 +184,7 @@ const Help = () => {
                     <MessageSquare className="h-5 w-5 text-primary" />
                     <div>
                       <p className="font-medium">Response Time</p>
-                      <p className="text-muted-foreground text-sm">Usually within 4-6 hours during business hours</p>
+                      <p className="text-muted-foreground text-sm">Usually within 24 hours</p>
                     </div>
                   </div>
                   
@@ -195,7 +192,7 @@ const Help = () => {
                     <HelpCircle className="h-5 w-5 text-primary" />
                     <div>
                       <p className="font-medium">Support Hours</p>
-                      <p className="text-muted-foreground text-sm">Monday - Friday, 9:00 AM - 5:00 PM PST</p>
+                      <p className="text-muted-foreground text-sm">Monday - Friday, 9:00 AM - 5:00 PM AEST</p>
                     </div>
                   </div>
                 </CardContent>
@@ -210,10 +207,7 @@ const Help = () => {
                     <span className="font-medium">General questions:</span> Visit our <a href="/contact" className="text-primary hover:underline">Contact page</a>
                   </p>
                   <p className="text-sm">
-                    <span className="font-medium">Feature requests:</span> Use the help form above to suggest new features
-                  </p>
-                  <p className="text-sm">
-                    <span className="font-medium">Billing issues:</span> Contact us directly at info@orbitworkflow.com
+                    <span className="font-medium">Feature requests:</span> Use the help form to suggest new features
                   </p>
                 </CardContent>
               </Card>
