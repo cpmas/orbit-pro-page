@@ -94,11 +94,11 @@ const About = () => {
                   </div>
                 </div>
                 <div className="flex justify-center">
-                  <div className="w-64 h-64 bg-muted/30 rounded-2xl flex items-center justify-center">
+                  <div className="w-64 h-64  rounded-2xl flex items-center justify-center">
                     <img 
                       src="/lovable-uploads/fa386d72-363f-4056-bed0-16b44bfae597.png" 
                       alt="Orbit Logo"
-                      className="w-32 h-32 object-contain"
+                      className="w-64 h-64 object-contain"
                     />
                   </div>
                 </div>
