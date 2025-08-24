@@ -24,7 +24,7 @@ const Pricing = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="pt-20">
+      <main className="pt-0">
         {/* Main Pricing Section */}
         <section className="py-24 bg-gradient-hero relative overflow-hidden">
           {/* Background Elements */}
@@ -52,9 +52,11 @@ const Pricing = () => {
             <div className="max-w-4xl mx-auto">
               <Card className="bg-gradient-card border-primary/20 shadow-card">
                 <CardHeader className="text-center pb-8">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 text-primary rounded-2xl mx-auto mb-4">
-                    <Star className="w-8 h-8" />
-                  </div>
+                  <img 
+                    src="/lovable-uploads/b3c1c316-c02c-4b98-bf83-3a3485ce3376.png" 
+                    alt="Orbit - Simple Quotes & Invoices" 
+                    className="w-16 h-16 mx-auto mb-4"
+                  />
                   <CardTitle className="text-3xl sm:text-4xl font-bold text-foreground mb-2">
                     Orbit Workflow
                   </CardTitle>
@@ -71,8 +73,10 @@ const Pricing = () => {
                       <div className="text-xs text-muted-foreground line-through">normally $99/year</div>
                     </div>
                   </div>
-                  <div className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
-                    Save 26% with annual billing
+                  <div className="text-center">
+                    <div className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                      Save 26% with annual billing
+                    </div>
                   </div>
                 </CardHeader>
                 
@@ -168,11 +172,10 @@ const Pricing = () => {
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-2xl mx-auto">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-                Ready to Transform Your Business?
+                Why pay $30–$60/month for bloated tools you don't use?
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Join the founders program and get lifetime access to special pricing 
-                while helping shape the future of business workflow management.
+                Orbit Workflow gives you everything you need to run your business smoothly — for less than the price of 2 coffees a month.
               </p>
               <Button variant="default" size="lg" className="group text-lg px-8 py-4 h-auto">
                 Get Founders Pricing
