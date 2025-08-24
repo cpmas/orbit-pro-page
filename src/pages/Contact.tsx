@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -145,7 +145,7 @@ const Contact = () => {
                 <CardContent className="space-y-4">
                   
                   <div className="flex items-center space-x-3">
-                    <Phone className="h-5 w-5 text-primary" />
+                    <Clock className="h-5 w-5 text-primary" />
                     <div>
                       <p className="font-medium">Support Hours</p>
                       <p className="text-muted-foreground">Mon-Fri, 9am-5pm PST</p>
