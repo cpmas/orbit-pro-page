@@ -6,7 +6,7 @@ const Header = () => {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <a href="/" className="flex items-center space-x-2">
           <img src="/lovable-uploads/fa386d72-363f-4056-bed0-16b44bfae597.png" alt="Orbit Logo" className="w-8 h-8" />
-          <span className="text-xl font-bold text-foreground">Orbit Workflow</span>
+          <span className="text-xl font-bold text-foreground">Orbit</span>
         </a>
         
         <nav className="hidden md:flex items-center space-x-8">
