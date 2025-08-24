@@ -77,7 +77,7 @@ const Features = () => {
       
       <main className="pt-0">
         {/* Hero Section */}
-        <section className="pt-16 pb-12 bg-gradient-hero relative overflow-hidden">
+        <section className="pt-16 pb-8 bg-gradient-hero relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-hero/95"></div>
           <div className="absolute top-10 left-10 w-64 h-64 bg-primary-glow/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-10 right-10 w-80 h-80 bg-primary/15 rounded-full blur-3xl"></div>
@@ -98,10 +98,9 @@ const Features = () => {
                 Orbit Workflow has all the tools you need to run your business efficiently.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-0">
                 <Button variant="hero" size="lg" className="text-lg px-8 py-4 h-auto">
-                  <Download className="mr-2 h-5 w-5" />
-                  Download Orbit App
+                  Get Started Free
                 </Button>
                 <Link to="/pricing">
                   <Button variant="outline" size="lg" className="text-lg px-8 py-4 h-auto bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20 hover:bg-primary-foreground/20">
@@ -260,8 +259,7 @@ const Features = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="hero" size="lg" className="text-lg px-8 py-4 h-auto">
-                  <Download className="mr-2 h-5 w-5" />
-                  Download Orbit App
+                  Get Started Free
                 </Button>
                 <Link to="/pricing">
                   <Button variant="outline" size="lg" className="text-lg px-8 py-4 h-auto">
