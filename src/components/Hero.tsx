@@ -42,7 +42,7 @@ const Hero = () => {
               
               <div className="pt-4 mb-16">
                 <Button variant="hero" size="lg" className="group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-glow hover:shadow-elegant transition-all duration-300">
-                  Start Free Now
+                  Start Now
                   <ArrowRight className="ml-2 sm:ml-3 h-4 sm:h-5 w-4 sm:w-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </Button>
               </div>
@@ -66,7 +66,7 @@ const Hero = () => {
               
               <div className="pt-8">
                 <Button variant="hero" size="lg" className="group px-8 py-4 text-lg font-semibold shadow-glow hover:shadow-elegant transition-all duration-300">
-                  Start Free Now
+                  Start Now
                   <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </Button>
               </div>
