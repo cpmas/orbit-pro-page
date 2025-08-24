@@ -198,7 +198,7 @@ const Features = () => {
             </div>
 
             <div className="max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
+              <div className="grid grid-cols-2 gap-3 sm:gap-6">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gradient-card border border-border rounded-xl">
                     <Check className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
