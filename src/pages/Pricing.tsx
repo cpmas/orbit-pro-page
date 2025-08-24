@@ -53,12 +53,12 @@ const Pricing = () => {
               <Card className="bg-gradient-card border-primary/20 shadow-card">
                 <CardHeader className="text-center pb-8">
                   <img 
-                    src="/lovable-uploads/b3c1c316-c02c-4b98-bf83-3a3485ce3376.png" 
+                    src="/lovable-uploads/fa386d72-363f-4056-bed0-16b44bfae597.png" 
                     alt="Orbit - Simple Quotes & Invoices" 
                     className="w-16 h-16 mx-auto mb-4"
                   />
                   <CardTitle className="text-3xl sm:text-4xl font-bold text-foreground mb-2">
-                    Orbit Workflow
+                    Orbit Workflow 
                   </CardTitle>
                   <div className="flex items-center justify-center gap-4 mb-4">
                     <div className="text-center">
