@@ -96,8 +96,8 @@ const Features = () => {
               </p>
               
               {/* Main Screenshot */}
-              <div className="max-w-4xl mx-auto mb-16">
-                <div className="bg-gradient-card border border-border rounded-2xl p-6 shadow-card">
+              <div className="max-w-lg mx-auto mb-16">
+                <div className="bg-gradient-card border border-border rounded-2xl p-4 shadow-card">
                   <img 
                     src="/lovable-uploads/5bce660d-c4fb-4527-a3e8-57dbad5ea428.png" 
                     alt="Orbit dashboard showing quotes, invoices and business features"
