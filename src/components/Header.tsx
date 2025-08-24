@@ -12,7 +12,7 @@ const Header = () => {
         </a>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center space-x-8">
           <nav className="flex items-center space-x-8">
             <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
               Features
@@ -39,7 +39,7 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon">
