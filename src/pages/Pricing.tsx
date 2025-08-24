@@ -17,7 +17,7 @@ const Pricing = () => {
     "Real-time sync across devices",
     "Business analytics dashboard",
     "Range of professional templates",
-    "Unlimited quotes & invoices"
+    "Unlimited quotes & invoices",
     "Unlimited clients"
   ];
 
