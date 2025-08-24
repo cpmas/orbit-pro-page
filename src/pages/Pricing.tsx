@@ -59,7 +59,7 @@ const Pricing = () => {
                     className="w-16 h-16 mx-auto"
                   />
                   
-                  <div className="flex items-center justify-center gap-4 mb-150">
+                  <div className="flex items-center justify-center gap-4 mb-8">
                     <div className="text-center">
                       <div className="text-4xl font-bold text-primary mb-0.5">$9</div>
                       <div className="text-sm text-muted-foreground mb-0.5">per month</div>
@@ -73,7 +73,7 @@ const Pricing = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                    <div className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mt-10">
                       Save 26% with annual billing
                     </div>
                     <div className="text-xs text-muted-foreground mt-2">
