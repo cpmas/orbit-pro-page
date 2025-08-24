@@ -8,16 +8,15 @@ import { Link } from "react-router-dom";
 const Pricing = () => {
   const features = [
     "Save your details & clients",
-    "Branded templates",
+    "Use your own branding",
     "Smart quote/invoice tracking", 
     "Simple client management",
     "Professional PDF generation",
     "GST compliant calculations",
     "Mobile-first design",
-    "Works offline",
     "Real-time sync across devices",
     "Business analytics dashboard",
-    "Australian templates",
+    "Range of professional templates",
     "Unlimited quotes & invoices"
   ];
 
@@ -26,30 +25,6 @@ const Pricing = () => {
       <Header />
       
       <main className="pt-20">
-        {/* Free Invoice Generator Section */}
-        <section className="py-16 bg-gradient-to-b from-background via-primary/5 to-background">
-          <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-                <FileText className="w-4 h-4 mr-2" />
-                Always Free
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-                Free Invoice Generator
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                Create professional invoices instantly. No signup, no account required.
-              </p>
-              <Link to="/invoice-generator">
-                <Button variant="outline" size="lg" className="group">
-                  Try Free Invoice Generator
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
-
         {/* Main Pricing Section */}
         <section className="py-24 bg-gradient-hero relative overflow-hidden">
           {/* Background Elements */}
@@ -134,7 +109,7 @@ const Pricing = () => {
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </Button>
                     <p className="text-sm text-muted-foreground">
-                      Founders pricing locked in for life • 30-day money-back guarantee
+                      Founders pricing locked in for life
                     </p>
                   </div>
                 </CardContent>
