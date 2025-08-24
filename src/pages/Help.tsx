@@ -69,6 +69,47 @@ const Help = () => {
             </p>
           </div>
 
+          {/* Common Questions - Full Width */}
+          <Card className="shadow-card mb-12">
+            <CardHeader>
+              <CardTitle>Common Questions</CardTitle>
+              <CardDescription>
+                Quick answers to frequently asked questions.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="border-l-4 border-primary bg-accent/20 p-4 rounded-r-lg">
+                <h4 className="font-semibold mb-2 flex items-center">
+                  <HelpCircle className="h-4 w-4 mr-2 text-primary" />
+                  How do I generate an invoice?
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Use our free <a href="/invoice-generator" className="text-primary hover:underline">Invoice Generator</a> tool. Simply fill in your business details and invoice items to create a professional invoice.
+                </p>
+              </div>
+              
+              <div className="border-l-4 border-primary bg-accent/20 p-4 rounded-r-lg">
+                <h4 className="font-semibold mb-2 flex items-center">
+                  <Settings className="h-4 w-4 mr-2 text-primary" />
+                  Can I customize invoice templates?
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Yes! Our premium plans offer custom invoice templates, branding options, and advanced formatting features.
+                </p>
+              </div>
+              
+              <div className="border-l-4 border-primary bg-accent/20 p-4 rounded-r-lg">
+                <h4 className="font-semibold mb-2 flex items-center">
+                  <FileText className="h-4 w-4 mr-2 text-primary" />
+                  What file formats are supported?
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  You can download invoices as PDF files, which are compatible with all devices and easy to share with clients.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Help Request Form */}
             <Card className="shadow-card">
@@ -135,48 +176,8 @@ const Help = () => {
               </CardContent>
             </Card>
 
-            {/* FAQ and Quick Help */}
+            {/* Support Info and Resources */}
             <div className="space-y-6">
-              <Card className="shadow-card">
-                <CardHeader>
-                  <CardTitle>Common Questions</CardTitle>
-                  <CardDescription>
-                    Quick answers to frequently asked questions.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="border-l-4 border-primary bg-accent/20 p-4 rounded-r-lg">
-                    <h4 className="font-semibold mb-2 flex items-center">
-                      <HelpCircle className="h-4 w-4 mr-2 text-primary" />
-                      How do I generate an invoice?
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      Use our free <a href="/invoice-generator" className="text-primary hover:underline">Invoice Generator</a> tool. Simply fill in your business details and invoice items to create a professional invoice.
-                    </p>
-                  </div>
-                  
-                  <div className="border-l-4 border-primary bg-accent/20 p-4 rounded-r-lg">
-                    <h4 className="font-semibold mb-2 flex items-center">
-                      <Settings className="h-4 w-4 mr-2 text-primary" />
-                      Can I customize invoice templates?
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      Yes! Our premium plans offer custom invoice templates, branding options, and advanced formatting features.
-                    </p>
-                  </div>
-                  
-                  <div className="border-l-4 border-primary bg-accent/20 p-4 rounded-r-lg">
-                    <h4 className="font-semibold mb-2 flex items-center">
-                      <FileText className="h-4 w-4 mr-2 text-primary" />
-                      What file formats are supported?
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      You can download invoices as PDF files, which are compatible with all devices and easy to share with clients.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
               <Card className="shadow-card">
                 <CardHeader>
                   <CardTitle>Support Information</CardTitle>
