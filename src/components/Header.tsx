@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
 
 const Header = () => {
   return (
@@ -9,28 +11,66 @@ const Header = () => {
           <span className="text-xl font-bold text-foreground">Orbit</span>
         </a>
         
-        <nav className="hidden md:flex items-center space-x-8">
-          <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
-            Features
-          </a>
-          <a href="/invoice-generator" className="text-muted-foreground hover:text-foreground transition-colors">
-            Free Invoice Generator
-          </a>
-          <a href="/pricing" className="text-muted-foreground hover:text-foreground transition-colors">
-            Pricing
-          </a>
-          <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
-            About
-          </a>
-        </nav>
-        
-        <div className="flex items-center space-x-4">
-          <Button variant="outline" className="hidden sm:inline-flex">
-            Login
-          </Button>
-          <Button variant="hero">
-            Get Started Free
-          </Button>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-8">
+          <nav className="flex items-center space-x-8">
+            <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
+              Features
+            </a>
+            <a href="/invoice-generator" className="text-muted-foreground hover:text-foreground transition-colors">
+              Free Invoice Generator
+            </a>
+            <a href="/pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+              Pricing
+            </a>
+            <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
+              About
+            </a>
+          </nav>
+          
+          <div className="flex items-center space-x-4">
+            <Button variant="outline">
+              Login
+            </Button>
+            <Button variant="hero">
+              Get Started Free
+            </Button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="md:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Menu className="h-4 w-4" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-80">
+              <nav className="flex flex-col space-y-6 mt-8">
+                <a href="#features" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
+                  Features
+                </a>
+                <a href="/invoice-generator" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
+                  Free Invoice Generator
+                </a>
+                <a href="/pricing" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
+                  Pricing
+                </a>
+                <a href="#about" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
+                  About
+                </a>
+                <div className="flex flex-col space-y-4 pt-6 border-t">
+                  <Button variant="outline">
+                    Login
+                  </Button>
+                  <Button variant="hero">
+                    Get Started Free
+                  </Button>
+                </div>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
