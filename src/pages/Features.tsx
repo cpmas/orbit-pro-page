@@ -36,6 +36,29 @@ const Features = () => {
   }, [screenshots.length]);
 
   const features = [
+    {
+      icon: FileText,
+      title: "Professional Quotes & Invoices",
+      description: "Create beautiful, itemized quotes and invoices with professional templates. Convert quotes to invoices with one click."
+    },
+    {
+      icon: Users,
+      title: "Complete Client Management", 
+      description: "Store client details, ABN information, addresses, and track full client history in one organized place."
+    },
+    {
+      icon: BarChart3,
+      title: "Business Analytics Dashboard",
+      description: "Track revenue, outstanding amounts, win rates, and business performance with comprehensive reporting."
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile-First Design",
+      description: "Work from anywhere with our fully responsive mobile app. Create quotes and invoices on the go."
+    }
+  ];
+
+  const benefits = [
     "Save your business details and client information",
     "Use your own branding on all documents", 
     "Smart quote and invoice tracking system",
@@ -103,23 +126,30 @@ const Features = () => {
             </div>
 
             {/* Features and Screenshots Layout */}
-            <div className="grid lg:grid-cols-2 gap-4 items-center max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-8 items-start">
               {/* Features Grid - Left on desktop, top on mobile */}
-              <div className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {features.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-3 p-3 bg-gradient-card border border-border rounded-xl">
-                      <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{feature}</span>
-                    </div>
-                  ))}
-                </div>
+              <div className="grid grid-cols-1 gap-4">
+                {features.map((feature, index) => (
+                  <Card key={index} className="group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-border/50 bg-gradient-card">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                          <feature.icon className="w-6 h-6" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
 
               {/* Screenshot Slideshow - Right on desktop, bottom on mobile */}
-              <div className="relative flex justify-center">
+              <div className="relative flex justify-center lg:justify-end">
                 <div className="bg-gradient-card border border-border rounded-xl p-2 shadow-card" style={{ width: 'fit-content' }}>
-                  <div className="relative overflow-hidden rounded-lg w-[280px] h-[500px] sm:w-[320px] sm:h-[570px]">
+                  <div className="relative overflow-hidden rounded-lg" style={{ width: '368px', height: '630px' }}>
                     <div 
                       className="flex transition-transform duration-500 ease-in-out h-full"
                       style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -129,7 +159,8 @@ const Features = () => {
                           key={index}
                           src={screenshot.src} 
                           alt={screenshot.alt}
-                          className="flex-shrink-0 object-contain w-[280px] h-[500px] sm:w-[320px] sm:h-[570px]"
+                          className="flex-shrink-0 object-contain"
+                          style={{ width: '368px', height: '630px' }}
                         />
                       ))}
                     </div>
@@ -169,10 +200,10 @@ const Features = () => {
 
             <div className="max-w-4xl mx-auto">
               <div className="grid md:grid-cols-2 gap-6">
-                {features.map((feature, index) => (
+                {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-center gap-3 p-4 bg-gradient-card border border-border rounded-xl">
                     <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span className="text-muted-foreground">{feature}</span>
+                    <span className="text-muted-foreground">{benefit}</span>
                   </div>
                 ))}
               </div>
