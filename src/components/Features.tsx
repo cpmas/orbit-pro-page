@@ -83,19 +83,12 @@ const Features = () => {
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center pt-2">
           {/* Image Section - Mobile/Tablet First, Desktop Second */}
-          <div className="relative order-1 lg:order-2 py-8 md:py-12 lg:py-0">
+          <div className="order-1 lg:order-2 py-8 md:py-12 lg:py-0">
             <img 
               src="/lovable-uploads/5bce660d-c4fb-4527-a3e8-57dbad5ea428.png" 
               alt="Orbit dashboard showing quotes, invoices and business metrics"
               className="w-full max-w-md mx-auto rounded-2xl shadow-card"
             />
-            <div className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-primary rounded-2xl flex items-center justify-center shadow-glow">
-              <img 
-                src="/lovable-uploads/fa386d72-363f-4056-bed0-16b44bfae597.png" 
-                alt="Orbit Logo"
-                className="w-12 h-12"
-              />
-            </div>
           </div>
           
           {/* Text Section - Mobile/Tablet Second, Desktop First */}
