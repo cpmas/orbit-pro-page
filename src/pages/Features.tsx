@@ -77,7 +77,7 @@ const Features = () => {
       
       <main className="pt-0">
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-hero relative overflow-hidden">
+        <section className="pt-16 pb-12 bg-gradient-hero relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-hero/95"></div>
           <div className="absolute top-10 left-10 w-64 h-64 bg-primary-glow/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-10 right-10 w-80 h-80 bg-primary/15 rounded-full blur-3xl"></div>
