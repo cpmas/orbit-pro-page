@@ -118,36 +118,34 @@ const Features = () => {
             {/* Mobile: Screenshot first, then heading */}
             <div className="lg:hidden mb-8">
               <div className="relative flex justify-center">
-                <div className="bg-gradient-card border border-border rounded-xl p-2 shadow-card">
-                  <div className="relative overflow-hidden rounded-lg w-[280px] h-[480px] sm:w-[320px] sm:h-[550px]">
-                    <div 
-                      className="flex transition-transform duration-500 ease-in-out h-full"
-                      style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                    >
-                      {screenshots.map((screenshot, index) => (
-                        <img 
-                          key={index}
-                          src={screenshot.src} 
-                          alt={screenshot.alt}
-                          className="flex-shrink-0 object-contain w-full h-full"
-                        />
-                      ))}
-                    </div>
-                    
-                    {/* Slideshow dots */}
-                    <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                      {screenshots.map((_, index) => (
-                        <button 
-                          key={index}
-                          onClick={() => setCurrentSlide(index)}
-                          className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                            currentSlide === index 
-                              ? 'bg-primary opacity-100' 
-                              : 'bg-white/50 opacity-70 hover:opacity-90'
-                          }`}
-                        />
-                      ))}
-                    </div>
+                <div className="relative overflow-hidden rounded-lg w-[280px] h-[480px] sm:w-[320px] sm:h-[550px] bg-gradient-card border border-border shadow-card">
+                  <div 
+                    className="flex transition-transform duration-500 ease-in-out h-full"
+                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  >
+                    {screenshots.map((screenshot, index) => (
+                      <img 
+                        key={index}
+                        src={screenshot.src} 
+                        alt={screenshot.alt}
+                        className="flex-shrink-0 object-contain w-full h-full"
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Slideshow dots */}
+                  <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    {screenshots.map((_, index) => (
+                      <button 
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                          currentSlide === index 
+                            ? 'bg-primary opacity-100' 
+                            : 'bg-white/50 opacity-70 hover:opacity-90'
+                        }`}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
@@ -185,36 +183,34 @@ const Features = () => {
 
               {/* Screenshot Slideshow - Right on desktop, hidden on mobile */}
               <div className="relative hidden lg:flex justify-center lg:flex-1 mt-8 lg:mt-0">
-                <div className="bg-gradient-card border border-border rounded-xl p-2 shadow-card">
-                  <div className="relative overflow-hidden rounded-lg w-[280px] h-[480px] sm:w-[320px] sm:h-[550px] lg:w-[300px] lg:h-[520px] xl:w-[340px] xl:h-[580px]">
-                    <div 
-                      className="flex transition-transform duration-500 ease-in-out h-full"
-                      style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                    >
-                      {screenshots.map((screenshot, index) => (
-                        <img 
-                          key={index}
-                          src={screenshot.src} 
-                          alt={screenshot.alt}
-                          className="flex-shrink-0 object-contain w-full h-full"
-                        />
-                      ))}
-                    </div>
-                    
-                    {/* Slideshow dots */}
-                    <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                      {screenshots.map((_, index) => (
-                        <button 
-                          key={index}
-                          onClick={() => setCurrentSlide(index)}
-                          className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                            currentSlide === index 
-                              ? 'bg-primary opacity-100' 
-                              : 'bg-white/50 opacity-70 hover:opacity-90'
-                          }`}
-                        />
-                      ))}
-                    </div>
+                <div className="relative overflow-hidden rounded-lg w-[280px] h-[480px] sm:w-[320px] sm:h-[550px] lg:w-[300px] lg:h-[520px] xl:w-[340px] xl:h-[580px] bg-gradient-card border border-border shadow-card">
+                  <div 
+                    className="flex transition-transform duration-500 ease-in-out h-full"
+                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  >
+                    {screenshots.map((screenshot, index) => (
+                      <img 
+                        key={index}
+                        src={screenshot.src} 
+                        alt={screenshot.alt}
+                        className="flex-shrink-0 object-contain w-full h-full"
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Slideshow dots */}
+                  <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    {screenshots.map((_, index) => (
+                      <button 
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                          currentSlide === index 
+                            ? 'bg-primary opacity-100' 
+                            : 'bg-white/50 opacity-70 hover:opacity-90'
+                        }`}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
