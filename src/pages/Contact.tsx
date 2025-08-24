@@ -141,18 +141,8 @@ const Contact = () => {
               <Card className="shadow-card">
                 <CardHeader>
                   <CardTitle>Get in touch</CardTitle>
-                  <CardDescription>
-                    Prefer to contact us directly? Here are our details.
-                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <Mail className="h-5 w-5 text-primary" />
-                    <div>
-                      <p className="font-medium">Email</p>
-                      <p className="text-muted-foreground">info@orbitworkflow.com</p>
-                    </div>
-                  </div>
                   
                   <div className="flex items-center space-x-3">
                     <Phone className="h-5 w-5 text-primary" />
@@ -182,9 +172,6 @@ const Contact = () => {
                   </p>
                   <p className="text-sm text-muted-foreground">
                     <strong>Technical support:</strong> Visit our <a href="/help" className="text-primary hover:underline">Help page</a> for technical assistance.
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    <strong>Sales:</strong> Interested in our premium features? Contact us through the form above.
                   </p>
                 </CardContent>
               </Card>
