@@ -87,7 +87,7 @@ const Footer = () => {
 
         <div className="border-t border-border mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-muted-foreground text-sm">
-            © 2024 Orbit Workflow. All rights reserved.
+            © 2025 Orbit Workflow. All rights reserved.
           </div>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">
