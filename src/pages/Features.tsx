@@ -4,8 +4,33 @@ import { Check, FileText, Users, BarChart3, Smartphone, Zap, Shield, Download } 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Features = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const screenshots = [
+    {
+      src: "/lovable-uploads/5bce660d-c4fb-4527-a3e8-57dbad5ea428.png",
+      alt: "Orbit dashboard showing quotes, invoices and business features"
+    },
+    {
+      src: "/lovable-uploads/b3c1c316-c02c-4b98-bf83-3a3485ce3376.png",
+      alt: "Client management interface"
+    },
+    {
+      src: "/lovable-uploads/f0f3e6b3-a74b-4734-a624-0dee11cbc578.png",
+      alt: "Mobile app interface"
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % screenshots.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [screenshots.length]);
+
   const features = [
     {
       icon: FileText,
@@ -94,32 +119,60 @@ const Features = () => {
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
                 Discover the powerful features that make Orbit the perfect choice for Australian small businesses.
               </p>
-              
-              {/* Main Screenshot */}
-              <div className="max-w-lg mx-auto mb-16">
-                <div className="bg-gradient-card border border-border rounded-2xl p-4 shadow-card">
-                  <img 
-                    src="/lovable-uploads/5bce660d-c4fb-4527-a3e8-57dbad5ea428.png" 
-                    alt="Orbit dashboard showing quotes, invoices and business features"
-                    className="w-full h-auto rounded-lg"
-                  />
-                </div>
-              </div>
             </div>
 
-            {/* Features Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {features.map((feature, index) => (
-                <Card key={index} className="group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-border/50 bg-gradient-card">
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                      <feature.icon className="w-6 h-6" />
+            {/* Features and Screenshots Layout */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Features Grid - Left on desktop, top on mobile */}
+              <div className="grid grid-cols-2 gap-6">
+                {features.map((feature, index) => (
+                  <Card key={index} className="group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-border/50 bg-gradient-card">
+                    <CardContent className="p-4">
+                      <div className="w-10 h-10 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                        <feature.icon className="w-5 h-5" />
+                      </div>
+                      <h3 className="text-base font-semibold text-foreground mb-2 leading-tight">{feature.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Screenshot Slideshow - Right on desktop, bottom on mobile */}
+              <div className="relative">
+                <div className="bg-gradient-card border border-border rounded-xl p-3 shadow-card max-w-sm mx-auto">
+                  <div className="relative overflow-hidden rounded-lg">
+                    <div 
+                      className="flex transition-transform duration-500 ease-in-out"
+                      style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                    >
+                      {screenshots.map((screenshot, index) => (
+                        <img 
+                          key={index}
+                          src={screenshot.src} 
+                          alt={screenshot.alt}
+                          className="w-full h-auto flex-shrink-0"
+                        />
+                      ))}
                     </div>
-                    <h3 className="text-lg font-semibold text-foreground mb-3">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
+                    
+                    {/* Slideshow dots */}
+                    <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                      {screenshots.map((_, index) => (
+                        <button 
+                          key={index}
+                          onClick={() => setCurrentSlide(index)}
+                          className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                            currentSlide === index 
+                              ? 'bg-primary opacity-100' 
+                              : 'bg-white/50 opacity-70 hover:opacity-90'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
