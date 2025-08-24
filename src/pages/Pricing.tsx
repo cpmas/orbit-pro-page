@@ -4,8 +4,13 @@ import { Check, ArrowRight, Zap, Clock, Star, FileText, Users, Shield } from "lu
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Pricing = () => {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const features = [
     "Save your details & clients",
     "Use your own branding",
