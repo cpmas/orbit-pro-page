@@ -3,17 +3,17 @@ import { Button } from "@/components/ui/button";
 const Footer = () => {
   const footerLinks = {
     product: [
-      { name: "Features", href: "#features" },
-      { name: "Pricing", href: "#pricing" },
-      { name: "Templates", href: "#" }
+      { name: "Features", href: "/features" },
+      { name: "Pricing", href: "/pricing" },
+      { name: "Templates", href: "/coming-soon" }
     ],
     company: [
-      { name: "About Us", href: "#" },
-      { name: "Blog", href: "#" }
+      { name: "About Us", href: "/about" },
+      { name: "Blog", href: "/coming-soon" }
     ],
     support: [
-      { name: "Help Center", href: "#" },
-      { name: "Contact", href: "#" }
+      { name: "Help Center", href: "/coming-soon" },
+      { name: "Contact", href: "/coming-soon" }
     ]
   };
 
