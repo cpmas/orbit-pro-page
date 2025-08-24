@@ -11,16 +11,20 @@ const Features = () => {
   
   const screenshots = [
     {
-      src: "/lovable-uploads/5bce660d-c4fb-4527-a3e8-57dbad5ea428.png",
-      alt: "Orbit dashboard showing quotes, invoices and business features"
+      src: "/lovable-uploads/2328f370-2b55-485a-8bb9-6799f0a85bd6.png",
+      alt: "Quote detail screen showing itemized quote with GST calculations"
     },
     {
-      src: "/lovable-uploads/b3c1c316-c02c-4b98-bf83-3a3485ce3376.png",
-      alt: "Client management interface"
+      src: "/lovable-uploads/b151b4db-ea90-4003-b6b7-41f468cb2e83.png",
+      alt: "Dashboard showing quotes overview with business metrics"
     },
     {
-      src: "/lovable-uploads/f0f3e6b3-a74b-4734-a624-0dee11cbc578.png",
-      alt: "Mobile app interface"
+      src: "/lovable-uploads/c57920eb-45ce-435b-a5f8-d6ec64c23514.png",
+      alt: "Client profile page with contact details and quote history"
+    },
+    {
+      src: "/lovable-uploads/0706d7e7-a5b2-4844-9fd8-805553c9a9d3.png",
+      alt: "Business analytics dashboard with revenue and performance metrics"
     }
   ];
 
