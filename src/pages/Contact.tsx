@@ -140,7 +140,7 @@ const Contact = () => {
             <div className="space-y-8">
               <Card className="shadow-card">
                 <CardHeader>
-                  <CardTitle>Get in touch</CardTitle>
+                  <CardTitle>Support Information</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   
