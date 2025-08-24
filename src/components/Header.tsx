@@ -14,7 +14,7 @@ const Header = () => {
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-8">
           <nav className="flex items-center space-x-8">
-            <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="/features" className="text-muted-foreground hover:text-foreground transition-colors">
               Features
             </a>
             <a href="/invoice-generator" className="text-muted-foreground hover:text-foreground transition-colors">
@@ -23,7 +23,7 @@ const Header = () => {
             <a href="/pricing" className="text-muted-foreground hover:text-foreground transition-colors">
               Pricing
             </a>
-            <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="/about" className="text-muted-foreground hover:text-foreground transition-colors">
               About
             </a>
           </nav>
@@ -48,7 +48,7 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-80">
               <nav className="flex flex-col space-y-6 mt-8">
-                <a href="#features" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
+                <a href="/features" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
                   Features
                 </a>
                 <a href="/invoice-generator" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
@@ -57,7 +57,7 @@ const Header = () => {
                 <a href="/pricing" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
                   Pricing
                 </a>
-                <a href="#about" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
+                <a href="/about" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
                   About
                 </a>
                 <div className="flex flex-col space-y-4 pt-6 border-t">
