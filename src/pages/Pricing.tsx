@@ -18,6 +18,7 @@ const Pricing = () => {
     "Business analytics dashboard",
     "Range of professional templates",
     "Unlimited quotes & invoices"
+    "Unlimited clients"
   ];
 
   return (
@@ -57,9 +58,7 @@ const Pricing = () => {
                     alt="Orbit - Simple Quotes & Invoices" 
                     className="w-16 h-16 mx-auto mb-4"
                   />
-                  <CardTitle className="text-3xl sm:text-4xl font-bold text-foreground mb-2">
-                    Orbit Workflow 
-                  </CardTitle>
+                  
                   <div className="flex items-center justify-center gap-4 mb-4">
                     <div className="text-center">
                       <div className="text-4xl font-bold text-primary mb-1">$9</div>
