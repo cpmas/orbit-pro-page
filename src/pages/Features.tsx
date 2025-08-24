@@ -182,9 +182,9 @@ const Features = () => {
 
             {/* Desktop Layout */}
             <div className="hidden lg:block">
-              <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-center max-w-7xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-8 xl:gap-12 items-center max-w-6xl mx-auto">
                 {/* Features Column */}
-                <div className="space-y-6">
+                <div className="space-y-6 w-full">
                   {features.map((feature, index) => (
                     <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border/50 bg-gradient-card">
                       <CardContent className="p-6">
@@ -203,7 +203,7 @@ const Features = () => {
                 </div>
 
                 {/* Screenshot Column */}
-                <div className="flex justify-center">
+                <div className="flex justify-center items-center w-full">
                   <div className="relative overflow-hidden rounded-xl w-[340px] h-[580px] bg-gradient-card border border-border shadow-xl">
                     <div 
                       className="flex transition-transform duration-500 ease-in-out h-full"
