@@ -59,7 +59,7 @@ const Pricing = () => {
                     className="w-16 h-16 mx-auto"
                   />
                   
-                  <div className="flex items-center justify-center gap-4 mb-15">
+                  <div className="flex items-center justify-center gap-4 mb-150">
                     <div className="text-center">
                       <div className="text-4xl font-bold text-primary mb-0.5">$9</div>
                       <div className="text-sm text-muted-foreground mb-0.5">per month</div>
