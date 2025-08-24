@@ -115,42 +115,6 @@ const Features = () => {
         {/* Core Features */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            {/* Mobile: Screenshot first, then heading */}
-            <div className="lg:hidden mb-8">
-              <div className="relative flex justify-center">
-                <div className="relative overflow-hidden rounded-lg w-[280px] h-[480px] sm:w-[320px] sm:h-[550px] bg-gradient-card border border-border shadow-card">
-                  <div 
-                    className="flex transition-transform duration-500 ease-in-out h-full"
-                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                  >
-                    {screenshots.map((screenshot, index) => (
-                      <img 
-                        key={index}
-                        src={screenshot.src} 
-                        alt={screenshot.alt}
-                        className="flex-shrink-0 object-contain w-full h-full"
-                      />
-                    ))}
-                  </div>
-                  
-                  {/* Slideshow dots */}
-                  <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                    {screenshots.map((_, index) => (
-                      <button 
-                        key={index}
-                        onClick={() => setCurrentSlide(index)}
-                        className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                          currentSlide === index 
-                            ? 'bg-primary opacity-100' 
-                            : 'bg-white/50 opacity-70 hover:opacity-90'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
                 Core Features
@@ -160,30 +124,11 @@ const Features = () => {
               </p>
             </div>
 
-            {/* Features and Screenshots Layout */}
-            <div className="flex flex-col lg:flex-row lg:gap-4 xl:gap-6 items-center justify-center max-w-6xl mx-auto">
-              {/* Features Grid - Left on desktop, top on mobile */}
-              <div className="grid grid-cols-1 gap-4 lg:flex-1 w-full lg:max-w-md">
-                {features.map((feature, index) => (
-                  <Card key={index} className="group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-border/50 bg-gradient-card">
-                    <CardContent className="p-4 sm:p-6">
-                      <div className="flex items-start gap-3 sm:gap-4">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                          <feature.icon className="w-5 h-5 sm:w-6 sm:h-6" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-base sm:text-lg font-semibold text-foreground mb-1 sm:mb-2">{feature.title}</h3>
-                          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Screenshot Slideshow - Right on desktop, hidden on mobile */}
-              <div className="relative hidden lg:flex justify-center lg:flex-1 mt-8 lg:mt-0">
-                <div className="relative overflow-hidden rounded-lg w-[280px] h-[480px] sm:w-[320px] sm:h-[550px] lg:w-[300px] lg:h-[520px] xl:w-[340px] xl:h-[580px] bg-gradient-card border border-border shadow-card">
+            {/* Mobile Layout */}
+            <div className="lg:hidden">
+              {/* Mobile Screenshot */}
+              <div className="flex justify-center mb-12">
+                <div className="relative overflow-hidden rounded-xl w-[280px] h-[480px] sm:w-[320px] sm:h-[550px] bg-gradient-card border border-border shadow-lg">
                   <div 
                     className="flex transition-transform duration-500 ease-in-out h-full"
                     style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -199,18 +144,95 @@ const Features = () => {
                   </div>
                   
                   {/* Slideshow dots */}
-                  <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
                     {screenshots.map((_, index) => (
                       <button 
                         key={index}
                         onClick={() => setCurrentSlide(index)}
-                        className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                        className={`w-2.5 h-2.5 rounded-full transition-all duration-200 ${
                           currentSlide === index 
                             ? 'bg-primary opacity-100' 
-                            : 'bg-white/50 opacity-70 hover:opacity-90'
+                            : 'bg-white/60 opacity-80 hover:opacity-100'
                         }`}
                       />
                     ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile Features Grid */}
+              <div className="grid grid-cols-1 gap-6 max-w-lg mx-auto">
+                {features.map((feature, index) => (
+                  <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border/50 bg-gradient-card">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                          <feature.icon className="w-6 h-6" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop Layout */}
+            <div className="hidden lg:block">
+              <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-center max-w-7xl mx-auto">
+                {/* Features Column */}
+                <div className="space-y-6">
+                  {features.map((feature, index) => (
+                    <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border/50 bg-gradient-card">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                            <feature.icon className="w-6 h-6" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+
+                {/* Screenshot Column */}
+                <div className="flex justify-center">
+                  <div className="relative overflow-hidden rounded-xl w-[340px] h-[580px] bg-gradient-card border border-border shadow-xl">
+                    <div 
+                      className="flex transition-transform duration-500 ease-in-out h-full"
+                      style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                    >
+                      {screenshots.map((screenshot, index) => (
+                        <img 
+                          key={index}
+                          src={screenshot.src} 
+                          alt={screenshot.alt}
+                          className="flex-shrink-0 object-contain w-full h-full"
+                        />
+                      ))}
+                    </div>
+                    
+                    {/* Slideshow dots */}
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                      {screenshots.map((_, index) => (
+                        <button 
+                          key={index}
+                          onClick={() => setCurrentSlide(index)}
+                          className={`w-2.5 h-2.5 rounded-full transition-all duration-200 ${
+                            currentSlide === index 
+                              ? 'bg-primary opacity-100' 
+                              : 'bg-white/60 opacity-80 hover:opacity-100'
+                          }`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
