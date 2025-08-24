@@ -149,7 +149,7 @@ const Features = () => {
               {/* Screenshot Slideshow - Right on desktop, bottom on mobile */}
               <div className="relative flex justify-center lg:justify-end">
                 <div className="bg-gradient-card border border-border rounded-xl p-2 shadow-card" style={{ width: 'fit-content' }}>
-                  <div className="relative overflow-hidden rounded-lg" style={{ width: '280px', height: '600px' }}>
+                  <div className="relative overflow-hidden rounded-lg" style={{ width: '645px', height: '1103px' }}>
                     <div 
                       className="flex transition-transform duration-500 ease-in-out h-full"
                       style={{ transform: `translateX(-${currentSlide * 100}%)` }}
