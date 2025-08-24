@@ -10,26 +10,22 @@ const Features = () => {
     {
       icon: FileText,
       title: "Professional Quotes & Invoices",
-      description: "Create beautiful, itemized quotes and invoices with professional templates. Convert quotes to invoices with one click.",
-      screenshot: "/lovable-uploads/5bce660d-c4fb-4527-a3e8-57dbad5ea428.png"
+      description: "Create beautiful, itemized quotes and invoices with professional templates. Convert quotes to invoices with one click."
     },
     {
       icon: Users,
       title: "Complete Client Management", 
-      description: "Store client details, ABN information, addresses, and track full client history in one organized place.",
-      screenshot: "/lovable-uploads/b3c1c316-c02c-4b98-bf83-3a3485ce3376.png"
+      description: "Store client details, ABN information, addresses, and track full client history in one organized place."
     },
     {
       icon: BarChart3,
       title: "Business Analytics Dashboard",
-      description: "Track revenue, outstanding amounts, win rates, and business performance with comprehensive reporting.",
-      screenshot: "/src/assets/hero-dashboard.jpg"
+      description: "Track revenue, outstanding amounts, win rates, and business performance with comprehensive reporting."
     },
     {
       icon: Smartphone,
       title: "Mobile-First Design",
-      description: "Work from anywhere with our fully responsive mobile app. Create quotes and invoices on the go.",
-      screenshot: "/lovable-uploads/f0f3e6b3-a74b-4734-a624-0dee11cbc578.png"
+      description: "Work from anywhere with our fully responsive mobile app. Create quotes and invoices on the go."
     }
   ];
 
@@ -95,35 +91,34 @@ const Features = () => {
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
                 Core Features
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
                 Discover the powerful features that make Orbit the perfect choice for Australian small businesses.
               </p>
+              
+              {/* Main Screenshot */}
+              <div className="max-w-4xl mx-auto mb-16">
+                <div className="bg-gradient-card border border-border rounded-2xl p-6 shadow-card">
+                  <img 
+                    src="/lovable-uploads/5bce660d-c4fb-4527-a3e8-57dbad5ea428.png" 
+                    alt="Orbit dashboard showing quotes, invoices and business features"
+                    className="w-full h-auto rounded-lg"
+                  />
+                </div>
+              </div>
             </div>
 
-            <div className="space-y-16">
+            {/* Features Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {features.map((feature, index) => (
-                <div key={index} className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-row-dense' : ''}`}>
-                  <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                    <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6">
-                      <feature.icon className="w-8 h-8" />
+                <Card key={index} className="group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-border/50 bg-gradient-card">
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                      <feature.icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-4">{feature.title}</h3>
-                    <p className="text-lg text-muted-foreground mb-6">{feature.description}</p>
-                    <div className="flex items-center text-primary font-medium">
-                      <Check className="w-5 h-5 mr-2" />
-                      Built for Australian businesses
-                    </div>
-                  </div>
-                  <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
-                    <div className="bg-gradient-card border border-border rounded-2xl p-4 shadow-card">
-                      <img 
-                        src={feature.screenshot} 
-                        alt={`${feature.title} screenshot`}
-                        className="w-full h-auto rounded-lg"
-                      />
-                    </div>
-                  </div>
-                </div>
+                    <h3 className="text-lg font-semibold text-foreground mb-3">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
