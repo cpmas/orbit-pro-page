@@ -27,7 +27,7 @@ const Pricing = () => {
       
       <main className="pt-0">
         {/* Main Pricing Section */}
-        <section className="py-24 bg-gradient-hero relative overflow-hidden">
+        <section className="py-16 bg-gradient-hero relative overflow-hidden">
           {/* Background Elements */}
           <div className="absolute inset-0 bg-gradient-hero/95"></div>
           <div className="absolute top-10 left-10 w-64 h-64 bg-primary-glow/20 rounded-full blur-3xl"></div>
@@ -52,23 +52,23 @@ const Pricing = () => {
 
             <div className="max-w-4xl mx-auto">
               <Card className="bg-gradient-card border-primary/20 shadow-card">
-                <CardHeader className="text-center pb-8">
+                <CardHeader className="text-center pb-6">
                   <img 
                     src="/lovable-uploads/fa386d72-363f-4056-bed0-16b44bfae597.png" 
                     alt="Orbit - Simple Quotes & Invoices" 
-                    className="w-16 h-16 mx-auto mb-4"
+                    className="w-16 h-16 mx-auto mb-6"
                   />
                   
-                  <div className="flex items-center justify-center gap-4 mb-4">
+                  <div className="flex items-center justify-center gap-4 mb-3">
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-primary mb-1">$9</div>
-                      <div className="text-sm text-muted-foreground">per month</div>
+                      <div className="text-4xl font-bold text-primary mb-0.5">$9</div>
+                      <div className="text-sm text-muted-foreground mb-0.5">per month</div>
                       <div className="text-xs text-muted-foreground line-through">normally $12/mo</div>
                     </div>
-                    <div className="text-muted-foreground text-2xl">or</div>
+                    <div className="text-muted-foreground text-xl">or</div>
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-primary mb-1">$80</div>
-                      <div className="text-sm text-muted-foreground">per year</div>
+                      <div className="text-4xl font-bold text-primary mb-0.5">$80</div>
+                      <div className="text-sm text-muted-foreground mb-0.5">per year</div>
                       <div className="text-xs text-muted-foreground line-through">normally $99/year</div>
                     </div>
                   </div>
@@ -121,7 +121,7 @@ const Pricing = () => {
           </div>
         </section>
 
-        <section className="py-24 bg-muted/30">
+        <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
@@ -167,7 +167,7 @@ const Pricing = () => {
           </div>
         </section>
 
-        <section className="py-24">
+        <section className="py-16">
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-2xl mx-auto">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
