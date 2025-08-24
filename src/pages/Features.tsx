@@ -126,28 +126,32 @@ const Features = () => {
             </div>
 
             {/* Features and Screenshots Layout */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 items-start">
               {/* Features Grid - Left on desktop, top on mobile */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-4">
                 {features.map((feature, index) => (
                   <Card key={index} className="group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-border/50 bg-gradient-card">
-                    <CardContent className="p-4">
-                      <div className="w-10 h-10 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                        <feature.icon className="w-5 h-5" />
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                          <feature.icon className="w-6 h-6" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                        </div>
                       </div>
-                      <h3 className="text-base font-semibold text-foreground mb-2 leading-tight">{feature.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
                     </CardContent>
                   </Card>
                 ))}
               </div>
 
               {/* Screenshot Slideshow - Right on desktop, bottom on mobile */}
-              <div className="relative">
-                <div className="bg-gradient-card border border-border rounded-xl p-3 shadow-card max-w-sm mx-auto">
-                  <div className="relative overflow-hidden rounded-lg">
+              <div className="relative flex justify-center lg:justify-end">
+                <div className="bg-gradient-card border border-border rounded-xl p-2 shadow-card" style={{ width: 'fit-content' }}>
+                  <div className="relative overflow-hidden rounded-lg" style={{ width: '280px', height: '600px' }}>
                     <div 
-                      className="flex transition-transform duration-500 ease-in-out"
+                      className="flex transition-transform duration-500 ease-in-out h-full"
                       style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                     >
                       {screenshots.map((screenshot, index) => (
@@ -155,7 +159,8 @@ const Features = () => {
                           key={index}
                           src={screenshot.src} 
                           alt={screenshot.alt}
-                          className="w-full h-auto flex-shrink-0"
+                          className="flex-shrink-0 object-contain"
+                          style={{ width: '280px', height: '600px' }}
                         />
                       ))}
                     </div>
