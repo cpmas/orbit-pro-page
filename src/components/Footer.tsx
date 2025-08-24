@@ -24,7 +24,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg"></div>
+              <img src="/lovable-uploads/fa386d72-363f-4056-bed0-16b44bfae597.png" alt="Orbit Logo" className="w-8 h-8" />
               <span className="text-xl font-bold text-foreground">Orbit Workflow</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md">
