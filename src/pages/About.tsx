@@ -30,10 +30,10 @@ const About = () => {
   ];
 
   const stats = [
-    { number: "10,000+", label: "Happy Businesses" },
-    { number: "500,000+", label: "Invoices Created" },
-    { number: "99.9%", label: "Uptime" },
-    { number: "24/7", label: "Support" }
+    { number: "2024", label: "Founded" },
+    { number: "Simple", label: "Approach" },
+    { number: "Fast", label: "Setup" },
+    { number: "Reliable", label: "Service" }
   ];
 
   return (
@@ -93,12 +93,14 @@ const About = () => {
                     </p>
                   </div>
                 </div>
-                <div>
-                  <img 
-                    src="/src/assets/features-team.jpg" 
-                    alt="Orbit team working"
-                    className="w-full h-auto rounded-2xl shadow-card"
-                  />
+                <div className="flex justify-center">
+                  <div className="w-64 h-64 bg-muted/30 rounded-2xl flex items-center justify-center">
+                    <img 
+                      src="/lovable-uploads/fa386d72-363f-4056-bed0-16b44bfae597.png" 
+                      alt="Orbit Logo"
+                      className="w-32 h-32 object-contain"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -141,38 +143,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* Australian Focus */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-                Built for Australia
-              </h2>
-              <div className="grid md:grid-cols-3 gap-8 mb-12">
-                <div className="p-6">
-                  <div className="text-2xl mb-4">🏛️</div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">GST Compliant</h3>
-                  <p className="text-muted-foreground">Built-in GST calculations and Australian tax compliance from day one.</p>
-                </div>
-                <div className="p-6">
-                  <div className="text-2xl mb-4">💼</div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">ABN Integration</h3>
-                  <p className="text-muted-foreground">Seamlessly manage ABN details and Australian business standards.</p>
-                </div>
-                <div className="p-6">
-                  <div className="text-2xl mb-4">💰</div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">AUD Pricing</h3>
-                  <p className="text-muted-foreground">Transparent Australian dollar pricing with no hidden fees or conversions.</p>
-                </div>
-              </div>
-              
-              <p className="text-xl text-muted-foreground mb-8">
-                We understand the unique needs of Australian businesses because we are one. 
-                From GST compliance to local business practices, Orbit is designed with Australia in mind.
-              </p>
-            </div>
-          </div>
-        </section>
 
         {/* CTA Section */}
         <section className="py-16 bg-gradient-hero relative overflow-hidden">
@@ -185,18 +155,12 @@ const About = () => {
               <p className="text-xl text-primary-foreground/90 mb-8">
                 Join thousands of Australian businesses who have chosen Orbit for their workflow management needs.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/pricing">
                 <Button variant="hero" size="lg" className="text-lg px-8 py-4 h-auto bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-                  <Download className="mr-2 h-5 w-5" />
-                  Download Orbit App
+                  Get Started
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Link to="/features">
-                  <Button variant="outline" size="lg" className="text-lg px-8 py-4 h-auto bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20 hover:bg-primary-foreground/20">
-                    Explore Features
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-              </div>
+              </Link>
             </div>
           </div>
         </section>
