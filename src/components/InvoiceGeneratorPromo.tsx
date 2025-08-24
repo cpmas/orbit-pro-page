@@ -14,17 +14,17 @@ const InvoiceGeneratorPromo = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
             <Zap className="w-4 h-4 mr-2" />
-            100% Free Tool
+            FREE • NO SIGNUP • INSTANT
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Create Professional Invoices
-            <span className="block text-primary">In Minutes, Not Hours</span>
+            Free Invoice Generator
+            <span className="block text-primary">No Account Required</span>
           </h2>
           
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Get started instantly with our free invoice generator. No signup required, 
-            no personal details stored. Just professional invoices when you need them.
+            Create professional invoices instantly. No signup, no email, no personal details stored. 
+            Just enter your information and download your invoice - it's that simple!
           </p>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">
