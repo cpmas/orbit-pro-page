@@ -13,21 +13,21 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Mobile/Tablet Layout: Compact to fit screen */}
-          <div className="lg:hidden flex flex-col justify-center h-full max-h-[calc(100vh-8rem)] space-y-4 sm:space-y-6">
+          <div className="lg:hidden pt-8 sm:pt-12 pb-8 space-y-6 sm:space-y-8 min-h-[calc(100vh-8rem)] flex flex-col justify-center">
             {/* Image Section - Mobile/Tablet */}
             <div className="relative flex-shrink-0">
               <div className="relative z-10">
                 <img 
                   src="/lovable-uploads/f0f3e6b3-a74b-4734-a624-0dee11cbc578.png" 
                   alt="Orbit Dashboard showing professional invoice and quote management interface with revenue metrics and quick actions"
-                  className="w-full max-w-xs sm:max-w-sm mx-auto rounded-xl sm:rounded-2xl shadow-elegant"
+                  className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto rounded-xl sm:rounded-2xl shadow-elegant"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-hero/30 rounded-xl sm:rounded-2xl blur-2xl transform translate-y-4 scale-95"></div>
             </div>
             
             {/* Content Section - Mobile/Tablet */}
-            <div className="text-center space-y-3 sm:space-y-4 px-2 flex-1 flex flex-col justify-center">
+            <div className="text-center space-y-4 sm:space-y-6 px-2">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-foreground leading-[1.1] tracking-tight">
                 <span className="block drop-shadow-lg">Professional Invoicing</span>
                 <span className="block text-primary-glow drop-shadow-lg font-extrabold">& Workflow Management</span>
@@ -40,7 +40,7 @@ const Hero = () => {
                 </span>
               </p>
               
-              <div className="pt-2 sm:pt-4">
+              <div className="pt-4">
                 <Button variant="hero" size="lg" className="group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-glow hover:shadow-elegant transition-all duration-300">
                   Start Now
                   <ArrowRight className="ml-2 sm:ml-3 h-4 sm:h-5 w-4 sm:w-5 group-hover:translate-x-1 transition-transform duration-200" />
