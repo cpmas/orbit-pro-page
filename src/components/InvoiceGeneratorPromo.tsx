@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const InvoiceGeneratorPromo = () => {
   return (
-    <section className="py-12 md:py-16 relative overflow-hidden bg-gradient-to-b from-background/40 to-transparent">
+    <section className="py-24 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
       <div className="absolute top-0 left-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
