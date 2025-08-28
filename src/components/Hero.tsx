@@ -12,7 +12,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
             {/* Mobile/Tablet Layout: Screenshot first, content below */}
-            <div className="lg:hidden flex flex-col justify-center min-h-[90vh] space-y-4 sm:space-y-6">
+            <div className="lg:hidden flex flex-col justify-center min-h-[90vh] space-y-6 sm:space-y-8 md:space-y-10">
               {/* Image Section - Mobile/Tablet (Top) */}
               <div className="relative flex-shrink-0">
                 <div className="relative z-10">
