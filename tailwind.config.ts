@@ -82,7 +82,8 @@ export default {
 			boxShadow: {
 				'elegant': 'var(--shadow-elegant)',
 				'glow': 'var(--shadow-glow)',
-				'card': 'var(--shadow-card)'
+				'card': 'var(--shadow-card)',
+				'hero': 'var(--shadow-hero)'
 			},
 			transitionTimingFunction: {
 				'smooth': 'var(--transition-smooth)',
