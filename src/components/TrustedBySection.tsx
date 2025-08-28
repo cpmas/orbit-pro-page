@@ -1,6 +1,6 @@
 const TrustedBySection = () => {
   return (
-    <section className="py-12 md:py-16 bg-background/95">
+    <section className="py-12 md:py-16 relative bg-gradient-to-b from-background/60 via-background/90 to-background/40">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Image Section - Mobile/Tablet First, Desktop Second */}

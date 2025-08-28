@@ -45,7 +45,7 @@ const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-12 md:py-16 bg-muted/10">
+    <section id="features" className="py-12 md:py-16 bg-gradient-to-b from-transparent via-background/30 to-background/60">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
