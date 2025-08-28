@@ -3,7 +3,7 @@ import { ArrowRight, Users, Zap, Shield } from "lucide-react";
 
 const CallToAction = () => {
   return (
-    <section className="py-24 bg-gradient-hero relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-gradient-hero relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-hero/95"></div>
       <div className="absolute top-10 left-10 w-64 h-64 bg-primary-glow/20 rounded-full blur-3xl"></div>
