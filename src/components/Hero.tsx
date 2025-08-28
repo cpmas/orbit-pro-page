@@ -9,9 +9,9 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
             {/* Mobile/Tablet Layout: Screenshot first, content below */}
-            <div className="lg:hidden flex flex-col justify-center h-screen py-2 space-y-2">
+            <div className="lg:hidden flex flex-col justify-center h-screen py-4 space-y-4 sm:space-y-6">
               {/* Image Section - Mobile/Tablet (Top) */}
-              <div className="relative flex-shrink-0 flex items-center justify-center">
+              <div className="relative flex-shrink-0 flex-1 flex items-center justify-center">
                 <div className="relative z-10">
                   <img 
                     src="/lovable-uploads/f0f3e6b3-a74b-4734-a624-0dee11cbc578.png" 
