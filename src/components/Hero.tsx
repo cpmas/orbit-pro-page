@@ -46,7 +46,7 @@ const Hero = () => {
                   <img 
                     src="/lovable-uploads/f0f3e6b3-a74b-4734-a624-0dee11cbc578.png" 
                     alt="Orbit Dashboard showing professional invoice and quote management interface with revenue metrics and quick actions"
-                    className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto rounded-xl sm:rounded-2xl shadow-elegant"
+                    className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto rounded-xl sm:rounded-2xl shadow-hero"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-primary/20 rounded-xl sm:rounded-2xl blur-2xl transform translate-y-4 scale-95"></div>
@@ -86,7 +86,7 @@ const Hero = () => {
                 <img 
                   src="/lovable-uploads/f0f3e6b3-a74b-4734-a624-0dee11cbc578.png" 
                   alt="Orbit Dashboard showing professional invoice and quote management interface with revenue metrics and quick actions" 
-                  className="w-full max-w-[29.5rem] mx-auto rounded-3xl shadow-elegant hover:shadow-glow transition-all duration-500"
+                  className="w-full max-w-[29.5rem] mx-auto rounded-3xl shadow-hero hover:shadow-glow transition-all duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-primary/20 rounded-3xl blur-2xl transform translate-y-6 scale-95"></div>
