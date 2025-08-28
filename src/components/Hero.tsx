@@ -21,7 +21,7 @@ const Hero = () => {
                   className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto rounded-xl sm:rounded-2xl shadow-sm md:shadow-elegant"
                 />
               </div>
-              <div className="absolute inset-0 bg-primary/20 rounded-xl sm:rounded-2xl blur-2xl transform translate-y-4 scale-[0.7]"></div>
+              <div className="absolute inset-0 bg-primary/20 rounded-xl sm:rounded-2xl blur-2xl transform translate-y-4 scale-95 md:scale-[0.6]"></div>
             </div>
             
             {/* Content Section - Mobile/Tablet */}
