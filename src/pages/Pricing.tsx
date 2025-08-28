@@ -129,7 +129,7 @@ const Pricing = () => {
               </h2>
               <p className="text-xl text-muted-foreground">
                 We're focused on building the simplest, fastest invoicing and quoting tool for trades and small businesses. 
-                Right now, our priority is learning from real users like you — what works, what doesn't, and what features make the biggest difference in your day.
+                Right now, our priority is learning from real users like you! What works, what doesn't, and what features make the biggest difference in your day.
               </p>
             </div>
 
