@@ -49,8 +49,8 @@ const CallToAction = () => {
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                 <Zap className="w-6 h-6 text-primary" />
               </div>
-              <div className="font-semibold mb-1 text-foreground">Works Offline</div>
-              <div className="text-sm">No reception, no problem</div>
+              <div className="font-semibold mb-1 text-foreground">Always Available</div>
+              <div className="text-sm">Access anywhere, anytime</div>
             </div>
             
             <div className="flex flex-col items-center">

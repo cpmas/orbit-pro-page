@@ -41,8 +41,8 @@ const TrustedBySection = () => {
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-muted-foreground">
-                  <strong className="text-foreground">Works Offline</strong> — 
-                  Create quotes on-site without worrying about poor reception or data limits.
+                  <strong className="text-foreground">Always Available</strong> — 
+                  Access your business tools anywhere, anytime with reliable performance.
                 </p>
               </div>
               <div className="flex items-start gap-3">
@@ -75,8 +75,8 @@ const TrustedBySection = () => {
                 <div className="text-sm text-muted-foreground">Templates</div>
               </div>
               <div className="text-center p-4 bg-muted/30 rounded-lg">
-                <div className="text-2xl font-bold text-primary mb-1">Offline</div>
-                <div className="text-sm text-muted-foreground">Ready</div>
+                <div className="text-2xl font-bold text-primary mb-1">Always</div>
+                <div className="text-sm text-muted-foreground">Available</div>
               </div>
             </div>
           </div>
