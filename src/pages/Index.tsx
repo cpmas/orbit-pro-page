@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import InvoiceGeneratorPromo from "@/components/InvoiceGeneratorPromo";
 import Features from "@/components/Features";
 import TrustedBySection from "@/components/TrustedBySection";
+import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -14,6 +15,7 @@ const Index = () => {
         <Features />
         <TrustedBySection />
         <InvoiceGeneratorPromo />
+        <CallToAction />
       </main>
       <Footer />
     </div>
