@@ -34,9 +34,9 @@ const Hero = () => {
               </h1>
               
               <p className="text-sm sm:text-base md:text-lg text-primary-foreground/95 max-w-xl mx-auto leading-relaxed font-medium">
-                Create professional quotes and invoices in under a minute. No setup required, no clutter — 
+                Send a quote in under a minute — no setup, no clutter, just job → quote → send. 
                 <span className="block mt-1 sm:mt-2 text-primary-glow text-xs sm:text-sm md:text-base font-semibold">
-                  just simple, mobile-first business tools that are completely free while in beta.
+                  Free while in beta • Simple, mobile-first, and professional every time.
                 </span>
               </p>
               
@@ -63,9 +63,9 @@ const Hero = () => {
               </h1>
               
               <p className="text-xl xl:text-2xl text-primary-foreground/95 leading-relaxed font-medium">
-                Create professional quotes and invoices in under a minute. No setup required, no clutter — 
+                Send a quote in under a minute — no setup, no clutter, just job → quote → send. 
                 <span className="block mt-2 text-primary-glow text-lg xl:text-xl font-semibold">
-                  just simple, mobile-first business tools that are completely free while in beta.
+                  Free while in beta • Simple, mobile-first, and professional every time.
                 </span>
               </p>
               

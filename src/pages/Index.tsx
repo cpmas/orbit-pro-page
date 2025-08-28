@@ -12,10 +12,10 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <CallToAction />
         <Features />
         <InvoiceGeneratorPromo />
         <Pricing />
+        <CallToAction />
       </main>
       <Footer />
     </div>
