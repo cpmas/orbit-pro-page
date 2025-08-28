@@ -26,7 +26,7 @@ const Hero = () => {
               </div>
               
               {/* Content Section - Mobile/Tablet (Bottom) */}
-              <div className="text-center space-y-3 sm:space-y-4 px-2">
+              <div className="text-center space-y-3 sm:space-y-4 px-2 mt-6 sm:mt-8">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-[1.1] tracking-tight">
                   <span className="block">Professional Invoicing</span>
                   <span className="block text-primary font-extrabold">& Workflow Management</span>
