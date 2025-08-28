@@ -41,16 +41,16 @@ const Pricing = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center max-w-4xl mx-auto mb-16">
               <div className="inline-flex items-center px-4 py-2 bg-primary-foreground/10 text-primary-foreground rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
-                🔥 Founders Sale - Limited Time
+                🆓 Free While in Beta
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
                 Orbit Workflow
-                <span className="block text-primary-glow">Founders Pricing</span>
+                <span className="block text-primary-glow">Free Access</span>
               </h1>
               
               <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-                Get lifetime founders pricing on our complete workflow management platform. 
+                Get full access to our complete workflow management platform for free while we're in beta. 
                 Save your details, manage clients, and scale your business professionally.
               </p>
             </div>
@@ -64,25 +64,12 @@ const Pricing = () => {
                     className="w-16 h-16 mx-auto"
                   />
                   
-                  <div className="flex items-center justify-center gap-4 mb-8">
-                    <div className="text-center">
-                      <div className="text-5xl font-bold text-primary mb-0.5">$9</div>
-                      <div className="text-sm text-muted-foreground mb-0.5">per month</div>
-                      <div className="text-xs text-muted-foreground line-through">normally $12/mo</div>
-                    </div>
-                    <div className="text-muted-foreground text-xl">or</div>
-                    <div className="text-center">
-                      <div className="text-5xl font-bold text-primary mb-0.5">$80</div>
-                      <div className="text-sm text-muted-foreground mb-0.5">per year</div>
-                      <div className="text-xs text-muted-foreground line-through">normally $99/year</div>
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mt-2">
-                      Save 26% with annual billing
-                    </div>
-                    <div className="text-xs text-muted-foreground mt-2">
-                      All prices in AUD
+                  <div className="text-center mb-8">
+                    <div className="text-7xl font-bold text-primary mb-2">FREE</div>
+                    <div className="text-lg text-muted-foreground mb-4">Full access while in beta</div>
+                    <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                      <Clock className="w-4 h-4 mr-2" />
+                      Limited time offer
                     </div>
                   </div>
                 </CardHeader>
@@ -115,12 +102,17 @@ const Pricing = () => {
                   </div>
                   
                   <div className="text-center">
-                    <Button variant="hero" size="lg" className="group text-lg px-8 py-4 h-auto mb-4">
-                      Get Founders Pricing
+                    <Button 
+                      variant="hero" 
+                      size="lg" 
+                      className="group text-lg px-8 py-4 h-auto mb-4"
+                      onClick={() => window.open('https://app.orbitworkflow.com/signup', '_blank')}
+                    >
+                      Get Free Access
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </Button>
                     <p className="text-sm text-muted-foreground">
-                      Founders pricing locked in for life
+                      No credit card required • Full access while in beta
                     </p>
                   </div>
                 </CardContent>
@@ -133,22 +125,23 @@ const Pricing = () => {
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-                Why Choose Founders Pricing?
+                Why Free for Now?
               </h2>
               <p className="text-xl text-muted-foreground">
-                Lock in special pricing and help shape the future of Orbit Workflow 
-                as we build the ultimate business management platform.
+                We're focused on building the simplest, fastest invoicing and quoting tool for trades and small businesses. 
+                Right now, our priority is learning from real users like you — what works, what doesn't, and what features make the biggest difference in your day.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="text-center p-6 border-border/50 bg-gradient-card">
                 <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Star className="w-8 h-8" />
+                  <Clock className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-4">Lifetime Pricing</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-4">Free While We're in Beta</h3>
                 <p className="text-muted-foreground">
-                  Your founders pricing is locked in forever. As we add features and increase regular pricing, you keep your founders rate.
+                  We're keeping things simple: the app is completely free while we iron out the details and add new features. 
+                  This means you get full access with no catches, and in return, we get valuable feedback that helps us improve.
                 </p>
               </Card>
 
@@ -156,9 +149,9 @@ const Pricing = () => {
                 <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Users className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-4">Shape Development</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-4">Help Us Improve</h3>
                 <p className="text-muted-foreground">
-                  Direct input on new features and improvements. Help us build exactly what Australian businesses need.
+                  By keeping the app free during this early stage, we can grow together and make sure we're building something that truly saves you time.
                 </p>
               </Card>
 
@@ -166,9 +159,9 @@ const Pricing = () => {
                 <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Shield className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-4">Priority Support</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-4">Full Access, No Limits</h3>
                 <p className="text-muted-foreground">
-                  Founders get priority support and direct access to our development team as we continue building.
+                  Get complete access to all features with no restrictions. Later on, we'll introduce affordable plans, but for now — enjoy it on us.
                 </p>
               </Card>
             </div>
@@ -179,13 +172,18 @@ const Pricing = () => {
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-2xl mx-auto">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-                Why pay $30–$60/month for bloated tools you don't use?
+                Ready to Transform Your Business?
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Orbit Workflow gives you everything you need to run your business smoothly — for less than the price of 2 coffees a month.
+                Join Australian trades and small businesses who are simplifying their invoicing and quoting process with Orbit — completely free while we're in beta.
               </p>
-              <Button variant="default" size="lg" className="group text-lg px-8 py-4 h-auto">
-                Get Founders Pricing
+              <Button 
+                variant="default" 
+                size="lg" 
+                className="group text-lg px-8 py-4 h-auto"
+                onClick={() => window.open('https://app.orbitworkflow.com/signup', '_blank')}
+              >
+                Get Free Access Now
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
