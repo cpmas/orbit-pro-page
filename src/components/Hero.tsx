@@ -54,7 +54,7 @@ const Hero = () => {
             </div>
 
           {/* Desktop Layout: Side by side */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="hidden lg:grid lg:grid-cols-2 gap-16 items-center">
             <div className="text-left space-y-8">
               <h1 className="text-6xl xl:text-8xl font-bold text-foreground leading-[1.1] tracking-tight">
                 <span className="block">Professional Invoicing</span>
