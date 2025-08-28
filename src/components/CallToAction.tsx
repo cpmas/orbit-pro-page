@@ -37,7 +37,7 @@ const CallToAction = () => {
               </Button>
             </div>
           
-          <div className="grid sm:grid-cols-3 gap-8 text-primary-foreground/80">
+          <div className="hidden sm:grid sm:grid-cols-3 gap-8 text-primary-foreground/80">
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 bg-primary-foreground/10 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm">
                 <Users className="w-6 h-6" />
