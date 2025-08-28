@@ -13,9 +13,9 @@ const Index = () => {
       <main>
         <Hero />
         <Features />
+        <CallToAction />
         <InvoiceGeneratorPromo />
         <Pricing />
-        <CallToAction />
       </main>
       <Footer />
     </div>
