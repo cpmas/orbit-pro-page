@@ -35,14 +35,19 @@ const Hero = () => {
               
               <p className="text-sm sm:text-base md:text-lg text-primary-foreground/95 max-w-xl mx-auto leading-relaxed font-medium">
                 Send a quote in under a minute — no setup, no clutter, just job → quote → send. 
-                <span className="block mt-1 sm:mt-2 text-primary-foreground/85 text-xs sm:text-sm md:text-base font-normal">
-                  Simple, mobile-first, and professional every time.
+                <span className="block mt-1 sm:mt-2 text-primary-glow text-xs sm:text-sm md:text-base font-semibold">
+                  Free while in beta • Simple, mobile-first, and professional every time.
                 </span>
               </p>
               
               <div className="pt-4">
-                <Button variant="hero" size="lg" className="group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-glow hover:shadow-elegant transition-all duration-300">
-                  Start Now
+                <Button 
+                  variant="hero" 
+                  size="lg" 
+                  className="group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-glow hover:shadow-elegant transition-all duration-300"
+                  onClick={() => window.open('https://app.orbitworkflow.com/signup', '_blank')}
+                >
+                  Start Free Now
                   <ArrowRight className="ml-2 sm:ml-3 h-4 sm:h-5 w-4 sm:w-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </Button>
               </div>
@@ -59,14 +64,19 @@ const Hero = () => {
               
               <p className="text-xl xl:text-2xl text-primary-foreground/95 leading-relaxed font-medium">
                 Send a quote in under a minute — no setup, no clutter, just job → quote → send. 
-                <span className="block mt-2 text-primary-foreground/85 text-lg xl:text-xl font-normal">
-                  Simple, mobile-first, and professional every time.
+                <span className="block mt-2 text-primary-glow text-lg xl:text-xl font-semibold">
+                  Free while in beta • Simple, mobile-first, and professional every time.
                 </span>
               </p>
               
               <div className="pt-8">
-                <Button variant="hero" size="lg" className="group px-8 py-4 text-lg font-semibold shadow-glow hover:shadow-elegant transition-all duration-300">
-                  Start Now
+                <Button 
+                  variant="hero" 
+                  size="lg" 
+                  className="group px-8 py-4 text-lg font-semibold shadow-glow hover:shadow-elegant transition-all duration-300"
+                  onClick={() => window.open('https://app.orbitworkflow.com/signup', '_blank')}
+                >
+                  Start Free Now
                   <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </Button>
               </div>
