@@ -161,7 +161,7 @@ const Pricing = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-4">Full Access, No Limits</h3>
                 <p className="text-muted-foreground">
-                  Get complete access to all features with no restrictions. Later on, we'll introduce affordable plans, but for now — enjoy it on us.
+                  Get complete access to all features with no restrictions. Later on, we'll introduce affordable plans, but for now enjoy it on us.
                 </p>
               </Card>
             </div>
@@ -175,7 +175,7 @@ const Pricing = () => {
                 Ready to Transform Your Business?
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Join Australian trades and small businesses who are simplifying their invoicing and quoting process with Orbit — completely free while we're in beta.
+                Join Australian trades and small businesses who are simplifying their invoicing and quoting process with Orbit - completely free while we're in beta.
               </p>
               <Button 
                 variant="default" 
