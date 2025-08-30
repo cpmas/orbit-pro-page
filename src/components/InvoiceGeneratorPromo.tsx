@@ -18,7 +18,7 @@ const InvoiceGeneratorPromo = () => {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Free Invoice Generator
+            Free Online Invoice Generator
             <span className="block text-primary">No Account Required</span>
           </h2>
           

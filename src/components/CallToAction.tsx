@@ -26,15 +26,16 @@ const CallToAction = () => {
             </p>
           
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+              <a href="https://app.orbitworkflow.com/signup" >
               <Button 
                 variant="hero" 
                 size="lg" 
                 className="group text-lg px-8 py-4 h-auto"
-                onClick={() => window.open('https://app.orbitworkflow.com/signup', '_blank')}
               >
                 Start Free Beta
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
+              </a>
             </div>
           
           <div className="hidden sm:grid sm:grid-cols-3 gap-8 text-primary-foreground/80">

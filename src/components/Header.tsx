@@ -29,12 +29,16 @@ const Header = () => {
           </nav>
           
           <div className="flex items-center space-x-4">
-            <Button variant="outline">
-              Login
-            </Button>
-            <Button variant="hero">
-              Get Started Free
-            </Button>
+            <a href="https://app.orbitworkflow.com" >
+              <Button variant="outline">
+                Login
+              </Button>
+            </a>
+            <a href="https://app.orbitworkflow.com/signup" >
+              <Button variant="hero">
+                Get Started Free
+              </Button>
+            </a>
           </div>
         </div>
 

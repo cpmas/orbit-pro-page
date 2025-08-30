@@ -39,12 +39,12 @@ const Features = () => {
     {
       icon: FileText,
       title: "Professional Quotes & Invoices",
-      description: "Create beautiful, itemized quotes and invoices with professional templates. Convert quotes to invoices with one click."
+      description: "Create beautiful, itemised quotes and invoices with professional templates. Convert quotes to invoices with one click."
     },
     {
       icon: Users,
       title: "Complete Client Management", 
-      description: "Store client details, ABN information, addresses, and track full client history in one organized place."
+      description: "Store client details, ABN information, addresses, and track full client history in one organised place."
     },
     {
       icon: BarChart3,
@@ -62,7 +62,7 @@ const Features = () => {
     "Save your business details and client information",
     "Use your own branding on all documents", 
     "Smart quote and invoice tracking system",
-    "Professional PDF generation and email sending",
+    "Professional PDF generation",
     "GST compliant calculations built-in",
     "Real-time sync across all devices",
     "Range of professional templates",
@@ -99,9 +99,11 @@ const Features = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-0">
+                <a href="https://app.orbitworkflow.com/signup" >
                 <Button variant="hero" size="lg" className="text-lg px-8 py-4 h-auto">
                   Get Started Free
                 </Button>
+                </a>
                 <Link to="/pricing">
                   <Button variant="outline" size="lg" className="text-lg px-8 py-4 h-auto bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20 hover:bg-primary-foreground/20">
                     View Pricing
@@ -274,9 +276,11 @@ const Features = () => {
                 Join thousands of Australian businesses who have streamlined their workflow with Orbit.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://app.orbitworkflow.com/signup" >
                 <Button variant="hero" size="lg" className="text-lg px-8 py-4 h-auto">
                   Get Started Free
                 </Button>
+                </a>
                 <Link to="/pricing">
                   <Button variant="outline" size="lg" className="text-lg px-8 py-4 h-auto">
                     View Pricing Plans

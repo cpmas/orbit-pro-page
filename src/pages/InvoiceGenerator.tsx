@@ -807,7 +807,7 @@ const InvoiceGenerator = () => {
                   Save client details, create templates, track payments, and more with Orbit Pro
                 </p>
                 <Button variant="default" size="lg">
-                  Upgrade to Orbit Pro
+                  Join the Free Beta
                 </Button>
               </CardContent>
             </Card>

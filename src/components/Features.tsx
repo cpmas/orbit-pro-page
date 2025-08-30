@@ -15,7 +15,7 @@ const Features = () => {
     {
       icon: <FileText className="w-6 h-6" />,
       title: "Professional Quotes & Invoices",
-      description: "Create itemized quotes with line items, convert to invoices seamlessly, and generate professional PDFs instantly."
+      description: "Create branded quotes with itemised line items, convert to invoices seamlessly, and generate professional PDFs instantly."
     },
     {
       icon: <Zap className="w-6 h-6" />,
@@ -45,7 +45,7 @@ const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-12 md:py-16 bg-muted/30">
+    <section id="features" className="py-12 md:py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
@@ -56,8 +56,8 @@ const Features = () => {
             <span className="block text-primary">In One App</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            From client management to quote creation, invoice generation to business analytics - 
-            Orbit provides all the tools small businesses need to run professionally.
+            From client management to invoice generation and business analytics, <br/> 
+            Orbit provides all the tools small businesses need to run professionally
           </p>
         </div>
 
@@ -120,8 +120,8 @@ const Features = () => {
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-muted-foreground">
-                  <strong className="text-foreground">Works Offline</strong> — 
-                  Create quotes on-site without worrying about poor reception or data limits.
+                  <strong className="text-foreground">Look Professional</strong> — 
+                  Branded, consistent documents that impress clients.
                 </p>
               </div>
               <div className="flex items-start gap-3">
@@ -134,28 +134,28 @@ const Features = () => {
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-muted-foreground">
-                  <strong className="text-foreground">Ready in Under a Minute</strong> — 
-                  No setup, no clutter. Job → Quote → Send. That simple.
+                  <strong className="text-foreground">Save Time</strong> — 
+                  Go from job to quote to invoice in just a few taps.
                 </p>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-6">
-              <div className="text-center p-4 bg-muted/30 rounded-lg">
+              <div className="text-center p-4 bg-muted/30 rounded-lg shadow-card border border-border/50">
                 <div className="text-2xl font-bold text-primary mb-1">GST</div>
                 <div className="text-sm text-muted-foreground">Compliant</div>
               </div>
-              <div className="text-center p-4 bg-muted/30 rounded-lg">
+              <div className="text-center p-4 bg-muted/30 rounded-lg shadow-card border border-border/50">
                 <div className="text-2xl font-bold text-primary mb-1">Mobile</div>
-                <div className="text-sm text-muted-foreground">Optimized</div>
+                <div className="text-sm text-muted-foreground">Optimised</div>
               </div>
-              <div className="text-center p-4 bg-muted/30 rounded-lg">
+              <div className="text-center p-4 bg-muted/30 rounded-lg shadow-card border border-border/50">
                 <div className="text-2xl font-bold text-primary mb-1">Professional</div>
                 <div className="text-sm text-muted-foreground">Templates</div>
               </div>
-              <div className="text-center p-4 bg-muted/30 rounded-lg">
-                <div className="text-2xl font-bold text-primary mb-1">Offline</div>
-                <div className="text-sm text-muted-foreground">Ready</div>
+              <div className="text-center p-4 bg-muted/30 rounded-lg shadow-card border border-border/50">
+                <div className="text-2xl font-bold text-primary mb-1">Grow</div>
+                <div className="text-sm text-muted-foreground">Together</div>
               </div>
             </div>
           </div>

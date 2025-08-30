@@ -32,9 +32,9 @@ const Hero = () => {
               </h1>
               
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed font-medium">
-                Send a quote in under a minute — no setup, no clutter, just job → quote → send. 
+                 Create quotes and invoices in seconds
                 <span className="block mt-1 sm:mt-2 text-primary text-xs sm:text-sm md:text-base font-semibold">
-                  Free while in beta • Simple, mobile-first, and professional every time.
+                 Simple, mobile-first, and professional every time.
                 </span>
               </p>
               
@@ -61,22 +61,23 @@ const Hero = () => {
               </h1>
               
               <p className="text-xl xl:text-2xl text-muted-foreground leading-relaxed font-medium">
-                Send a quote in under a minute — no setup, no clutter, just job → quote → send. 
+                Create quotes and invoices in seconds 
                 <span className="block mt-2 text-primary text-lg xl:text-xl font-semibold">
-                  Free while in beta • Simple, mobile-first, and professional every time.
+                  Simple, mobile-first, and professional every time
                 </span>
               </p>
               
               <div className="pt-8">
+                <a href="https://app.orbitworkflow.com/signup" >
                 <Button 
                   variant="hero" 
                   size="lg" 
                   className="group px-8 py-4 text-lg font-semibold shadow-glow hover:shadow-elegant transition-all duration-300"
-                  onClick={() => window.open('https://app.orbitworkflow.com/signup', '_blank')}
                 >
                   Start Free Now
                   <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </Button>
+                </a>
               </div>
             </div>
             

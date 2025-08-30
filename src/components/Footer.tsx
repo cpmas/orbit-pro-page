@@ -96,9 +96,6 @@ const Footer = () => {
             <a href="#" className="hover:text-foreground transition-colors">
               Terms of Service
             </a>
-            <a href="#" className="hover:text-foreground transition-colors">
-              Cookie Policy
-            </a>
           </div>
         </div>
       </div>

@@ -155,12 +155,12 @@ const About = () => {
               <p className="text-xl text-primary-foreground/90 mb-8">
                 Join thousands of Australian businesses who have chosen Orbit for their workflow management needs.
               </p>
-              <Link to="/pricing">
+              <a>
                 <Button variant="hero" size="lg" className="text-lg px-8 py-4 h-auto bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-                  Get Started
+                  Get Started For Free
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </section>
