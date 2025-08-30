@@ -90,10 +90,10 @@ const Footer = () => {
             © 2025 Orbit Workflow. All rights reserved.
           </div>
           <div className="flex gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">
+            <a href="/privacy-policy" className="hover:text-foreground transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-foreground transition-colors">
+            <a href="/terms-of-service" className="hover:text-foreground transition-colors">
               Terms of Service
             </a>
           </div>
