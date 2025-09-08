@@ -72,7 +72,7 @@ const InvoiceGenerator = () => {
       clientName: "",
       clientAddress: "",
       clientEmail: "",
-      invoiceNumber: `INV-${Date.now().toString().slice(-6)}`,
+      invoiceNumber: `INV-`,
       invoiceDate: new Date().toISOString().split('T')[0],
       dueDate: "",
       items: [{ heading: "", description: "", quantity: 1, rate: null as any }],
@@ -257,7 +257,7 @@ const InvoiceGenerator = () => {
         <div className="mb-8 text-center">
           <h1 className="text-4xl font-bold text-foreground mb-4">Free Invoice Generator</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Create professional invoices instantly. No account required, completely free for Australian tradies.
+            Create professional invoices instantly. No account required, completely free!
           </p>
         </div>
 
@@ -806,9 +806,11 @@ const InvoiceGenerator = () => {
                 <p className="text-muted-foreground mb-6">
                   Save client details, create templates, track payments, and more with Orbit Pro
                 </p>
+                <a href="https://app.orbitworkflow.com/signup" >
                 <Button variant="default" size="lg">
                   Join the Free Beta
                 </Button>
+                </a>
               </CardContent>
             </Card>
           </div>
