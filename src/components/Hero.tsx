@@ -68,7 +68,7 @@ const Hero = () => {
               </p>
               
               <div className="pt-8">
-                <a href="https://app.orbitworkflow.com/signup" >
+                <a href="https://app.orbitworkflow.com" >
                 <Button 
                   variant="hero" 
                   size="lg" 
