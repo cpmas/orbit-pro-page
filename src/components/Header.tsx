@@ -34,7 +34,7 @@ const Header = () => {
                 Login
               </Button>
             </a>
-            <a href="https://app.orbitworkflow.com/signup" >
+            <a href="https://app.orbitworkflow.com" >
               <Button variant="hero">
                 Get Started Free
               </Button>
